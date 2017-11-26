@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><spark version="1">
+<files all="true" path="."/>
+<model tick="1">
+<setup>LinksDemo2.TestModel</setup>
+<variables>
+<variable get="get_initialAgentNumber" name="initial-agent-number" set="set_initialAgentNumber" type="Double"/>
+<variable get="get_randomCoefficient" name="random-coefficient" set="set_randomCoefficient" type="Double"/>
+<variable get="get_separationCoefficient" name="separation-coefficient" set="set_separationCoefficient" type="Double"/>
+<variable get="get_centralForceCoefficient" name="central-force-coefficient" set="set_centralForceCoefficient" type="Double"/>
+<variable get="get_collisionCoefficient" name="collision-coefficient" set="set_collisionCoefficient" type="Double"/>
+<variable get="get_velocityCoefficient" name="velocity-coefficient" set="set_velocityCoefficient" type="Double"/>
+<variable get="get_dt" name="dt" set="set_dt" type="Double"/>
+</variables>
+<agents>
+<agent name="WeakLink">LinksDemo2.WeakLink</agent>
+<agent name="TestAgent">LinksDemo2.TestAgent</agent>
+<agent name="Spring">LinksDemo2.Spring</agent>
+<agent name="PhysAgent">LinksDemo2.PhysAgent</agent>
+</agents>
+</model>
+<interface>
+<about path="readme.txt"/>
+<windows>
+
+
+
+<window height="200" name="Parameters" visible="true" width="666" x="583" y="0"/><window height="683" main="true" name="Main Window" visible="true" width="583" x="0" y="0"/></windows>
+<mainframe location="Main Window"><spacestyle name="space" selected="true" swapXY="false"/><agentstyle alpha-function-value="0.0" border="true" name="WeakLink" position="0" texture-env="0" transparent="false" visible="true"/><agentstyle alpha-function-value="0.0" border="true" name="PhysAgent" position="1" texture-env="0" transparent="false" visible="true"/><agentstyle alpha-function-value="0.0" border="true" name="Spring" position="2" texture-env="0" transparent="false" visible="true"/><agentstyle alpha-function-value="0.0" border="true" name="TestAgent" position="3" texture-env="0" transparent="false" visible="true"/></mainframe>
+<parameterframe location="Parameters">
+<parameter default="5.0" max="100.0" min="10.0" name="initial-agent-number" step="1.0" type="Double" variable="initial-agent-number" widget="Slider"/>
+<parameter default="0.0" max="10.0" min="0.0" name="Random coefficient" step="0.1" type="Double" variable="random-coefficient" widget="Slider"/>
+<parameter default="0.0" max="10.0" min="0.0" name="Separation Coefficient" step="0.1" type="Double" variable="separation-coefficient" widget="Slider"/>
+<parameter default="0.4" max="10.0" min="0.0" name="Central Force" step="0.1" type="Double" variable="central-force-coefficient" widget="Slider"/>
+<parameter default="50.0" max="100.0" min="0.0" name="Collision Coefficient" step="1.0" type="Double" variable="collision-coefficient" widget="Slider"/>
+<parameter default="0.6" max="1.0" min="0.1" name="Velocity Decay" step="0.1" type="Double" variable="velocity-coefficient" widget="Slider"/>
+<parameter default="0.05" max="0.2" min="0.01" name="dt" step="0.01" type="Double" variable="dt" widget="Slider"/>
+</parameterframe>
+<variable-sets/>
+<data-layers/>
+</interface>
+</spark>

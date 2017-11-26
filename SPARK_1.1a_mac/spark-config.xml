@@ -1,0 +1,8 @@
+<config>
+	<graphics render = "1"/>
+	<recent-models max = "10">		<file>/Users/harrycooper/Desktop/University/Third Year/Sem 1/COM3610 - Dissertation/SPARK_1.1a_mac/./samples/Fractals/output/FractalsModel.xml</file>
+		<file>/Users/harrycooper/Desktop/University/Third Year/Sem 1/COM3610 - Dissertation/SPARK_1.1a_mac/./samples/PhysModel2/output/TestModel.xml</file>
+		<file>/Users/harrycooper/Desktop/University/Third Year/Sem 1/COM3610 - Dissertation/SPARK_1.1a_mac/./samples/LinksDemo/output/LinksDemoModel.xml</file>
+		<file>/Users/harrycooper/Desktop/University/Third Year/Sem 1/COM3610 - Dissertation/SPARK_1.1a_mac/./samples/InnateImmuneResponse Ver1/output/InnateImmuneResponseModel.xml</file>
+	</recent-models>
+</config>

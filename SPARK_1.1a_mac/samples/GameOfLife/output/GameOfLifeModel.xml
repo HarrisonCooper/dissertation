@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<spark version="1">
+  <files all="true" path="."/>
+  <model tick="1">
+    <setup mode="concurrent">GameOfLife.GameOfLifeModel</setup>
+    <variables>
+      <variable get="get_density" name="density" set="set_density" type="Double"/>
+    </variables>
+    <agents>
+      <agent name="Cell">GameOfLife.Cell</agent>
+      <agent name="DeadCell">GameOfLife.DeadCell</agent>
+    </agents>
+  </model>
+  <interface>
+    <about path="readme.txt"/>
+    <windows>
+      <window height="200" name="Parameters" visible="true" width="666" x="583" y="0"/>
+      <window height="683" main="true" name="Main Window" visible="true" width="583" x="0" y="0"/>
+    </windows>
+    <mainframe location="Main Window">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="Cell" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="DeadCell" position="1" texture-env="0" transparent="false" visible="true"/>
+    </mainframe>
+    <parameterframe location="Parameters">
+      <parameter default="0.3" max="1.0" min="0.0" name="density" step="0.01" type="Double" variable="density" widget="Slider"/>
+    </parameterframe>
+    <variable-sets/>
+    <data-layers/>
+  </interface>
+</spark>

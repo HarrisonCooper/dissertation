@@ -1,0 +1,3137 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>SPARK-PL Dictionary</title><link href="style.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><meta name="description" content="A short description of all SPARK-PL commands."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="N2000B"></a>SPARK-PL Dictionary</h2></div><div><div class="author"><h3 class="author">Alexey Solovyev</h3></div></div><div><div class="abstract"><p class="title"><b>Abstract</b></p>
+			<p>
+				A short description of all SPARK-PL commands. 
+			</p>
+		</div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#N20021">Constants</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20026">pi</a></span></dt><dt><span class="sect2"><a href="#N2002F">
+				true
+</a></span></dt><dt><span class="sect2"><a href="#N20038">
+				false
+</a></span></dt><dt><span class="sect2"><a href="#N20041">
+				circle
+</a></span></dt><dt><span class="sect2"><a href="#N2004A">
+				square
+</a></span></dt><dt><span class="sect2"><a href="#N20053">
+				torus
+</a></span></dt><dt><span class="sect2"><a href="#N2005C">
+				Colors
+</a></span></dt><dt><span class="sect2"><a href="#N20065">
+				agents-number
+</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N20072">
+			Operations
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20080">
+				^
+</a></span></dt><dt><span class="sect2"><a href="#N20092">
+				*, /
+</a></span></dt><dt><span class="sect2"><a href="#N200A4">* (dot)</a></span></dt><dt><span class="sect2"><a href="#N200B0">
+%
+</a></span></dt><dt><span class="sect2"><a href="#N200C2">
++, -
+</a></span></dt><dt><span class="sect2"><a href="#N200CE">
+&lt;, &gt; , &gt;=, &lt;=
+</a></span></dt><dt><span class="sect2"><a href="#N200DA">
+==, !=
+</a></span></dt><dt><span class="sect2"><a href="#N200E6">
+- (unary)
+</a></span></dt><dt><span class="sect2"><a href="#N200F2">
+and, or
+</a></span></dt><dt><span class="sect2"><a href="#N200FE">
+not
+</a></span></dt><dt><span class="sect2"><a href="#N20110">
+=, +=, *=, -=, /=
+</a></span></dt><dt><span class="sect2"><a href="#N20125">
+is
+</a></span></dt><dt><span class="sect2"><a href="#N20137">
+as
+</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N2014C">
+Math commands
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20151">
+abs
+</a></span></dt><dt><span class="sect2"><a href="#N2015D">
+acos
+</a></span></dt><dt><span class="sect2"><a href="#N20169">
+asin
+</a></span></dt><dt><span class="sect2"><a href="#N20175">
+atan
+</a></span></dt><dt><span class="sect2"><a href="#N20181">
+atan2
+</a></span></dt><dt><span class="sect2"><a href="#N2018D">
+ceil
+</a></span></dt><dt><span class="sect2"><a href="#N20199">
+cos
+</a></span></dt><dt><span class="sect2"><a href="#N201A5">
+exp
+</a></span></dt><dt><span class="sect2"><a href="#N201B1">
+floor
+</a></span></dt><dt><span class="sect2"><a href="#N201BD">
+log
+</a></span></dt><dt><span class="sect2"><a href="#N201C9">
+round
+</a></span></dt><dt><span class="sect2"><a href="#N201D5">
+sin
+</a></span></dt><dt><span class="sect2"><a href="#N201E1">
+sqrt
+</a></span></dt><dt><span class="sect2"><a href="#N201ED">
+tan
+</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N201FC">
+Commands
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20231">
+add-netlogo-space
+</a></span></dt><dt><span class="sect2"><a href="#N20243">
+add-standard-space
+</a></span></dt><dt><span class="sect2"><a href="#N20258">
+agents
+</a></span></dt><dt><span class="sect2"><a href="#N20270">
+agents-at
+</a></span></dt><dt><span class="sect2"><a href="#N20282">
+agents-at-as
+</a></span></dt><dt><span class="sect2"><a href="#N2028E">
+agents-here
+</a></span></dt><dt><span class="sect2"><a href="#N202A3">
+agents-here-as
+</a></span></dt><dt><span class="sect2"><a href="#N202B8">
+agents-number
+</a></span></dt><dt><span class="sect2"><a href="#N202C4">
+agents-number-as
+</a></span></dt><dt><span class="sect2"><a href="#N202D0">
+agents-as
+</a></span></dt><dt><span class="sect2"><a href="#N202DC">
+all-agents-at
+</a></span></dt><dt><span class="sect2"><a href="#N202E8">
+all-agents-here
+</a></span></dt><dt><span class="sect2"><a href="#N202F7">
+ask
+</a></span></dt><dt><span class="sect2"><a href="#N2030C">
+break
+</a></span></dt><dt><span class="sect2"><a href="#N2031E">
+continue
+</a></span></dt><dt><span class="sect2"><a href="#N20330">
+count
+</a></span></dt><dt><span class="sect2"><a href="#N2033C">
+create
+</a></span></dt><dt><span class="sect2"><a href="#N2034E">
+create-new-file
+</a></span></dt><dt><span class="sect2"><a href="#N20360">
+create-one
+</a></span></dt><dt><span class="sect2"><a href="#N20372">
+create-grid
+</a></span></dt><dt><span class="sect2"><a href="#N2038A">
+create-grid-in-space
+</a></span></dt><dt><span class="sect2"><a href="#N203A2">
+create-vector
+</a></span></dt><dt><span class="sect2"><a href="#N203AE">
+distance
+</a></span></dt><dt><span class="sect2"><a href="#N203C3">
+diffuse
+</a></span></dt><dt><span class="sect2"><a href="#N203D2">
+evaporate
+</a></span></dt><dt><span class="sect2"><a href="#N203E1">
+exit
+</a></span></dt><dt><span class="sect2"><a href="#N203ED">
+fprint
+</a></span></dt><dt><span class="sect2"><a href="#N203FF">
+get
+</a></span></dt><dt><span class="sect2"><a href="#N2040B">
+get-space
+</a></span></dt><dt><span class="sect2"><a href="#N20417">
+if
+</a></span></dt><dt><span class="sect2"><a href="#N20423">
+ifelse
+</a></span></dt><dt><span class="sect2"><a href="#N2042F">
+interpolate
+</a></span></dt><dt><span class="sect2"><a href="#N2043B">
+kill
+</a></span></dt><dt><span class="sect2"><a href="#N2044A">
+max
+</a></span></dt><dt><span class="sect2"><a href="#N20456">
+min
+</a></span></dt><dt><span class="sect2"><a href="#N20462">
+myself
+</a></span></dt><dt><span class="sect2"><a href="#N2046E">
+null
+</a></span></dt><dt><span class="sect2"><a href="#N20480">
+parent
+</a></span></dt><dt><span class="sect2"><a href="#N2048C">
+print
+</a></span></dt><dt><span class="sect2"><a href="#N20498">
+random-in-interval
+</a></span></dt><dt><span class="sect2"><a href="#N204A4">
+random
+</a></span></dt><dt><span class="sect2"><a href="#N204B0">
+random-vector
+</a></span></dt><dt><span class="sect2"><a href="#N204BF">
+random-vector-of-length
+</a></span></dt><dt><span class="sect2"><a href="#N204CE">
+repeat
+</a></span></dt><dt><span class="sect2"><a href="#N204DA">
+return
+</a></span></dt><dt><span class="sect2"><a href="#N204E9">
+self
+</a></span></dt><dt><span class="sect2"><a href="#N204F5">
+space-xmin
+</a></span></dt><dt><span class="sect2"><a href="#N20501">
+space-xmax
+</a></span></dt><dt><span class="sect2"><a href="#N2050D">
+space-ymin
+</a></span></dt><dt><span class="sect2"><a href="#N20519">
+space-ymax
+</a></span></dt><dt><span class="sect2"><a href="#N20525">
+space-xsize
+</a></span></dt><dt><span class="sect2"><a href="#N20531">
+space-ysize
+</a></span></dt><dt><span class="sect2"><a href="#N2053D">
+sum
+</a></span></dt><dt><span class="sect2"><a href="#N20549">
+this
+</a></span></dt><dt><span class="sect2"><a href="#N20555">
+truncate
+</a></span></dt><dt><span class="sect2"><a href="#N20561">
+vector-in-direction
+</a></span></dt><dt><span class="sect2"><a href="#N20573">
+while
+</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N20580">vector</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20588">
+	x
+	</a></span></dt><dt><span class="sect2"><a href="#N20594">
+	y
+	</a></span></dt><dt><span class="sect2"><a href="#N205A0">
+	z
+	</a></span></dt><dt><span class="sect2"><a href="#N205AC">
+	length
+	</a></span></dt><dt><span class="sect2"><a href="#N205B8">
+	length-squared
+	</a></span></dt><dt><span class="sect2"><a href="#N205C4">
+	normalize
+	</a></span></dt><dt><span class="sect2"><a href="#N205D0">
+	truncate-length
+	</a></span></dt><dt><span class="sect2"><a href="#N205DC">
+	copy
+	</a></span></dt><dt><span class="sect2"><a href="#N205E8">
+	dot
+	</a></span></dt><dt><span class="sect2"><a href="#N205F4">
+	cross
+	</a></span></dt><dt><span class="sect2"><a href="#N20600">
+	parallel-component
+	</a></span></dt><dt><span class="sect2"><a href="#N2060F">
+	perpendicular-component
+	</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N2061F">
+Space
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20624">
+create
+</a></span></dt><dt><span class="sect2"><a href="#N20636">
+create-one
+</a></span></dt><dt><span class="sect2"><a href="#N20648">
+x-min
+</a></span></dt><dt><span class="sect2"><a href="#N20654">
+x-max
+</a></span></dt><dt><span class="sect2"><a href="#N20660">
+y-min
+</a></span></dt><dt><span class="sect2"><a href="#N2066C">
+y-max
+</a></span></dt><dt><span class="sect2"><a href="#N20678">
+x-size
+</a></span></dt><dt><span class="sect2"><a href="#N20684">
+y-size
+</a></span></dt><dt><span class="sect2"><a href="#N20690">
+agents-at
+</a></span></dt><dt><span class="sect2"><a href="#N2069C">
+agents-at-as
+</a></span></dt><dt><span class="sect2"><a href="#N206A8">
+all-agents-at
+</a></span></dt><dt><span class="sect2"><a href="#N206B4">
+agents-here
+</a></span></dt><dt><span class="sect2"><a href="#N206C9">
+agents-here-as
+</a></span></dt><dt><span class="sect2"><a href="#N206DE">
+all-agents-here
+</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N206EE">
+Agent
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N206F3">
+	die
+	</a></span></dt><dt><span class="sect2"><a href="#N206FF">
+link
+</a></span></dt><dt><span class="sect2"><a href="#N2070B">
+link-of-type
+</a></span></dt><dt><span class="sect2"><a href="#N20717">
+links-of-type
+</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N20724">
+SpaceAgent : Agent
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20729">
+	move
+	</a></span></dt><dt><span class="sect2"><a href="#N20735">
+	get-agent-space
+	</a></span></dt><dt><span class="sect2"><a href="#N20741">
+	move-to
+	</a></span></dt><dt><span class="sect2"><a href="#N2074D">
+	move-to-space
+	</a></span></dt><dt><span class="sect2"><a href="#N20759">
+	set-random-position
+	</a></span></dt><dt><span class="sect2"><a href="#N20765">
+	hatch
+	</a></span></dt><dt><span class="sect2"><a href="#N20771">
+	hatch-one
+	</a></span></dt><dt><span class="sect2"><a href="#N2077D">
+	position
+	</a></span></dt><dt><span class="sect2"><a href="#N20789">
+	color
+	</a></span></dt><dt><span class="sect2"><a href="#N20795">
+	radius
+	</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N207A4">
+Link
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N207A9">
+	connect
+	</a></span></dt><dt><span class="sect2"><a href="#N207B5">
+	color
+	</a></span></dt><dt><span class="sect2"><a href="#N207C1">
+	distance
+	</a></span></dt><dt><span class="sect2"><a href="#N207CD">
+	end1
+	</a></span></dt><dt><span class="sect2"><a href="#N207D9">
+	end2
+	</a></span></dt><dt><span class="sect2"><a href="#N207E5">
+	width
+	</a></span></dt><dt><span class="sect2"><a href="#N207F1">
+	width
+	</a></span></dt></dl></dd><dt><span class="sect1"><a href="#N20800">
+grid
+</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N20805">
+	max
+	</a></span></dt><dt><span class="sect2"><a href="#N20811">
+	min
+	</a></span></dt><dt><span class="sect2"><a href="#N2081D">
+	total-value
+	</a></span></dt><dt><span class="sect2"><a href="#N20829">
+	total-value-in-region
+	</a></span></dt><dt><span class="sect2"><a href="#N20835">
+	multiply
+	</a></span></dt><dt><span class="sect2"><a href="#N20841">
+	evaporate
+	</a></span></dt><dt><span class="sect2"><a href="#N2084D">
+	diffuse
+	</a></span></dt><dt><span class="sect2"><a href="#N2085C">
+	set-value
+	</a></span></dt><dt><span class="sect2"><a href="#N20868">
+	data-at
+	</a></span></dt><dt><span class="sect2"><a href="#N20874">
+	set-data-at
+	</a></span></dt><dt><span class="sect2"><a href="#N20880">
+	value-at
+	</a></span></dt><dt><span class="sect2"><a href="#N2088C">
+	set-value-at
+	</a></span></dt><dt><span class="sect2"><a href="#N20898">
+	add-value-at
+	</a></span></dt><dt><span class="sect2"><a href="#N208A4">
+	value-here
+	</a></span></dt><dt><span class="sect2"><a href="#N208B0">
+	set-value-here
+	</a></span></dt><dt><span class="sect2"><a href="#N208BC">
+	add-value-here
+	</a></span></dt><dt><span class="sect2"><a href="#N208C8">
+	value
+	</a></span></dt></dl></dd></dl></div>
+	
+
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20021"></a>Constants</h2></div></div></div>
+		
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20026"></a>pi</h3></div></div></div>
+			
+			<p>
+				Mathematical pi constant, 3.1415926&hellip;
+</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2002F"></a>
+				true
+</h3></div></div></div>
+			
+			<p>
+				Logical true value. Can be assigned only to a Boolean variable
+			</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20038"></a>
+				false
+</h3></div></div></div>
+			
+			<p>
+				Logical false value.
+</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20041"></a>
+				circle
+</h3></div></div></div>
+			
+			<p>
+				A circle shape.
+</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2004A"></a>
+				square
+</h3></div></div></div>
+			
+			<p>
+				A square shape.
+</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20053"></a>
+				torus
+</h3></div></div></div>
+			
+			<p>
+				A torus shape.
+
+				Note: right now shapes can be used only in the
+				following context:
+				agent SomeAgent : SomeAgentDerivedFromSpaceAgent
+				to create
+				super 0.5
+				circle
+				end
+				That is, shapes are available only for agents
+				derived from
+				SpaceAgent, and shapes should be assigned using super
+				command (which
+				can be used without errors also only for SpaceAgent)
+				with two
+				arguments: radius and shape.
+</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2005C"></a>
+				Colors
+</h3></div></div></div>
+			
+			<p>
+				black
+				white
+				grey
+				red
+				green
+				blue
+				cyan
+				magenta
+				yellow
+				Note: all colors are
+				treated as vectors. So, instead of colors it is
+				possible to use
+				vectors in the RGB format where each component is
+				between 0 and 1
+				(smaller and bigger values are ignored).
+</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20065"></a>
+				agents-number
+</h3></div></div></div>
+			
+			<p>
+				<pre class="programlisting">
+agents-number type : number
+type : $type
+</pre>
+				Returns the number of all agents of a specific type.
+			</p>
+		</div>
+
+	</div>
+
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20072"></a>
+			Operations
+</h2></div></div></div>
+		
+		<p>
+			Note: all operations (with few obvious exceptions) require two
+			arguments.
+			All operations are infix which means that the arguments are
+			written
+			from left and right sides from the operation symbol (e.g. 2 *
+			3).
+		</p>
+		<p>
+			Note: infix operations have precedence, that is, the order in
+			which they
+			are applied. The precedence is usual so no problems should
+			occur but
+			in any case it is possible to use parenthesis to change the
+			precedence.
+</p>
+		<p>
+			Note: ignore type expressions after colons if you are not
+			familiar with
+			them, instead read description.
+</p>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20080"></a>
+				^
+</h3></div></div></div>
+			
+			<p>
+				<pre class="programlisting">
+^ : double-&gt;double-&gt;double
+</pre>
+				Power. Works only for numbers.
+			</p>
+			<p>
+				Example:
+				<pre class="programlisting"> 
+a^b, 2^3.14, pi^pi
+</pre>
+			</p>
+		</div>
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20092"></a>
+				*, /
+</h3></div></div></div>
+			
+			<p>
+				<pre class="programlisting">
+*,/ : double -&gt; double -&gt; double, double -&gt; vector -&gt; vector, vector -&gt; double -&gt; vector
+</pre>
+				Multiplication, division. Works with numbers and with a vector one
+				side and a number on another side.
+			</p>
+			<p>
+				Example:
+				<pre class="programlisting">
+var x : double
+var v : vector
+x = x * 3
+v = v / 4
+v = v * 2
+x = 2 * 2
+</pre>
+			</p>
+		</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200A4"></a>* (dot)</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+* : vector -&gt; vector -&gt; number
+</pre>
+A dot product of two vectors.
+</p>
+</div>
+
+
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200B0"></a>
+%
+</h3></div></div></div>
+			
+<p>
+<pre class="programlisting">
+% : double -&gt; double -&gt; double
+</pre>
+Returns the residual of a division
+</p>
+<p>
+Example:
+<pre class="programlisting">
+if tick % 10 == 0 [ print &ldquo;True if the tick is a multiple of ten&rdquo; ]
+</pre>
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200C2"></a>
++, -
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
++, - : double -&gt; double -&gt; double, vector -&gt; vector -&gt; vector, string-&gt;string-&gt;string
+</pre>
+Addition, subtraction: work both for numbers and vectors.
+Also + can be used for string concatenation.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200CE"></a>
+&lt;, &gt; , &gt;=, &lt;=
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+&lt;, &gt; , &gt;=, &lt;=: double -&gt; double -&gt; Boolean
+</pre>
+Comparison operations. Work for numbers only.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200DA"></a>
+==, !=
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+==, != : double -&gt; double -&gt; boolean, vector -&gt; vector -&gt; Boolean
+</pre>
+Equality, inequality. Work for any types. The only condition is that the types are compatible (that is, do not compare a vector and a number, etc.)
+Advanced note: actually, it is possible to compare, for instance, a vector and a grid but they are always not equal.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200E6"></a>
+- (unary)
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+- (unary) : double -&gt; double, vector -&gt; vector
+</pre>
+Unary minus. Also works as a negation operation for vectors.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200F2"></a>
+and, or
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+and, or : boolean -&gt;boolean -&gt; Boolean
+</pre>
+Logical operators AND and OR. Can be applied only to Boolean arguments.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200FE"></a>
+not
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+not : boolean -&gt; Boolean
+</pre>
+Logical negation.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+If not true == false [ print &ldquo;OK&rdquo; ]
+</pre>
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20110"></a>
+=, +=, *=, -=, /=
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+=, +=, *=, -=, /=
+</pre>
+Usual assignment operations from such programming languages as C++, Java, C#.
+</p>
+<p>
++=, -= work with both numbers and vectors.
+</p>
+<p>
+*=, /= work with numbers and with a vector on LHS (the left hand side)  and a number on RHS.
+</p>
+<p>
+*= works with a grid on LHS and a number on RHS.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20125"></a>
+is
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+variable is type : boolean
+
+variable : $Object
+type : $type
+</pre>
+Operation that checks whether an object on LHS is of type on RHS. Returns a Boolean value.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+var v : vector
+if v is vector [ print &ldquo;A vector is a vector&rdquo;]
+if v is grid [print &ldquo;A vector is a grid&rdquo;]
+</pre>
+In this example only the first sentence will be printed out.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20137"></a>
+as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+variable as type : extends $Object
+
+variable : $Object
+type : $type
+</pre>
+Converts a given variable to a given type and returns a conversion result. If the conversion is not possible then the special null value is returned.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+var agent-list = all-agents-here
+ask agent-list
+[
+	var good-agent = self as GoodAgent
+	if good-agent == null [ continue ]
+	; do something with good-agent
+]
+</pre>
+In this example a list of all agents at the position of a calling (current) agent is obtained. By default, the type of each agent in this list is SpaceAgent. Then all agents in the list are processed (by ask command). New variable &lsquo;good-agent&rsquo; is created with the value of the currently processed agent converted to GoodAgent type. If the conversion was unsuccessful then continue with the next agent in the list.
+</p>
+</div>
+
+
+</div>
+
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2014C"></a>
+Math commands
+</h2></div></div></div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20151"></a>
+abs
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+abs value : number
+value : number
+</pre>
+Returns the absolute value of a given number.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2015D"></a>
+acos
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+acos value : number
+value : number
+</pre>
+Returns the arc cosine of an angle.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20169"></a>
+asin
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+asin value : number
+value : number
+</pre>
+Returns the arc sine of an angle.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20175"></a>
+atan
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+atan value : number
+value : number
+</pre>
+Returns the arc tangent of an angle.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20181"></a>
+atan2
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+atan2 x y : number
+x : number
+y : number
+</pre>
+Converts rectangular coordinates (x,y) to polar (r, theta) and returns theta.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2018D"></a>
+ceil
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+ceil value : number
+value : number
+</pre>
+Returns the smallest value that is not less than the argument and is equal to an integer.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20199"></a>
+cos
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+cos value : number
+value : number
+</pre>
+Returns the cosine of an angle.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201A5"></a>
+exp
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+exp value : number
+value : number
+</pre>
+Returns the exponent of an argument.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201B1"></a>
+floor
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+floor number : number
+number : number
+</pre>
+Rounds number towards zero.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201BD"></a>
+log
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+log value : number
+value : number
+</pre>
+Returns the natural logarithm of an argument.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201C9"></a>
+round
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+round number : number
+number : number
+</pre>
+Rounds a number.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201D5"></a>
+sin
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+sin value : number
+value : number
+</pre>
+Returns the sine of an angle.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201E1"></a>
+sqrt
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+sqrt number : number
+number : number
+</pre>
+Returns the square root of a number.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N201ED"></a>
+tan
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+tan number : number
+number : number
+</pre>
+Returns the tangent root of a number.
+</p>
+</div>
+
+
+</div>
+
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N201FC"></a>
+Commands
+</h2></div></div></div>
+
+<p>
+Note: command descriptions are in the following format:
+Command name followed by arguments separated by whitespaces. If the command has a return value then after a colon the type of the return value is given. On the next lines arguments listed with their types after colons.
+</p>
+<p>
+Note: special types (types which cannot be declared explicitly) are started with $ sign.
+</p>
+<p>
+List of special types:
+<div class="variablelist"><dl><dt><span class="term">
+$type
+</span></dt><dd>
+<p>
+A name of any type (except number/double).
+</p>
+</dd><dt><span class="term">
+$ArrayList&lt;type&gt; 
+</span></dt><dd>
+<p>
+list of objects of type &lsquo;type&rsquo;
+</p>
+</dd><dt><span class="term">
+$Array&lt;type&gt;
+</span></dt><dd>
+<p>
+array of objects of type &lsquo;type&rsquo;, array and list are different types
+</p>
+</dd></dl></div>
+</p>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20231"></a>
+add-netlogo-space
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+add-netlogo-space name x-min x-max y-min y-max wrap-x wrap-y : Space
+name : string
+x-min : number
+y-min : number
+x-max : number
+y-max : number
+wrap-x : boolean
+wrap-y : boolean
+</pre>
+Adds a new NetLogo space into a model. Call it in the model setup
+method. 'name' is a name of a new space. It can be used for getting
+a reference to this space with 'get-space' command.
+</p>
+<p>
+Note: it is required to have one space declared with 'space' keyword.
+That space is considered to be default space and is always used when
+no explicit reference to a space is given. Also, that default space has
+name 'space' so it is prohibited to use name 'space' for additional spaces.
+</p>
+<p>
+Example: see 'add-standard-space'
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20243"></a>
+add-standard-space
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+add-standard-space name x-min x-max y-min y-max wrap-x wrap-y : Space
+name : string
+x-min : number
+y-min : number
+x-max : number
+y-max : number
+wrap-x : boolean
+wrap-y : boolean
+</pre>
+Adds a new standard space into a model. Call it in the model setup
+method. 'name' is a name of a new space. It can be used for getting
+a reference to this space with 'get-space' command.
+</p>
+<p>
+Note: it is required to have one space declared with 'space' keyword.
+That space is considered to be default space and is always used when
+no explicit reference to a space is given. Also, that default space has
+name 'space' so it is prohibited to use name 'space' for additional spaces.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+; Default space
+space NetLogoSpace -20 20 -20 20 true true
+
+global another-space : Space
+
+to setup
+	another-space = add-standard-space "One more space" 
+                                       (-10) 10 (-10) 10
+                                       true false
+
+ 	; Agents will be created in default space
+	create SomeAgent 2
+         
+	; Agents will be created in another-space                              
+	ask another-space
+	[
+		create SomeAgent 20
+		ask create-one AnotherAgent
+ 		[
+			set-random-position
+ 		]
+	]
+end
+</pre>
+In this example a new space is created inside setup method.
+In this case grids cannot be created inside that new space.
+See 'create-grid-in-space' command to resolve this issue.
+</p>
+</div>
+
+
+
+
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20258"></a>
+agents
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents type : $ArrayList&lt;type&gt;
+type : $type
+</pre>
+Returns a list of all agents of a specific type.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+var all-good-agents = agents GoodAgent
+var number-of-macrophages = count agents Macrophage
+</pre>
+There is a better way to get the number of specific agents, that is, use agents-number command
+</p>
+<p>
+Note: only the agents which have precisely the requested type are returned.
+<pre class="programlisting">
+agent Agent1 : Agent
+
+agent Agent2 : Agent1
+
+to get-agents1
+	; Only agents of type 'Agent1' will be returned.
+	; No agents of type Agent2 will be in the returned agent list.
+	var agents1 = agents Agent1
+end
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20270"></a>
+agents-at
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-at type point radius : $ArrayList&lt;type&gt;
+type : $type
+point : vector
+radius : number
+</pre>
+Returns all agents in the default space of a specific type at the specific circular region (given by its center &lsquo;point&rsquo; and radius &lsquo;radius&rsquo;). Radius cannot be negative. Zero radius means that the agents at a point are requested.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+var good-agents-at-the-origin = agents-at GoodAgent [0,0,0] 0
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20282"></a>
+agents-at-as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-at-as type point radius : $ArrayList&lt;type&gt;
+type : $type
+point : vector
+radius : number
+</pre>
+Returns all agents in the default space derived from a specific type at the specific circular region (given by its center &lsquo;point&rsquo; and radius &lsquo;radius&rsquo;). Radius cannot be negative. Zero radius means that the agents at a point are requested.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2028E"></a>
+agents-here
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-here type : $ArrayList&lt;type&gt;
+type : $type
+</pre>
+Returns all agents of a specific type intersecting with the current active agent.
+</p>
+<p>
+Note: only agents can call this function.
+</p>
+<p>
+Note: agents in the same space as a calling agent are returned.
+</p>
+<p>
+Note: calling agent may also be returned if its type is the same as requested one.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202A3"></a>
+agents-here-as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-here-as type : $ArrayList&lt;type&gt;
+type : $type
+</pre>
+Returns all agents derived from a specific type intersecting with the current active agent.
+</p>
+<p>
+Note: only agents can call this function.
+</p>
+<p>
+Note: agents in the same space as a calling agent are returned.
+</p>
+<p>
+Note: calling agent may also be returned if its type is derived form requested one.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202B8"></a>
+agents-number
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-number type : number
+type : $type
+</pre>
+Returns the number of agents of a specific type.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202C4"></a>
+agents-number-as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-number-as type : number
+type : $type
+</pre>
+Returns the number of agents derived from a specific type.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202D0"></a>
+agents-as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-as type : $ArrayList&lt;type&gt;
+type : $type
+</pre>
+Returns all agents which are derived from a given type.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202DC"></a>
+all-agents-at
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+all-agents-at point radius : $ArrayList&lt;SpaceAgent&gt;
+point : vector
+radius : number
+</pre>
+Returns all agents in the default space at a given circular region. Type of all returned agents is SpaceAgent. Look at &lsquo;as&rsquo; operation example to see how to convert this type to other types.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202E8"></a>
+all-agents-here
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+all-agents-here : $ArrayList&lt;SpaceAgent&gt;
+</pre>
+Returns all agents at the position of a calling agent.
+</p>
+<p>
+Note: agents in the same space as a calling agent are returned.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N202F7"></a>
+ask
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+ask list [commands]
+list : $ArrayList (or $Array, or a single object)
+</pre>
+Iterates through all objects in the list and performs commands for each object. Commands are given in brackets. &lsquo;self&rsquo; inside command block refers to the currently processed object from the list. &lsquo;myself&rsquo; inside command block refers to the object which called &lsquo;ask&rsquo; command.
+</p>
+<p>
+Note: if list == null, then no commands will be executed.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+ask all-agents-here
+[
+	var good-agent = self as GoodAgent
+	ask good-agent
+	[
+		; the same as self.color = blue
+		color = blue
+		; actually, the previous command do the same
+		; thing as	
+		; myself.color = blue
+		; because good-agent variable equals (in some sense) 
+		; to self variable from the outer ask command block.
+	]
+]
+</pre>
+Note: in the example above &lsquo;as&rsquo; command could return null value, but it is not a problem since &lsquo;ask&rsquo; command correctly works with null list argument.
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2030C"></a>
+break
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+break
+</pre>
+This command is equivalent to &lsquo;break&rsquo; keyword in C, C++, Java, C#. It can be used only inside commands which iterate over some values. 
+This command tells to stop the current iterative process like
+'while', 'for', or 'repeat' and continue executing commands
+after that process.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+repeat 100
+[
+	if true [ break ]
+]
+var y = 0
+for x = 1:100
+[
+	if x == 50 [ break ]
+	y += x
+]
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2031E"></a>
+continue
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+continue
+</pre>
+This command is equivalent to &lsquo;continue&rsquo; keyword in C, C++, Java, C#. It can be used only inside commands which iterate over some values. This command tells to start the next iteration immediately.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+repeat 100
+[
+	if true [ continue ]
+]
+var y = 0
+for x = 1:100
+[
+	if x == 50 [ continue ]
+	y += x
+]
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20330"></a>
+count
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+count list : number
+list : $ArrayList (or $Array)
+</pre>
+Returns the number of elements in a list.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2033C"></a>
+create
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create type number : $Array&lt;type&gt;
+type : $type
+number : number
+</pre>
+Creates &lsquo;number&rsquo; of objects of type &lsquo;type&rsquo;. Cannot be used with type &lsquo;number&rsquo;. Commonly used for creating new agents.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+create GoodAgent 1000
+create BadAgent 1
+var vectors = create vector 100 ; creates an array of vectors
+ask create SomeAgent 20
+[
+	set-random-position
+]
+</pre>
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2034E"></a>
+create-new-file
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create-new-file file-name
+file-name : string
+</pre>
+Creates a new file with the given name. If a file with the given name exists, then it will be deleted and a new file with the same name will be created.
+Note: files are created in the folder from which SPARK was started. 
+</p>
+<p>
+Example
+<pre class="programlisting">
+create-new-file "test.log"
+</pre>
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20360"></a>
+create-one
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create-one type : Type of this command equals to &lsquo;type&rsquo;
+type : $type
+</pre>
+Creates one object of a specific type. The main difference form the previous command with number = 1 is that the type of this command is different.
+</p>
+<p>
+Example
+<pre class="programlisting">
+(create-one GoodAgent).color = red
+; it is not possible to write the following
+; (create GoodAgent 1).color = red
+; because the command in parentheses has type $Array
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20372"></a>
+create-grid
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create-grid name x-size y-size : grid
+name : string
+x-size : number
+y-size : number
+</pre>
+Creates a grid with a given name and of a given dimension in default space. This command can be used during grid declaration inside model class.
+</p>
+<p>
+Note: if no grid initialization is given for a grid, 
+then the default initialization will be created with the name 
+equals to the variable name and with the dimension of the default space.
+So the only use of this command is to create grids of different resolution.
+</p>
+<p>
+Note: in current implementation 'name' should be the same as variable's name.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+model Model
+global data = create-grid &ldquo;data&rdquo; 10 10
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2038A"></a>
+create-grid-in-space
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create-grid space name x-size y-size : grid
+space : Space (or string)
+name : string
+x-size : number
+y-size : number
+</pre>
+Creates a grid with a given name and of a given dimension in a given space. This command can be used during grid declaration inside model class.
+</p>
+<p>
+Note: space should be initialized before this command.
+</p>
+<p>
+Note: in current implementation 'name' should be the same as variable's name.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+model Model
+
+; Default space
+space NetLogoSpace -20 20 -20 20 true true
+
+; Additional space
+global space2 = add-standard-space "space2" (-10) 10 (-10) 10 true false
+
+; Grid will be created in default space
+global data = create-grid &ldquo;data&rdquo; 10 10
+
+; Grid will be created in space2
+global data2 = create-grid-in-space space2 "data2" 
+                                    space2.x-size space2.y-size
+
+; Grid will be created in default space with default size
+global data3 : grid                                  
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203A2"></a>
+create-vector
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create-vector x y z : vector
+x : number
+y : number
+z : number
+</pre>
+Creates a new vector with the given components
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203AE"></a>
+distance
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+distance agent1 agent2 : vector
+agent1 : SpaceAgent
+agent2 : SpaceAgent
+</pre>
+<pre class="programlisting">
+distance pos1 pos2 : vector
+pos1 : vector
+pos2 : vector
+</pre>
+Returns the vector v equals to agent2.position &ndash; agent1.position (pos2 - pos1). It does more: in the torus topology the shortest vector-distance is returned.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+; get the vector-distance between agents and then compute the length of this vector
+var distance-between-agents = (distance agent1 agent2).length
+</pre>
+</p>
+</div>
+
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203C3"></a>
+diffuse
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+diffuse grid value
+grid : grid (DataLayer)
+value : number
+</pre>
+Performs a diffusion operation on a given grid. &lsquo;value&rsquo; is a diffusion coefficient.
+</p>
+<p>
+	The diffusion operation is performed as follows. Each data layer cell gives
+	equal shares of (coefficient * 100) percent of its value to its eight neighbors.
+	Coefficient should be between 0 and 1 for well-defined behavior. 
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203D2"></a>
+evaporate
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+evaporate grid value
+grid : grid (DataLayer)
+value : number
+</pre>
+Performs evaporation on a given grid. &lsquo;value&rsquo; is an evaporation coefficient.
+</p>
+<p>
+Evaporation simply means multiplication of all data layer values by the given value.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203E1"></a>
+exit
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+exit
+</pre> 
+This command ends the current method. Only methods that do not return any value can use this command. Other methods should call &lsquo;return&rsquo;.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203ED"></a>
+fprint
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+fprint file-name object
+file-name : string
+object : $Object, string, number
+</pre>
+Prints a text representation of the given object into the given file.
+If a file with the given name doesn't exist, then a new file will be created.
+If a file with the given name exists, then a new line of text will be appended to the end of the file.
+</p>
+<p>
+Example
+<pre class="programlisting">
+fprint "test.log" "2 + 2 = "
+fprint "test.log" (2 + 2)
+; The following two lines will be added to the file "test.log":
+; 2 + 2 =
+; 4
+</pre>
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N203FF"></a>
+get
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+get list index
+list : $ArrayList (or $Array)
+index : number
+</pre>
+Returns an element from a list at the position specified by index.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2040B"></a>
+get-space
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+get-space name
+name : string
+</pre>
+Returns a space with a given name. Default space has name 'space'.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20417"></a>
+if
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+if condition [commands]
+condition : boolean
+</pre>
+Standard if control statement. If condition is true, then commands are executed.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20423"></a>
+ifelse
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+ifelse condition [commands1][command2]
+condition : boolean
+</pre>
+Standard if-else control statement. If condition is true, then commands from the first block are executed, otherwise commands from the second block are performed.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2042F"></a>
+interpolate
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+interpolate v1 v2 t  : vector (number)
+v1 : vector (number)
+v2 : vector (number)
+t : number
+</pre>
+This command is an optimized version of v1 * (1 - t) + t * v2
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2043B"></a>
+kill
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+kill agent-list
+agent-list : $ArrayList (or $Array)
+</pre>
+Kills all agents in the list, that is, calls &lsquo;die&rsquo; method for each agent in the list. This command is a shortcut for
+<pre class="programlisting">
+ask agent-list
+[
+	die
+]
+</pre>
+</p>
+</div>
+
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2044A"></a>
+max
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+max a b : number
+a : number
+b : number
+</pre>
+Returns the maximum of two numbers.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20456"></a>
+min
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+min a b : number
+a : number
+b : number
+</pre>
+Returns the minimum of two numbers.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20462"></a>
+myself
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+myself : $Object
+</pre>
+Returns a reference to the calling agent.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2046E"></a>
+null
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+null
+</pre>
+A null object. Can be used for testing results of some operations.
+</p>
+<p>
+Example
+<pre class="programlisting">
+	var a = self as GoodAgent
+	if a != null
+	[
+		do-something
+	]
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20480"></a>
+parent
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+parent : $Object
+</pre>
+Returns a reference to the parent class of the current class.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2048C"></a>
+print
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+print str
+str : string
+</pre>
+Prints out a string
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20498"></a>
+random-in-interval
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+random-in-interval a b : number
+a : number
+b : number
+</pre>
+Returns a uniformly distributed random number in the interval [a,b).
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204A4"></a>
+random
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+random a : number
+a : number
+</pre>
+Returns a uniformly distributed random number in the interval [0, a)
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204B0"></a>
+random-vector
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+random-vector a b : vector
+a : number
+b : number
+</pre>
+Returns a random vector with components in the interval [a, b).
+</p>
+<p>
+Note: now this function returns a random 2-d vector with the third component 0.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204BF"></a>
+random-vector-of-length
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+random-vector-of-length length : vector
+length : number
+</pre>
+Returns a random vector of the given length.
+</p>
+<p>
+Note: now this function returns a random 2-d vector with the third component 0.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204CE"></a>
+repeat
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+repeat number [commands]
+number : number
+</pre>
+Repeats commands the given number of times.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204DA"></a>
+return
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+return value
+</pre>
+Returns the given &lsquo;value&rsquo; as method&rsquo;s value.
+</p>
+<p>
+Note: the type of &lsquo;value&rsquo; should be compatible with method&rsquo;s return type.
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204E9"></a>
+self
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+self : $Object
+</pre>
+Returns a reference to the active object (agent).
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N204F5"></a>
+space-xmin
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+space-xmin : number
+</pre>
+Returns the minimum x coordinate of space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20501"></a>
+space-xmax
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+space-xmax : number
+</pre>
+Returns the maximum x coordinate of the default space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2050D"></a>
+space-ymin
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+space-ymin : number
+</pre>
+Returns the minimum y coordinate of the default space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20519"></a>
+space-ymax
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+space-ymax : number
+</pre>
+Returns the maximum y coordinate of the default space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20525"></a>
+space-xsize
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+space-xsize : number
+</pre>
+Returns the size of the default space along x-axis. That is, space-xmax &ndash; space-xmin.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20531"></a>
+space-ysize
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+space-ysize : number
+</pre>
+Returns the size of the default space along y-axis. That is, space-ymax &ndash; space-ymin.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2053D"></a>
+sum
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+sum list : number
+list : grid
+</pre>
+Returns a sum of all data stored in a grid.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20549"></a>
+this
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+this : $Object
+</pre>
+Returns a reference to the current object.
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20555"></a>
+truncate
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+truncate v min max : vector
+v : vector
+min : number
+max : number
+</pre>
+Truncates all components of a given vector.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20561"></a>
+vector-in-direction
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+vector-in-direction length angle : vector
+length : number
+angle : number
+</pre>
+Returns a vector of length &lsquo;length&rsquo; in the direction specified by &lsquo;angle&rsquo;.
+</p>
+<p>
+Note: angle should be in degrees.
+</p>
+<p>
+Note: a 2-d vector is returned.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20573"></a>
+while
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+while condition [commands]
+</pre>
+Commands in the block are executed while condition is true.
+</p>
+</div> 
+
+</div>
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20580"></a>vector</h2></div></div></div>
+
+
+<p>
+	Methods and fields of the 'vector' are described in this section. 
+</p>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20588"></a>
+	x
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	x : number
+	</pre>
+	Field 'x' is the first component of a vector.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20594"></a>
+	y
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	y : number
+	</pre>
+	Field 'y' is the second component of a vector.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205A0"></a>
+	z
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	z : number
+	</pre>
+	Field 'z' is the third component of a vector.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205AC"></a>
+	length
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	length : number
+	</pre>
+	Returns an absolute value of a vector, its length.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205B8"></a>
+	length-squared
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	length-squared : number
+	</pre>
+	Returns a squared absolute value of a vector.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205C4"></a>
+	normalize
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	normalize : vector
+	</pre>
+	Normalizes a vector and returns a reference to itself.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205D0"></a>
+	truncate-length
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	truncate-length max-length : vector
+	max-length : number
+	</pre>
+	If the length of a vector is higher than 'max-length' then
+	its length is truncated to 'max-length'. Otherwise, no changes.
+	A reference to itself is returned.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205DC"></a>
+	copy
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	copy : vector
+	</pre>
+	Returns a copy of a vector.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205E8"></a>
+	dot
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	dot v : number
+	v : vector
+	</pre>
+	Computes the dot product with a given vector.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N205F4"></a>
+	cross
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	cross v : vector
+	v : vector
+	</pre>
+	Computes the cross product with a given vector.
+	The result overrides the current vector's value. 
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20600"></a>
+	parallel-component
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	parallel-component unit-vector : vector
+	unit-vector : vector
+	</pre>
+	Returns component of a vector parallel to a given
+	unit vector.
+	</p>
+	<p>
+	Note: the argument vector should be of unit length
+	for this method to yield a correct result.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2060F"></a>
+	perpendicular-component
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	perpendicular-component unit-vector : vector
+	unit-vector : vector
+	</pre>
+	Returns component of a vector perpendicular to a given
+	unit vector.
+	</p>
+	<p>
+	Note: the argument vector should be of unit length
+	for this method to yield a correct result.
+	</p>
+</div>
+
+
+</div>
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2061F"></a>
+Space
+</h2></div></div></div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20624"></a>
+create
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create type number : $Array&lt;type&gt;
+type : $type (derived from SpaceAgent)
+number : number
+</pre>
+Creates &lsquo;number&rsquo; of agents of type &lsquo;type&rsquo; in a specific space.
+</p>
+<p>
+Example:
+<pre class="programlisting">
+; Create 1000 GoodAgent in the space "Space2".
+ask get-space "Space2"
+[
+	create GoodAgent 1000
+]
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20636"></a>
+create-one
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+create-one type : Type of this command equals to &lsquo;type&rsquo;
+type : $type (derived from SpaceAgent)
+</pre>
+Creates one agent of a specific type in a given space. 
+The main difference form the previous command with number = 1 
+is that the type of this command is different.
+</p>
+<p>
+Example
+<pre class="programlisting">
+var space1 = add-standard-space (-10) 10 (-20) 20 true false
+(space1.create-one GoodAgent).color = red
+; it is not possible to write the following
+; (space1.create GoodAgent 1).color = red
+; because the command in parentheses has type $Array
+</pre>
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20648"></a>
+x-min
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+x-min : number
+</pre>
+Returns the minimum x coordinate of a space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20654"></a>
+x-max
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+x-max : number
+</pre>
+Returns the maximum x coordinate of a space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20660"></a>
+y-min
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+y-min : number
+</pre>
+Returns the minimum y coordinate of a space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2066C"></a>
+y-max
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+y-max : number
+</pre>
+Returns the maximum y coordinate of a space.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20678"></a>
+x-size
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+x-size : number
+</pre>
+Returns the size of a space along the x-axis. That is, x-max &ndash; x-min.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20684"></a>
+y-size
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+y-size : number
+</pre>
+Returns the size of a space along the y-axis. That is, y-max &ndash; y-min.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20690"></a>
+agents-at
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-at type point radius : $ArrayList&lt;type&gt;
+type : $type
+point : vector
+radius : number
+</pre>
+Returns all agents in a given space of a specific type 
+at the specific circular region 
+(given by its center &lsquo;point&rsquo; and radius &lsquo;radius&rsquo;). 
+Radius cannot be negative. 
+Zero radius means that the agents at a point are requested.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2069C"></a>
+agents-at-as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-at-as type point radius : $ArrayList&lt;type&gt;
+type : $type
+point : vector
+radius : number
+</pre>
+Returns all agents in a given space derived from a specific type 
+at the specific circular region 
+(given by its center &lsquo;point&rsquo; and radius &lsquo;radius&rsquo;). 
+Radius cannot be negative. 
+Zero radius means that the agents at a point are requested.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N206A8"></a>
+all-agents-at
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+all-agents-at point radius : $ArrayList&lt;SpaceAgent&gt;
+point : vector
+radius : number
+</pre>
+Returns all agents in a given space
+at a given circular region. 
+Type of all returned agents is SpaceAgent. 
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N206B4"></a>
+agents-here
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-here type : $ArrayList&lt;type&gt;
+type : $type
+</pre>
+Returns all agents of a specific type intersecting with the current active agent.
+</p>
+<p>
+Note: only agents can call this function.
+</p>
+<p>
+Note: agents in a given space are returned.
+</p>
+<p>
+Note: calling agent may also be returned if its type is the same as requested one.
+</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N206C9"></a>
+agents-here-as
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+agents-here-as type : $ArrayList&lt;type&gt;
+type : $type
+</pre>
+Returns all agents derived from a specific type intersecting with the current active agent.
+</p>
+<p>
+Note: only agents can call this function.
+</p>
+<p>
+Note: agents in a given space are returned.
+</p>
+<p>
+Note: calling agent may also be returned if its type is derived from requested one.
+</p>
+</div>
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N206DE"></a>
+all-agents-here
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+all-agents-here : $ArrayList&lt;SpaceAgent&gt;
+</pre>
+Returns all agents at the position of a calling agent.
+</p>
+<p>
+Note: agents in a given space are returned.
+</p>
+</div>
+
+
+
+</div>
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N206EE"></a>
+Agent
+</h2></div></div></div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N206F3"></a>
+	die
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	die
+	</pre>
+	Destroys an agent.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N206FF"></a>
+link
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+link agent : Link
+agent : Agent
+</pre>
+'link a' returns a link if the active agent is connected to 'a', or 'null' if there is no link between
+the active agent and 'a'.
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2070B"></a>
+link-of-type
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+link-of-type link-type
+link-type : Link
+</pre>
+Return a link of the specific type connected to the current agent.
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20717"></a>
+links-of-type
+</h3></div></div></div>
+
+<p>
+<pre class="programlisting">
+links-of-type link-type
+link-type : $Array&lt;link-type&gt;
+</pre>
+Returns all links of the given type connected to the current agent.
+</p>
+</div>
+
+
+</div>
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20724"></a>
+SpaceAgent : Agent
+</h2></div></div></div>
+
+
+
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20729"></a>
+	move
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	move v
+	v : vector
+	</pre>
+	Adds to the current position 'v' and a space agent is moved to that new position.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20735"></a>
+	get-agent-space
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	get-agent-space : Space
+	</pre>
+	Returns the space in which a space agent is located.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20741"></a>
+	move-to
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	move-to pos
+	pos : vector
+	</pre>
+	Moves an agent to a new position.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2074D"></a>
+	move-to-space
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	move-to-space new-space new-position
+	new-space : Space
+	new-position : vector
+	</pre>
+	Moves an agent to a given space at a specific position inside that space.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20759"></a>
+	set-random-position
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	set-random-position
+	</pre>
+	Moves an agent to a random position inside a space.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20765"></a>
+	hatch
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	hatch type number : $Array&lt;type&gt;
+	type : $type (derived from SpaceAgent)
+	number : number
+	</pre>
+	Creates &lsquo;number&rsquo; of agents of type &lsquo;type&rsquo; in the same space as a calling agent
+	and at the same position as a calling agent.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20771"></a>
+	hatch-one
+	</h3></div></div></div>
+	
+	<p>
+	<pre class="programlisting">
+	hatch-one type : Type of this command equals to &lsquo;type&rsquo;
+	type : $type (derived from SpaceAgent)
+	</pre>
+	Creates one agent of a specific type in the same space as a calling agent
+	and at the same position as a calling agent.
+	The main difference form the previous command with number = 1 
+	is that the type of this command is different.
+</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2077D"></a>
+	position
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	position : vector
+	</pre>
+	Field 'position' is the position of an agent inside a space. This is
+	a read only field. To assign a value to the position use 'move-to' or 'move'
+	methods.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20789"></a>
+	color
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	color : vector
+	</pre>
+	Field 'color' is the color of a space agent.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20795"></a>
+	radius
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	radius : number
+	</pre>
+	Field 'radius' is the size of a space agent.
+	</p>
+</div>
+
+
+
+</div>
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N207A4"></a>
+Link
+</h2></div></div></div>
+
+	
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207A9"></a>
+	connect
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	connect end1 end2
+	end1 : SpaceAgent
+	end2 : SpaceAgent
+	</pre>
+	Connects two agents by the link. 
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207B5"></a>
+	color
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	color : vector
+	</pre>
+	Field 'color' is the color of a link.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207C1"></a>
+	distance
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	distance : vector
+	</pre>
+	Computes a vector-distance between two ends of the link (between two agents
+	which are connected by the link)
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207CD"></a>
+	end1
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	end1 : SpaceAgent
+	</pre>
+	Returns an agent associated with the first end of the link
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207D9"></a>
+	end2
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	end2 : SpaceAgent
+	</pre>
+	Returns an agent associated with the second end of the link
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207E5"></a>
+	width
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	width : number
+	</pre>
+	Field 'radius' is the width of a link.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N207F1"></a>
+	width
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	width : number
+	</pre>
+	Field 'radius' is the width of a link.
+	</p>
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20800"></a>
+grid
+</h2></div></div></div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20805"></a>
+	max
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	max : number
+	</pre>
+	Returns the maximum value stored in a grid.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20811"></a>
+	min
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	min : number
+	</pre>
+	Returns the minimum value stored in a grid.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2081D"></a>
+	total-value
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	total-value : number
+	</pre>
+	Returns the sum of all values stored in a grid.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20829"></a>
+	total-value-in-region
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	total-value-in-region x-min x-max y-min y-max : number
+	x-min : number
+	x-max : number
+	y-min : number
+	y-max : number
+	</pre>
+	Returns the sum of all values stored in a grid in a specific region.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20835"></a>
+	multiply
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	multiple coefficient
+	coefficient : number
+	</pre>
+	Multiplies all values in a grid by a coefficient.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20841"></a>
+	evaporate
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	evaporate coefficient
+	coefficient : number
+	</pre>
+	Multiplies all values in a grid by a coefficient (this is an alias
+	for the 'multiply' method). 
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2084D"></a>
+	diffuse
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	diffuse coefficient
+	coefficient : number
+	</pre>
+	Performs a diffusion operation on a grid with a given diffusion
+	coefficient.
+	</p>
+	<p>
+	The diffusion operation is performed as follows. Each data layer cell gives
+	equal shares of (coefficient * 100) percent of its value to its eight neighbors.
+	Coefficient should be between 0 and 1 for well-defined behavior. 
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2085C"></a>
+	set-value
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	set-value value
+	value : number
+	</pre>
+	Sets all values in a grid to a given value.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20868"></a>
+	data-at
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	data-at i j : number
+	i : number
+	j : number
+	</pre>
+	Returns a value in a cell (i, j).
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20874"></a>
+	set-data-at
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	set-data-at i j new-value
+	i : number
+	j : number
+	new-value : number
+	</pre>
+	Sets the value of a cell (i, j) to a new value.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20880"></a>
+	value-at
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	value-at pos : number
+	pos : vector
+	</pre>
+	Returns a value corresponding to a given position.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N2088C"></a>
+	set-value-at
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	set-value-at pos new-value
+	pos : vector
+	new-value : number
+	</pre>
+	Sets the value of a cell corresponding to a given position.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20898"></a>
+	add-value-at
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	add-value-at pos num
+	pos : vector
+	num : number
+	</pre>
+	Adds a given number to the value of a cell corresponding to a given position.
+	</p>
+</div>
+
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N208A4"></a>
+	value-here
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	value-here : number
+	</pre>
+	Returns a value corresponding to the position of a calling space agent.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N208B0"></a>
+	set-value-here
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	set-value-here new-value
+	new-value : number
+	</pre>
+	Sets the value of a cell corresponding to the position 
+	of a calling space agent.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N208BC"></a>
+	add-value-here
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	add-value-here num
+	num : number
+	</pre>
+	Adds a given number to the value of a cell corresponding to 
+	the position of a calling space agent.
+	</p>
+</div>
+
+
+<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N208C8"></a>
+	value
+	</h3></div></div></div>
+	
+	
+	<p>
+	<pre class="programlisting">
+	value : number
+	</pre>
+	The field 'value' is the value of a cell corresponding to
+	the position of a calling space agent.
+	</p>
+</div>
+
+
+
+</div>
+
+</div></body></html>

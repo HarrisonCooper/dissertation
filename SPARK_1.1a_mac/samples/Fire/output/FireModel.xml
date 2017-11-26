@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<spark version="1">
+  <files all="true" path="."/>
+  <model tick="1">
+    <setup>Fire.FireModel</setup>
+    <variables>
+      <variable get="get_numberOfParticles" name="number-of-particles" set="set_numberOfParticles" type="Double"/>
+    </variables>
+    <agents>
+      <agent name="ParticleEmitter">Fire.ParticleEmitter</agent>
+      <agent name="Particle">Fire.Particle</agent>
+    </agents>
+  </model>
+  <interface>
+    <about path="readme.txt"/>
+    <windows>
+      <window height="200" name="number-of-particles" visible="true" width="300" x="583" y="0"/>
+      <window height="683" main="true" name="Main Window" visible="true" width="583" x="0" y="0"/>
+    </windows>
+    <mainframe location="Main Window">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <datalayerstyle name="black-background" selected="true"/>
+      <agentstyle alpha-function-value="0.0" blend-dst="4" blend-src="2" border="true" name="Particle" position="0" texture="explosion.png" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="ParticleEmitter" position="1" texture-env="0" transparent="false" visible="true"/>
+    </mainframe>
+    <data-layers>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="black-background" val1="0.0" val2="1.0"/>
+    </data-layers>
+    <chart interval="0" label="number-of-particles" location="number-of-particles" name="number-of-particles" variable="number-of-particles"/>
+  </interface>
+</spark>

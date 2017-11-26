@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<spark version="1">
+  <files all="true" path="."/>
+  <model tick="1">
+    <setup mode="concurrent">ConcurrentMode.ConcurrentModel</setup>
+    <agents>
+      <agent name="Agent2" priority="2">ConcurrentMode.Agent2</agent>
+      <agent name="Agent1" priority="1">ConcurrentMode.Agent1</agent>
+    </agents>
+  </model>
+  <interface>
+    <about path="readme.txt"/>
+    <windows>
+      <window height="600" main="true" name="Main Window" visible="true" width="500" x="0" y="0"/>
+    </windows>
+    <mainframe location="Main Window">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="Agent1" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="Agent2" position="1" texture-env="0" transparent="false" visible="true"/>
+    </mainframe>
+    <data-layers>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="data" val1="0.0" val2="1.0"/>
+    </data-layers>
+  </interface>
+</spark>

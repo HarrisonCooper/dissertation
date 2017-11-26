@@ -1,0 +1,336 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>SPARK-PL: Multiple Spaces</title><link href="style.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><meta name="description" content="In this tutorial, we'll show how to create models with multiple spaces."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="N2000B"></a>SPARK-PL: Multiple Spaces</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Alexey </span> <span class="surname">Solovyev   </span></h3></div></div><div><div class="author"><h3 class="author"><span class="firstname">Cordelia </span> <span class="surname">Ziraldo </span></h3></div></div><div><div class="author"><h3 class="author"><span class="firstname">Joyeeta </span> <span class="surname">Dutta-Moscato</span></h3></div></div><div><div class="author"><h3 class="author"><span class="firstname">Qi </span> <span class="surname">Mi </span></h3></div></div><div><div class="abstract"><p class="title"><b>Abstract</b></p>
+			<p>
+				In this tutorial, we'll show how to create models with
+				multiple
+ spaces.
+			</p>
+		</div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#N2003F">Creating multiple spaces</a></span></dt><dt><span class="section"><a href="#N20076">Working with agents</a></span></dt><dt><span class="section"><a href="#N200E2">Working with data layers</a></span></dt><dt><span class="section"><a href="#N200F2">SPARK interface</a></span></dt></dl></div>
+	
+
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2003F"></a>Creating multiple spaces</h2></div></div></div>
+		
+		<p>
+			A usual SPARK model has one space. Moreover, it is required to
+			have a space in each model. But it is also possible to have
+			multiple
+			spaces in one model. 
+		</p>
+		<p>
+			There is always a default space in each SPARK model. This
+			space is
+			used whenever a space is required but no explicit
+			reference to a space
+			is given. For example, when new agents
+			are created and it is not
+			specified in which space they are to appear,
+			then the default space is
+			used. In SPARK-PL the default space
+			is declared with 'space' keyword
+			as usual. Example:
+			<pre class="programlisting">
+	space StandardSpace -<span class="hl-number">20</span> <span class="hl-number">20</span> -<span class="hl-number">30</span> <span class="hl-number">30</span> <b class="hl-keyword">true</b> <b class="hl-keyword">false</b>
+</pre>
+		</p>
+		<p>
+			Additional spaces are created in a different way with special
+			commands (not
+			keywords). For each type of space there is a
+			command
+			which creates
+			this type of space and adds it to a model.
+			Now, there are
+			two
+			commands: 'add-standard-space' and 'add-grid-space',
+			which
+			create
+			and add a standard space(continuous space) and a grid space
+			respectively.
+		</p>
+		<p>
+			These commands have the same arguments, so consider one of them.
+			<pre class="programlisting">
+	add-standard-space name x-min x-max y-min y-max wrap-x wrap-y
+</pre>
+			The first argument "name" is a name of a new space (a double quoted
+			string).
+			All spaces in a model should have different names and these
+			names are
+			used
+			to get a reference to a space using 'get-space' command
+			which
+			takes one argument: name of a space.
+			Note that the default space
+			always has name "space" so it is
+			prohibited to use this name for any
+			additional space.
+			Other arguments are standard space initialization
+			arguments.
+		</p>
+		<p>
+			In SPARK-PL, it is possible to add a new space in any part of
+			a model: as a global variable with initialization, inside 'setup' method,
+			and even agents can add new spaces in their step functions.
+			However it is more
+			natural to add all spaces as global variables with initialization. 
+			Here is an example
+			<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+<i style="color: silver" class="hl-comment">; Default space</i>
+space StandardSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">10</span> <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+
+<i style="color: silver" class="hl-comment">; Additional space</i>
+<b class="hl-keyword">global</b> space2 = add-<b class="hl-keyword">grid</b>-space <b class="hl-string"><i style="color:red">"space2"</i></b> -<span class="hl-number">20</span> <span class="hl-number">20</span> -<span class="hl-number">30</span> <span class="hl-number">30</span> <b class="hl-keyword">false</b> <b class="hl-keyword">false</b>
+</pre>
+                                 <div class="figure"><a name="N2005E"></a><p class="title"><b>Figure&nbsp;1.&nbsp;</b></p><div class="figure-contents">
+				
+				<div class="mediaobject" align="center"><img src="images/tutorial 7/fig1.png" align="middle"></div>
+			</div></div><br class="figure-break">
+                            </p>
+		<p>
+			In this example an additional grid space is created. Moreover,
+			a
+			reference to this space is stored in a global variable
+			'space2', so
+			this space can be accessed from any part of a
+			program using this
+			global variable. 
+		</p>
+		<p>
+			All spaces have type 'Space' and there are several methods
+			inside this type. The basic methods are: 'x-min', 'x-max',
+			'y-min',
+			'y-max', 'x-size', 'y-size' which return the dimension
+			of a space.
+			Other methods will be described in the next sections.
+		</p>
+	</div>
+
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20076"></a>Working with agents</h2></div></div></div>
+		
+		<p>
+			Standard commands 'create' and 'create-one' create agents
+			in the
+			default space. In order to create agents in a specific
+			space, use
+			methods 'create' and 'create-one' of the 'Space' type.
+			Consider an
+			example:
+<pre class="programlisting">
+to setup
+	<i style="color: silver" class="hl-comment">; Instead of a local variable a global variable can be used</i>
+	<b class="hl-keyword">var</b> space2 = get-space <b class="hl-string"><i style="color:red">"space2"</i></b>
+	
+	space2.<b class="hl-keyword">create</b> Agent1 <span class="hl-number">100</span>
+	
+	ask space2.<b class="hl-keyword">create</b>-one Agent
+<span class="hl-number">2</span>
+	[
+		set-random-position
+	]
+	
+	<i style="color: silver" class="hl-comment">; And the same commands written with 'ask' keyword</i>
+	ask space2
+	[
+		<b class="hl-keyword">create</b> Agent1 <span class="hl-number">100</span>
+	]
+	
+	ask space2
+	[
+		ask <b class="hl-keyword">create</b>-one Agent2
+		[
+			set-random-position
+		]
+	]
+end
+</pre>
+                              <div class="figure"><a name="N20081"></a><p class="title"><b>Figure&nbsp;2.&nbsp;</b></p><div class="figure-contents">
+				
+				<div class="mediaobject" align="left"><img src="images/tutorial 7/fig2.png" align="left"></div>
+			</div></div><br class="figure-break">
+			</p>
+		      <p>
+			Be careful using the construction 'ask space [ create something ]'.
+			Only space agents (and derived agents) can be created inside 'ask
+			space' command. 
+		</p>
+		<p>
+			Agents can be moved to other spaces. Use agent's 'move-to-space'
+			method to do so. This method has two arguments: a space and
+			a position in this space. After calling this method, an agent
+			will be moved to a new space and at a given position inside this space.
+			If a new space coincides with the space where an agent is located,
+			then agent will only change its position. 
+			Example:
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent3 : SpaceAgent
+
+to jump-to-another-space
+	<i style="color: silver" class="hl-comment">; Assume that 'space2' is a global variable</i>
+	<i style="color: silver" class="hl-comment">; for destination space</i>
+	move-to-space space2 position
+end
+</pre>
+                 <div class="figure"><a name="N2009B"></a><p class="title"><b>Figure&nbsp;3.&nbsp;</b></p><div class="figure-contents">
+				
+				<div class="mediaobject" align="left"><img src="images/tutorial 7/fig3.png" align="left"></div>
+			</div></div><br class="figure-break">
+			</p>
+	               	<p>
+			This method can be also used for creating agents in different
+			spaces: first create an agent in the default space and then
+			move it to the destination space.
+<pre class="programlisting">
+to setup
+	ask <b class="hl-keyword">create</b> Agent4 <span class="hl-number">100</span>
+	[
+		move-to-space space2 position
+	]
+end
+</pre>
+                                <div class="figure"><a name="N200B2"></a><p class="title"><b>Figure&nbsp;4.&nbsp;</b></p><div class="figure-contents">
+				
+				<div class="mediaobject" align="left"><table cellpadding="0" cellspacing="0" summary="manufactured viewport for HTML img" border="0" width="450"><tr><td align="left"><img src="images/tutorial 7/fig4.png" align="left" width="450"></td></tr></table></div>
+			</div></div><br class="figure-break"> 
+                                
+		</p>
+		<p>
+			Space agents have 'hatch' and 'hatch-one' methods. These methods
+			create new agents at the same position as a current agent.
+			Note that this methods respect the space information so new
+			agents will be created in the same space as a current agent.
+		</p>
+		<p>
+			Commands 'agents-here' and 'all-agents-here' also respect the
+			space information. They return only agents located in the same
+			space as a current agent. But the commands 'agents-at' and
+			'all-agents-at' always return agents from the default space.
+			There are methods 'agents-at' and 'all-agents-at' in the 'Space'
+			type which can be used to get agents at a specific
+			location in a given space.
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+<i style="color: silver" class="hl-comment">;Default space</i>
+space GridSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">10</span> <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+
+<i style="color: silver" class="hl-comment">; Additional space of the same dimension as the default space</i>
+<b class="hl-keyword">global</b> space2 = add-standard-space <b class="hl-string"><i style="color:red">"Additional Space"</i></b>
+                                   space-xmin space-xmax
+                                   space-ymin space-ymax
+                                   <b class="hl-keyword">false</b> <b class="hl-keyword">false</b>
+									
+to setup
+	<b class="hl-keyword">create</b> Agent5 <span class="hl-number">2</span>
+	
+	ask space2
+	[
+		<b class="hl-keyword">create</b>-one Agent
+<span class="hl-number">5</span>
+	]
+end
+
+
+<b class="hl-keyword">agent</b> Agent5 : SpaceAgent
+
+
+to step
+	<i style="color: silver" class="hl-comment">; each step 2 '2' and 1 '1' will be printed</i>
+	<i style="color: silver" class="hl-comment">; refers to agent's own space</i>
+	print count (agents-here Agent5)
+ 
+	
+	<i style="color: silver" class="hl-comment">; each step 3 '2' will be printed</i>
+	<i style="color: silver" class="hl-comment">; refers to only default space</i>
+	print count (agents-at Agent5 position <span class="hl-number">1</span>)
+ 
+	
+	<i style="color: silver" class="hl-comment">; each step 3 '1' will be printed</i>
+	<i style="color: silver" class="hl-comment">;refers to space2</i>
+	print count (space2.agents-at Agent5 position <span class="hl-number">1</span>)
+ 
+	
+	<i style="color: silver" class="hl-comment">; each step 2 '2' and 1 '1' will be printed</i>
+	<i style="color: silver" class="hl-comment">; refers to agent's own space</i>
+	print count (get-<b class="hl-keyword">agent</b>-space.agents-at Agent5 position <span class="hl-number">1</span>)
+ 
+end
+</pre>
+                    <div class="figure"><a name="N200CD"></a><p class="title"><b>Figure&nbsp;5.&nbsp;</b></p><div class="figure-contents">
+				
+				<div class="mediaobject" align="left"><img src="images/tutorial 7/fig5.png" align="left"></div>
+			</div></div><br class="figure-break">
+                                           </p>
+		             <p>
+			In this example a method 'get-agent-space' was used. This
+			method returns a space in which a current agent is located.
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N200E2"></a>Working with data layers</h2></div></div></div>
+		
+		<p>
+			Each data layer is associated with one space. A usual
+			'create-grid' command creates a grid inside the default space.
+			Also, globally defined data layers without explicit declaration
+			are always created in the default space. In order to create
+			a data layer inside a specific space, an explicit declaration
+			with a command 'create-grid-in-space' is required. This
+			command has four arguments: space in which a grid is created,
+			name of a grid (should be the same as grid's variable name),
+			x-dimension, y-dimension.
+ Be aware that the space should be initialized
+			before you use it in 'create-grid-command' (see example).
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+
+<i style="color: silver" class="hl-comment">; The default space</i>
+space GridSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">10</span> <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+
+<i style="color: silver" class="hl-comment">; Additional space</i>
+<b class="hl-keyword">global</b> space2 = add-standard-space <b class="hl-string"><i style="color:red">"space2"</i></b> (-<span class="hl-number">10</span>) <span class="hl-number">10</span> (-<span class="hl-number">10</span>) <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+
+<i style="color: silver" class="hl-comment">; Space which is not initialized yet</i>
+<b class="hl-keyword">global</b> space3
+
+<i style="color: silver" class="hl-comment">; Created in the default space</i>
+<b class="hl-keyword">global</b> data1 : <b class="hl-keyword">grid</b>
+
+<i style="color: silver" class="hl-comment">; Created in the default space</i>
+<b class="hl-keyword">global</b> data2 = <b class="hl-keyword">create</b>-<b class="hl-keyword">grid</b> <b class="hl-string"><i style="color:red">"data2"</i></b> <span class="hl-number">20</span> <span class="hl-number">20</span>
+
+<i style="color: silver" class="hl-comment">; Created in the additional space</i>
+<b class="hl-keyword">global</b> data3 = <b class="hl-keyword">create</b>-<b class="hl-keyword">grid</b>-in-space space2 <b class="hl-string"><i style="color:red">"data3"</i></b> <span class="hl-number">10</span> <span class="hl-number">20</span>
+
+<i style="color: silver" class="hl-comment">; It is prohibited to write</i>
+<i style="color: silver" class="hl-comment">; global data4 = create-grid-in-space space3 "data4" 10 20</i>
+<i style="color: silver" class="hl-comment">; though it will be translated and compiled without errors,</i>
+<i style="color: silver" class="hl-comment">; but space 'space3' is not initialized yet.</i>
+
+to setup
+	space3 = add-<b class="hl-keyword">grid</b>-space <b class="hl-string"><i style="color:red">"space3"</i></b>(-<span class="hl-number">10</span>) <span class="hl-number">10</span> (-<span class="hl-number">10</span>) <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+end
+</pre>
+			Note that in order to create a data layer inside a specific
+			space that space should be already initialized. Because of that,
+			it is not possible to create data layers inside a space
+			which is initialized inside the 'setup' method.
+		</p>
+		<p>
+			Methods 'value-here', 'add-value-here', 'set-value-here' work
+			only for agents and data layers existing in the same space.
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N200F2"></a>SPARK interface</h2></div></div></div>
+		
+		<p>
+			In the visualization properties dialog you can select a space
+			for visualization. All visible agents inside a selected space
+			will be rendered. In the properties dialog all data layers
+			are shown but only data layers in the selected space will
+			be visualized.
+		</p>
+	</div>
+</div></body></html>

@@ -1,0 +1,1081 @@
+/* Id: 7.19964.1406816830
+ * Generated: 03-Oct-2017 11:29:35
+ */
+
+/* =Table of contents
+----------------------------------------------- */
+/*
+   Typography
+   Overall
+
+   Top Nav
+   Nap Panel
+   Search Box
+   Header
+
+   Sub-gloabl Nav
+   Local Nav
+   Local Nav Level 2
+   Local Nav Level 3
+   Breadcrumbs
+
+   Central Column
+   Right Column
+   Footer - from JS include
+   Footer - Standard
+
+   Red Section
+   Teal Section
+   Purple Section
+   Royal Blue Section
+   Orange section
+   Green Section
+
+   Global menu (added with JS)
+   FlexSlider
+
+   Print
+*/
+/* -------------------------------------------- */
+
+
+/* =Typography
+----------------------------------------------- */
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: "TUOS Stephenson", Georgia, Times, serif;
+   color: #0066B3; /* blue */
+   font-weight: normal;
+   line-height: 1.2em;
+}
+h1 {
+   font-size: 32px;
+}
+h2 {
+   font-size: 26px;
+}
+h3 {
+   font-size: 22px;
+}
+h4 {
+   font-size: 18px;
+}
+/* =Overall
+----------------------------------------------- */
+
+/* stop Chrome from using anti-aliased on text */
+html {
+   -webkit-font-smoothing: auto !important;
+}
+body {
+   font-family:"Open Sans", Arial, sans-serif;
+   font-size:13px;
+   color: #414042; /* dark dark grey */
+   margin: 0 auto;
+   max-width: 1280px;
+   min-width: 300px;
+   position: relative;
+}
+/* Force sections to use new font type */
+#content, #localNavigation, #rightHandLinks, .quickLinks div strong {
+   font-family:"Open Sans", Arial, sans-serif;
+   font-size: 13px;
+}
+hr {
+   border: 1px solid #0066b3;
+   margin: 40px 0;
+   width: 100%;
+}
+/* =Top Nav
+----------------------------------------------- */
+#topHeader {
+   background-color: #333132;
+   border: none;
+}
+#topHeader > nav {
+   height: 40px;
+   padding: 0;
+}
+#topHeader > nav > ul {
+   /*padding-top: 12px;*/
+   padding-top: 9px;
+}
+#topHeader > nav > ul > li {
+   background: #000;
+   padding: 11px 0px;
+   margin-right: -3px;
+}
+#topHeader > nav > ul > li:first-child {
+   background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -4372px;
+   background-color: #030000;
+}
+#topHeader > nav > ul > li:first-child > a {
+   padding: 11px 2px;
+   color: transparent;
+   font-size: 0 \9; /* IE 8 specific fix */
+   padding: 22px 40px 14px 2px \9; /* IE specific fix */
+}
+#topHeader > nav ul > li:first-child > a:hover {
+   background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -4372px;
+   background-color: #0066B3;
+}
+#topHeader nav > ul > li > a {
+   padding: 11px 8px;
+}
+
+/* Hide pipe between list items */
+#topHeader nav li ~ li:before {
+   display: none;
+}
+#topHeader nav > ul > li > a:hover {
+   text-decoration: none;
+}
+
+/* Log in to MUSE link */
+#topHeader li:nth-child(4) > a#nap {
+   background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -633px;
+   background-color: #030000;
+   padding-right: 76px;
+}
+ #topHeader li:nth-child(4) > a#nap:hover {
+   background-position: -233px;
+}
+
+/* Hide Contact link */
+#topHeader > nav > ul > li:nth-child(3) {
+   display: none;
+}
+/* Fix welcome user */
+#topHeader nav ul li.hidden-phone {
+   padding: 11px;
+}
+
+/* Add spacing to Log out link */
+#topHeader > nav > ul > li:nth-child(6) {
+   /* margin-left: 4px;*/
+   margin-left: 0;
+   border-left: 1px solid #333132;
+   padding-right: 8px;
+}
+#topHeader > nav > ul > li > a#nap_logout {
+   padding-right: 18px;
+}
+/* =Nap Panel
+----------------------------------------------- */
+/*#nap_panel {
+background-color: #1C467C !important;
+color: #fff;
+opacity: 0.98;
+}
+
+#nap_services ul.nap_serviceGroup {
+border-left: thin solid #000;
+}*/
+
+/* all services list */
+#nap_serviceList dt {
+   font-family: "Open Sans", Arial, sans-serif !important;
+   color: #0066B3 !important;
+}
+/* =Search box
+----------------------------------------------- */
+#siteSearchBox {
+   top: -3px;
+   padding-right: 0;
+}
+#siteSearchTerms {
+   height: 40px;
+   width: 175px;
+   padding: 0 35px 0 12px;
+}
+#siteSearchBtn {
+   top: 8px;
+   right: 2px;
+}
+.icon-search {
+background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -4780px;
+   background-color: #fff;
+}
+/* Fix rounded borders in iPad */
+#siteSearchTerms {
+   -webkit-appearance:none;
+   -webkit-border-radius:0;
+}
+/* =Header
+----------------------------------------------- */
+body, header {
+   background-color: #F1F2F2;
+}
+header {
+   margin: 4px 0 14px;
+}
+header #pageTitle {
+   color: #404041;
+   line-height: 1em;
+}
+header #headerTitle {
+   margin-right: 0;
+}
+#headerLeft {
+   padding: 15px 0 5px;
+}
+/* =Sub-global Nav
+----------------------------------------------- */
+#subGlobalNavigation {
+   display: none;
+}
+#subGlobalNavigation ul {
+   border-bottom: none;
+}
+#subGlobalNavigation ul li a {
+   background-color: #000 !important;
+}
+#subGlobalNavigation ul li a:hover {
+   color: #fff !important;
+   text-decoration: underline;
+}
+#subGlobalNavigation #currentSection a {
+   background-color: #fff !important;
+   color: #BE3B39 !important;
+}
+/* =Local Nav
+----------------------------------------------- */
+#localNavigation {
+   z-index: 0;
+   font-weight: normal;
+}
+/* Makes first item in list section colour */
+#localNavigation > ul > li:first-child > a, #localNavigation > ul > li:first-child > a:hover {
+   background-color: #0066b3;
+   background-position: 0;
+}
+/* Fixes padding on list items */
+#localNavigation > ul > li > a, #localNavigation > ul > li > ul > li > a, #localNavigation > ul > li > ul > li > ul > li > a {
+   padding: 12px 35px 12px 10px;
+}
+#localNavigation ul li ul li ul li a {
+   padding-left: 12px;
+}
+/* Removes border on list items */
+#localNavigation li {
+   border: none !important;
+}
+#localNavigation ul > li > ul > li {
+   background-color: #fff;
+}
+#localNavigation li a {
+background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -594px;
+   background-color: #414042;
+}
+#localNavigation li a:hover {
+background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -194px;
+   background-color: #58595B;
+}
+#localNavigation > ul > li, #localNavigation > ul > li > a, #localNavigation > ul > li > a:hover {
+   border: none;
+   color: #fff;
+   margin-bottom: 0;
+}
+#localNavigation > ul > li > a, #localNavigation > ul > li > a:hover {
+   background-color: #030000;
+   padding-right: 28px;
+}
+#localNavigation ul li#currentPage a {
+background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -819px; /* blue arrow */
+   background-color: #fff;
+   color: #0066B3; /* blue text */
+}
+#localNavigation > ul > li#currentPage > a {
+   background-position: -820px; /* blue arrow */
+}
+#localNavigation ul li#currentPage a {
+   border-color: #fff;
+   background-color: #414042 !important;
+}
+#localNavigation > ul > li > ul > li#currentPage > a {
+   background-position: -820px !important; /* blue arrow */
+}
+#localNavigation .currentPageParent > ul > li {
+   padding-left: 5px;
+   background-color: #fff;
+}
+#localNavigation .currentPageParent > ul > li > a {
+   background-color: #414042 !important;
+   background-position: -599px !important;
+}
+#localNavigation .currentPageParent > ul > li > a:hover {
+   background-position: -198px !important;
+}
+#localNavigation .currentPageParent > ul > li > ul > li a {
+   background-color: #58595B !important;
+   background-position: -605px !important;
+}
+#localNavigation .currentPageParent > ul > li > ul > li > a:hover {
+   background-position: -205px !important;
+}
+#localNavigation .currentPageParent > ul > li#currentPage > a, #localNavigation .currentPageParent > ul > li#currentPage > a:hover {
+   background-color: #fff !important;
+   padding-right: 36px;
+}
+#localNavigation .currentPageParent > ul > li {
+   padding-left: 5px;
+}
+#localNavigation .currentPageParent #currentPage > ul > li > a {
+   background-color: #76777C !important;
+   background-position: -605px !important;
+}
+#localNavigation .currentPageParent #currentPage > ul > li > a:hover {
+   background-position: -205px !important;
+}
+#localNavigation .currentPageParent .currentPageParent > ul > li > a {
+   background-position: -604px !important;
+   background-color: #76777C !important;
+}
+#localNavigation .currentPageParent .currentPageParent > ul > li > a:hover {
+   background-position: -204px !important;
+   padding-right: 30px;
+}
+/* Arrow position for sub page */
+#localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -829px !important;
+}
+#localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -835px !important;
+}
+/* =Local Nav level 2
+----------------------------------------------- */
+#localNavigation ul li ul li, #localNavigation ul li ul li {
+   border: none;
+}
+#localNavigation ul li#currentPage ul li a, #localNavigation ul li#currentPage ul li a:hover {
+   margin-left: 6px;
+   color: #fff;
+   padding: 12px 35px 12px 12px !important;
+   background-position: -600px;
+}
+#localNavigation ul li ul li a, #localNavigation ul li ul li a:hover {
+   color: #fff;
+   padding-left: 12px;
+   padding-right: 28px !important;
+   background-position: -594px;
+   background-color: #414042;
+}
+/* =Local Nav level 3
+----------------------------------------------- */
+#localNavigation ul li ul li a:hover {
+   background-position: -193px;
+}
+#localNavigation ul li#currentPage ul li a:hover {
+   background-position: -200px;
+}
+#localNavigation ul li ul li ul li#currentPage ul li a, #localNavigation ul li ul li ul li#currentPage ul li a:hover {
+   background-color: #58595B;
+}
+#localNavigation ul li ul li ul li ul li {
+   border: none;
+   background-color: #fff;
+}
+/* Rounded border top left first list item */
+#localNavigation > ul > li:first-child > a {
+   -webkit-border-top-left-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   border-top-left-radius: 5px;
+}
+/* Rounded border bottom left last list item */
+#localNavigation > ul > li:last-child > a {
+   -webkit-border-bottom-left-radius: 5px;
+   -moz-border-radius-bottomleft: 5px;
+   border-bottom-left-radius: 5px;
+}
+#localNavigation > ul > li#currentPage > a, #localNavigation > ul > li > ul > li#currentPage > a, #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   background-color: #fff !important;
+   border-left-color: #fff;
+}
+/* =Local Nav level 4
+----------------------------------------------- */
+#localNavigation ul li ul li ul li ul li a, #localNavigation ul li ul li ul li ul li a:hover {
+   padding: 12px 30px 12px 12px;
+}
+/* =Breadcrumbs
+----------------------------------------------- */
+#breadcrumbs {
+   position: absolute;
+   top: 121px;
+   left: 210px;
+   padding: 0;
+   margin: 7px 0 0 24px;
+   background-color: #F1F2F2;
+}
+#breadcrumbs, #breadcrumbs a {
+   color: #606E71;
+   text-decoration: none;
+}
+#breadcrumbs a:hover {
+   color: #606E71;
+}
+/* =Central column
+----------------------------------------------- */
+#content {
+   margin: 0 40px 0 215px;
+}
+#inner {
+   background-color: #fff;
+   padding: 10px 20px;
+   margin-bottom: 40px;
+}
+#content.three-col {
+   margin-right: 200px;
+}
+/* feature box */
+div.feature {
+   background: none;
+   border-top: 5px solid #0066B3;
+}
+/* =Right column
+----------------------------------------------- */
+#rightHandLinks {
+   margin-right: 0;
+}
+.quickLinks a:hover {
+   background-color: #d4dcf0;
+   border-color: #0066b3;
+}
+.boxTitle {
+   font-size: 18px;
+}
+/* =Footer - from JS include
+----------------------------------------------- */
+.pg-btm {
+   background: none repeat scroll 0 0 #414042;
+   /* margin: 40px 0 0; */
+clear: both;
+}
+.pg-btm .top-inner, .pg-btm .btm-inner {
+   margin: 0 auto;
+   max-width: 1280px;
+   overflow: hidden;
+   width: 100%;
+}
+.pg-btm .top-inner {
+   padding: 50px 0;
+}
+.pg-btm .btm-inner {
+   padding: 20px 0;
+}
+.footer-links {
+   float: left;
+   padding-left: 12px;
+}
+.uni-address {
+background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   background-position: -7200px;
+   float: right;
+   height: 90px;
+   padding: 0 12px 0 130px;
+}
+.uni-address address {
+   color: white;
+   font-style: normal;
+   line-height: 1.5;
+}
+/* Footer nav */
+.footer-nav {
+   margin: 0 0 40px;
+}
+.footer-nav ul {
+   list-style: none outside none;
+   padding-left: 0;
+}
+.footer-nav ul li {
+   display: inline;
+}
+.footer-nav ul a {
+   color: white;
+   margin: 0 40px 0 0;
+   text-decoration: none;
+}
+.footer-nav ul a:hover {
+   text-decoration: underline;
+}
+/* Footer social */
+.footer-social p {
+   color: white;
+   display: block;
+   float: left;
+   height: 45px;
+   line-height: 45px;
+   margin: 0 20px 0 0;
+}
+.footer-social ul {
+   display: block;
+   float: left;
+   height: 45px;
+   list-style: none outside none;
+   margin: 0 40px 0 0;
+}
+.footer-social li {
+   display: inline;
+}
+.footer-social li.tw a {
+background: url('/polopoly_fs/7.19964.1406816830!/social-sprite.png');
+   background-position: -1px;
+   background-color: #2CAAE1;
+}
+.footer-social li.tw a:hover {
+   background-color: #1B8DBF;
+}
+.footer-social li.fb a {
+background: url('/polopoly_fs/7.19964.1406816830!/social-sprite.png');
+   background-position: -53px -6px;
+   background-color: #3E5A99;
+}
+.footer-social li.fb a:hover {
+   background-color: #2F4575;
+}
+.footer-social li.yt a {
+background: url('/polopoly_fs/7.19964.1406816830!/social-sprite.png');
+   background-position: -103px;
+   background-color: #F1F2F2;
+}
+.footer-social li.yt a:hover {
+   background-color: #D7D9D9;
+}
+.footer-social li.weibo a {
+background: url('/polopoly_fs/7.19964.1406816830!/social-sprite.png');
+   background-position: -153px;
+   background-color: #F1F2F2;
+}
+.footer-social li.weibo a:hover {
+   background-color: #E4E6E6;
+}
+.footer-social li.l-in a {
+background: url('/polopoly_fs/7.19964.1406816830!/social-sprite.png');
+   background-position: -203px;
+   background-color: #007CB6;
+}
+.footer-social li.l-in a:hover {
+   background-color: #005983;
+}
+.footer-social li.g-plus a {
+background: url('/polopoly_fs/7.19964.1406816830!/social-sprite.png');
+   background-position: -250px;
+   background-color: #DD4A39;
+}
+.footer-social li.g-plus a:hover {
+   background-color: #D73825;
+}
+.footer-social li a {
+   display: block;
+   float: left;
+   height: 45px;
+   text-indent: -9999px;
+   width: 45px;
+}
+/* =Footer - Standard
+----------------------------------------------- */
+#footer {
+   background-color: #000;
+   color: #fff;
+   border-top: none;
+   padding: 10px 0 30px 0;
+   margin: 0;
+}
+#footer a {
+   color: #fff;
+}
+/* Hide social media icons */
+#footerLeft a.twitter, #footerLeft a.facebook, #footerLeft a.youtube {
+   display: none;
+}
+/* =Red section - #BE3B39
+----------------------------------------------- */
+.red h1, .red h2, .red h3, .red h4, .red h5, .red h6 {
+   color: #BE3B39;
+}
+.red div.feature {
+   border-top: 5px solid #BE3B39; /* red */
+}
+.red #localNavigation > ul > li#currentPage > ul > li > a:hover {
+   background-position: -198px; /* white arrow */
+}
+.red #localNavigation > ul > li#currentPage > a, .red #localNavigation > ul > li > ul > li#currentPage > a, .red #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   color: #BE3B39; /* red text */
+   background-position: -2195px !important; /* red arrow */
+}
+/* Feature box */
+.red div.highlight.complement {
+   background-color: #fce2de; /* tint colour */
+}
+/* Right hand boxes */
+.red .complement .boxTitle,
+.red .complement .boxAttr {
+   color: #F7BBB7;
+}
+.red .complement .boxText {
+   background-color: #F7BBB7;
+}
+.red .contrast .boxTitle, .red .contrast .boxAttr {
+   color: #DDE0F1;
+}
+
+.red .contrast .boxText {
+   background-color: #DDE0F1;
+}
+/* Table */
+.red table tr th {
+   background-color: #BE3B39;
+   color: #fff;
+   border-color: #BE3B39;
+}
+.red table.striped, .red table.striped tr td, .red table.standard, .red table.standard tr td {
+   border: 1px solid #BE3B39 !important;
+}
+ .red td.medbg, .red tr.medbg td, .red table.striped tr:nth-child(2n) td, .red td.odd, .red tr.odd td {
+background-color: #fce2de !important; /* tint colour */
+}
+/* Makes first item in list section colour */
+.red #localNavigation > ul > li:first-child > a, .red #localNavigation > ul > li:first-child > a:hover {
+   background-color: #BE3B39;
+   background-position: 0;
+}
+/* Arrow position for sub page */
+.red #localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -2199px !important;
+}
+.red #localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -2205px !important;
+   color: #BE3B39;
+}
+.red hr {
+   border-color: #BE3B39;
+}
+/* =Teal section - #20b28e
+----------------------------------------------- */
+.teal h1, .teal h2, .teal h3, .teal h4, .teal h5, .teal h6 {
+   color: #20b28e;
+}
+.teal div.feature {
+   border-top: 5px solid #20b28e; /* teal */
+}
+.teal #localNavigation > ul > li#currentPage > ul > li > a:hover {
+   background-position: -198px; /* white arrow */
+}
+.teal #localNavigation > ul > li#currentPage > a, .teal #localNavigation > ul > li > ul > li#currentPage > a, .teal #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   color: #20b28e; /* teal text */
+   background-position: -2594px !important; /* teal arrow */
+}
+/* Feature box */
+.teal div.highlight.complement {
+   background-color: #e1f1ec; /* tint colour */
+}
+/* Right hand boxes */
+.teal .complement .boxTitle, .teal .complement .boxAttr {
+   color: #b8e1d6;
+}
+.teal .complement .boxText,
+.teal .complement .boxAttr {
+   background-color: #b8e1d6;
+}
+.teal .contrast .boxTitle, .teal .contrast .boxAttr {
+   color: #f6efde;
+}
+.teal .contrast .boxText {
+   background-color: #f6efde;
+}
+/* Table */
+.teal table tr th {
+   background-color: #20b28e;
+   color: #fff;
+   border-color: #20b28e;
+}
+.teal table.striped, .teal table.striped tr td, .teal table.standard, .teal table.standard tr td {
+   border: 1px solid #20b28e !important;
+}
+ .teal td.medbg, .teal tr.medbg td, .teal table.striped tr:nth-child(2n) td, .teal td.odd, .teal tr.odd td {
+background-color: #e1f1ec !important; /* tint colour */
+}
+/* Right column */
+.teal .quickLinks a:hover {
+   background-color: #e1f1ec;
+   border-color: #20b28e;
+}
+/* Makes first item in list section colour */
+.teal #localNavigation > ul > li:first-child > a, .teal #localNavigation > ul > li:first-child > a:hover {
+   background-color: #20b28e;
+   background-position: 0;
+}
+/* Arrow position for sub page */
+.teal #localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -2601px !important;
+}
+.teal #localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -2607px !important;
+   color: #20b28e;
+}
+.teal hr {
+   border-color: #20b28e;
+}
+/* =Purple section - #741C42
+----------------------------------------------- */
+.purple h1, .purple h2, .purple h3, .purple h4, .purple h5, .purple h6 {
+   color: #741C42;
+}
+.purple div.feature {;
+   border-top: 5px solid #741C42; /* purple */
+}
+.purple #localNavigation > ul > li#currentPage > ul > li > a:hover {
+   background-position: -198px; /* white arrow */
+}
+.purple #localNavigation > ul > li#currentPage > a, .purple #localNavigation > ul > li > ul > li#currentPage > a, .purple #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   color: #741C42; /* purple text */
+   background-position: -1792px !important; /* purple arrow */
+   ;
+}
+/* Feature box */
+.purple div.highlight.complement {
+   background-color: #f0d7da; /* tint colour */
+}
+/* Right hand boxes */
+.purple .complement .boxTitle, .purple .complement .boxAttr {
+   color: #e0a4b0;
+}
+.purple .complement .boxText,
+.purple .complement .boxAttr {
+   background-color: #e0a4b0;
+}
+.purple .contrast .boxTitle, .purple .contrast .boxAttr {
+   color: #d7e3f4;
+}
+.purple .contrast .boxText {
+   background-color: #d7e3f4;
+}
+/* Table */
+.purple table tr th {
+   background-color: #741C42;
+   color: #fff;
+   border-color: #741C42;
+}
+.purple table.striped, .purple table.striped tr td, .purple table.standard, .purple table.standard tr td {
+   border: 1px solid #741C42 !important;
+}
+ .purple td.medbg, .purple tr.medbg td, .purple table.striped tr:nth-child(2n) td, .purple td.odd, .purple tr.odd td {
+background-color: #f0d7da !important; /* tint colour */
+}
+/* Right column */
+.purple .quickLinks a:hover {
+   background-color: #f0d7da;
+   border-color: #741C42;
+}
+/* Makes first item in list section colour */
+.purple #localNavigation > ul > li:first-child > a, .purple #localNavigation > ul > li:first-child > a:hover {
+   background-color: #741C42;
+   background-position: 0;
+}
+/* Arrow position for sub page */
+.purple #localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -1799px !important;
+}
+/* Arrow position for sub sub page */
+.purple #localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -1805px !important;
+   color: #741C42;
+}
+.purple hr {
+   border-color: #741C42;
+}
+/* =Royal Blue section - #1C467C
+----------------------------------------------- */
+.royalblue h1, .royalblue h2, .royalblue h3, .royalblue h4, .royalblue h5, .royalblue h6 {
+   color: #1C467C;
+}
+.royalblue div.feature {
+   border-top: 5px solid #1C467C; /* royal blue */
+}
+.royalblue #localNavigation > ul > li#currentPage > ul > li > a:hover {
+   background-position: -198px; /* white arrow */
+}
+.royalblue #localNavigation > ul > li#currentPage > a, .royalblue #localNavigation > ul > li > ul > li#currentPage > a, .royalblue #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   color: #1C467C; /* royal blue text */
+   background-position: -358px !important; /* royal blue arrow */
+}
+/* Feature box */
+.royalblue div.highlight.complement {
+   background-color: #dcf2fd; /* tint colour */
+}
+/* Right hand boxes */
+.royalblue .complement .boxTitle, .royalblue .complement .boxAttr {
+   color: #abe1fa;
+}
+.royalblue .complement .boxText,
+.royalblue .complement .boxAttr {
+   background-color: #abe1fa;
+}
+.royalblue .contrast .boxTitle, .royalblue .contrast .boxAttr {
+   color: #fef8c7;
+}
+.royalblue .contrast .boxText {
+   background-color: #fef8c7;
+}
+/* Table */
+.royalblue table tr th {
+   background-color: #1C467C;
+   color: #fff;
+   border-color: #1C467C;
+}
+.royalblue table.striped, .royalblue table.striped tr td, .royalblue table.standard, .royalblue table.standard tr td {
+   border: 1px solid #1C467C !important;
+}
+ .royalblue td.medbg, .royalblue tr.medbg td, .royalblue table.striped tr:nth-child(2n) td, .royalblue td.odd, .royalblue tr.odd td {
+background-color: #dcf2fd !important; /* tint colour */
+}
+/* Right column */
+.royalblue .quickLinks a:hover {
+   background-color: #dcf2fd;
+   border-color: #1C467C;
+}
+/* Makes first item in list section colour */
+.royalblue #localNavigation > ul > li:first-child > a, .royalblue #localNavigation > ul > li:first-child > a:hover {
+   background-color: #1C467C;
+   background-position: 0;
+}
+/* Arrow position for sub page */
+.royalblue #localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -365px !important;
+}
+/* Arrow position for sub sub page */
+.royalblue #localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -371px !important;
+   color: #1C467C;
+}
+.royalblue hr {
+   border-color: #1C467C;
+}
+/* =Orange section - #DB6123
+----------------------------------------------- */
+.orange h1, .orange h2, .orange h3, .orange h4, .orange h5, .orange h6 {
+   color: #DB6123;
+}
+.orange div.feature {
+   border-top: 5px solid #DB6123; /* orange */
+}
+.orange #localNavigation > ul > li#currentPage > ul > li > a:hover {
+   background-position: -198px; /* white arrow */
+}
+.orange #localNavigation > ul > li#currentPage > a, .orange #localNavigation > ul > li > ul > li#currentPage > a, .orange #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   color: #DB6123; /* orange text */
+   background-position: -1393px !important; /* orange arrow */
+   ;
+}
+/* Feature box */
+.orange div.highlight.complement {
+   background-color: #fedfcb; /* tint colour */
+}
+/* Right hand boxes */
+.orange .complement .boxTitle, .orange .complement .boxAttr {
+   color: #fab48d;
+}
+.orange .complement .boxText,
+.orange .complement .boxAttr {
+   background-color: #fab48d;
+}
+.orange .contrast .boxTitle, .orange .contrast .boxAttr {
+   color: #cbc5e2;
+}
+.orange .contrast .boxText {
+   background-color: #cbc5e2;
+}
+/* Table */
+.orange table tr th {
+   background-color: #DB6123;
+   color: #fff;
+   border-color: #DB6123;
+}
+.orange table.striped, .orange table.striped tr td, .orange table.standard, .orange table.standard tr td {
+   border: 1px solid #DB6123 !important;
+}
+ .orange td.medbg, .orange tr.medbg td, .orange table.striped tr:nth-child(2n) td, .orange td.odd, .orange tr.odd td {
+background-color: #fedfcb !important; /* tint colour */
+}
+/* Right column */
+.orange .quickLinks a:hover {
+   background-color: #fedfcb;
+   border-color: #DB6123;
+}
+/* Makes first item in list section colour */
+.orange #localNavigation > ul > li:first-child > a, .orange #localNavigation > ul > li:first-child > a:hover {
+   background-color: #DB6123;
+   background-position: 0;
+}
+/* Arrow position for sub page */
+.orange #localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -1400px !important;
+}
+/* Arrow position for sub sub page */
+.orange #localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -1406px !important;
+   color: #DB6123;
+}
+.orange hr {
+   border-color: #DB6123;
+}
+/* =Green section - #0a4936
+----------------------------------------------- */
+.green h1, .green h2, .green h3, .green h4, .green h5, .green h6 {
+   color: #0a4936;
+}
+.green div.feature {
+   border-top: 5px solid #0a4936; /* orange */
+}
+.green #localNavigation > ul > li#currentPage > ul > li > a:hover {
+   background-position: -198px; /* white arrow */
+}
+.green #localNavigation > ul > li#currentPage > a, .green #localNavigation > ul > li > ul > li#currentPage > a, .green #localNavigation > ul > li > ul > li > ul > li#currentPage > a {
+   color: #0a4936; /* green */
+   background-position: -1089px !important; /* green arrow */
+   ;
+}
+/* Feature box */
+.green div.highlight.complement {
+   background-color: #e9ecca; /* tint colour */
+}
+/* Right hand boxes */
+.green .complement .boxTitle, .green .complement .boxAttr {
+   color: #ced784;
+}
+.green .complement .boxText,
+.green .complement .boxAttr {
+   background-color: #ced784;
+}
+.green .contrast .boxTitle, .green .contrast .boxAttr {
+   color: #edb1ab;
+}
+.green .contrast .boxText {
+   background-color: #edb1ab;
+}
+/* Table */
+.green table tr th {
+   background-color: #0a4936;
+   color: #fff;
+   border-color: #0a4936;
+}
+.green table.striped, .green table.striped tr td, .green table.standard, .green table.standard tr td {
+   border: 1px solid #0a4936 !important;
+}
+ .green td.medbg, .green tr.medbg td, .green table.striped tr:nth-child(2n) td, .green td.odd, .green tr.odd td {
+background-color: #e9ecca !important; /* tint colour */
+}
+/* Right column */
+.green .quickLinks a:hover {
+   background-color: #e9ecca;
+   border-color: #0A4935;
+}
+/* Makes first item in list section colour */
+.green #localNavigation > ul > li:first-child > a, .green #localNavigation > ul > li:first-child > a:hover {
+   background-color: #0A4935;
+   background-position: 0;
+}
+/* Arrow position for sub page */
+.green #localNavigation .currentPageParent > ul li#currentPage > a {
+   background-position: -1096px !important;
+}
+/* Arrow position for sub sub page */
+.green #localNavigation .currentPageParent > ul li.currentPageParent > ul > li#currentPage > a {
+   background-position: -1102px !important;
+   color: #0A4935;
+}
+.green hr {
+   border-color: #0a4936;
+}
+/* =Global menu
+------------------------------------------------------------------------------ */
+.menu-main {
+   position: absolute;
+   top: 153px;
+   z-index: 5;
+}
+.menu-main, .menu-sub {
+   padding-left: 0;
+   width: 215px;
+}
+.menu-main a {
+   text-decoration: none;
+}
+.menu-sub {
+   display: none;
+}
+.menu-item {
+   list-style-type: none;
+}
+.menu-item > a {
+   background-color: black;
+   display: block;
+   padding: 12px 9px 12px 12px;
+   color: white;
+}
+.radius-top-left {
+   -webkit-border-top-left-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   border-top-left-radius: 5px;
+}
+.radius-bottom-left {
+   -webkit-border-bottom-left-radius: 5px;
+   -moz-border-radius-bottomleft: 5px;
+   border-bottom-left-radius: 5px;
+}
+.icon-hamburger {
+background: url('/polopoly_fs/7.19964.1406816830!/hamburger.png');
+   display: inline-block;
+   width: 15px;
+   height: 12px;
+   background-position: 0;
+   float: right;
+   margin-top: 2px;
+}
+.icon-arrow {
+background: url('/polopoly_fs/7.19964.1406816830!/arrow-sprite.png');
+   display: inline-block;
+   background-position: -594px;
+}
+.icon-arrow:hover {
+   background-position: -194px;
+}
+.nav-opacity {
+   opacity: 0.2;
+   filter: alpha(opacity = 20);
+   zoom:1;
+}
+
+/* =FlexSlider
+----------------------------------------------------------------------------- */
+.flex-caption,
+.flex-caption a,
+.flex-direction-nav li.current {
+   color: #fff;
+}
+
+
+/* =Print
+----------------------------------------------------------------------------- */
+@media print {
+   body {
+      margin: 20px 0 40px 0;
+   }
+   .menu-main, #rightHandLinks, #localNavigation, .pg-btm, #footer, #topHeader, #breadcrumbs {
+      display: none;
+   }
+   #content {
+      margin-left: 0;
+   }
+}
+
+
+
+      

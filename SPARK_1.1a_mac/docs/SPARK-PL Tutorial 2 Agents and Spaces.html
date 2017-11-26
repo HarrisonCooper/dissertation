@@ -1,0 +1,547 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>SPARK-PL: Agents and Spaces</title><link href="style.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><meta name="description" content="The main concepts of SPARK/SPARK-PL are introduced in this tutorial."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="N2000B"></a>SPARK-PL: Agents and Spaces</h2></div><div><div class="author"><h3 class="author">Alexey Solovyev</h3></div></div><div><div class="abstract"><p class="title"><b>Abstract</b></p>
+			<p>
+				The main concepts of SPARK/SPARK-PL are introduced in this tutorial.
+			</p>
+		</div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#N20021">SPARK Agents and Spaces</a></span></dt><dt><span class="section"><a href="#N2002D">Agents in SPARK-PL</a></span></dt><dt><span class="section"><a href="#N20045">Creating agents and the Observer</a></span></dt><dt><span class="section"><a href="#N2007A">Space in SPARK-PL</a></span></dt><dt><span class="section"><a href="#N200C2">Space agents</a></span></dt></dl></div>
+	
+
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20021"></a>SPARK Agents and Spaces</h2></div></div></div>
+		
+		<p>
+			Agents in SPARK are any classes derived from the base Agent
+			class. This base Agent class has a very limited functionality
+			by itself. It has three main functions: creating agents,
+			processing agents, and destroying agents.
+		</p>
+		<p>
+			A space in SPARK is an environment where agents exist and
+			interact with each other. Basic agents cannot be associated
+			with a space. There is another type of agents called space agents
+			which can move inside a space and interact with other
+			agents inside that space. In fact, there can be several
+			spaces in the same model and different space agents (SpaceAgent class) can be located
+			in different spaces. But in the most cases there is only
+			one space which will be often called the default space. More
+			about multiple spaces can be read in another tutorial.
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2002D"></a>Agents in SPARK-PL</h2></div></div></div>
+		
+		<p>
+			Agents in SPARK-PL are declared using the 'agent' keyword.
+			Each agent should be derived from either 'Agent' type or
+			'SpaceAgent' type (in fact, 'SpaceAgent' is derived from
+			'Agent'). Agents by themselves are also types (classes) in SPARK-PL.
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; Declares a new agent type derived from SpaceAgent</i>
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<i style="color: silver" class="hl-comment">; Declares a new agent type derived from Agent</i>
+<b class="hl-keyword">agent</b> Agent2 : Agent
+
+<i style="color: silver" class="hl-comment">; Declares a new agent type derived from Agent1</i>
+<b class="hl-keyword">agent</b> Agent3 : Agent1
+</pre>
+			As all types in SPARK-PL, each agent can have a constructor
+			declared as a method with name 'create'. A constructor is
+			called every time a new agent is created. It is not possible
+			to call a constructor for already existing object. It is often convenient
+			to set up some internal agent's variable inside this constructor
+			(it is especially useful for space agents which can have distinct
+			colors, positions, shapes, and sizes).
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<b class="hl-keyword">var</b> age : <b class="hl-keyword">number</b>
+
+to <b class="hl-keyword">create</b>
+	age = random <span class="hl-number">100</span> + <span class="hl-number">20</span>
+end
+</pre>
+		</p>
+		<p>
+			Behavior of agents is specified in one method called 'step'.
+			This method is called every simulation step for all agents of
+			all types. This method has one argument named 'tick' which
+			counts the number of steps passed since the start of a simulation.
+			Note: it is not possible to assign any value to the 'tick' variable
+			inside 'step' method, but it can be used freely as the right
+			hand side value.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<b class="hl-keyword">var</b> age : <b class="hl-keyword">number</b>
+
+to <b class="hl-keyword">create</b>
+	age = random <span class="hl-number">100</span> + <span class="hl-number">20</span>
+end
+
+to step [ tick ]
+	<i style="color: silver" class="hl-comment">; Decrease age by 1 each step after 101 simulation steps</i>
+	<i style="color: silver" class="hl-comment">; (the first value of 'tick' is always 0)</i>
+	<b class="hl-keyword">if</b> tick &gt; <span class="hl-number">100</span>
+		[ age -= <span class="hl-number">1</span> ]
+end
+</pre> 
+			Actually, it is not required to have a step method for
+			an agent. Moreover, for a step method its argument 'tick'
+			can be omitted because it will be always added automatically.
+		</p>
+	</div>
+	
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20045"></a>Creating agents and the Observer</h2></div></div></div>
+		
+		<p>
+			To create agents the commands 'create' and 'create-one' are used.
+			All agents in SPARK exist in a special container called
+			the Observer. When a new agent is created it is automatically
+			added to the observer. When an agent is destroyed, it is
+			removed from the observer. The observer can be used also
+			for retrieving all agents of a particular type or for counting
+			the number of agents of a given type. In SPARK-PL it is not
+			required to know anything about the observer because it is
+			never used directly.
+		</p>
+		<p>
+			A command 'create' has two arguments: a type name and a number 
+			of agents to be created. A command 'create-one' has only
+			one argument: a type name (and it creates one agent of a given
+			type).
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; Create 100 agents of type Agent2</i>
+<b class="hl-keyword">var</b> agents1 = <b class="hl-keyword">create</b> Agent2 <span class="hl-number">100</span>
+
+<i style="color: silver" class="hl-comment">; Create 1 agent of type Agent1</i>
+<b class="hl-keyword">var</b> agent2 = <b class="hl-keyword">create</b>-one Agent1
+
+<i style="color: silver" class="hl-comment">; Create 1 agent of type Agent1</i>
+<b class="hl-keyword">var</b> agents2 = <b class="hl-keyword">create</b> Agent1 <span class="hl-number">1</span>
+</pre>
+			The last two commands in the previous example give the different
+			results. The command 'create' always returns an array of agents,
+			meanwhile the command 'create-one' always returns a direct reference
+			to a new agent.
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; A valid command</i>
+(<b class="hl-keyword">create</b>-one Agent1).age = <span class="hl-number">100</span>
+
+<i style="color: silver" class="hl-comment">; An invalid command</i>
+<i style="color: silver" class="hl-comment">;(create Agent1 1).age = 100</i>
+
+<i style="color: silver" class="hl-comment">; A valid modification</i>
+(get (<b class="hl-keyword">create</b> Agent1 <span class="hl-number">1</span>) <span class="hl-number">0</span>).age = <span class="hl-number">100</span>
+</pre> 
+			In the example above the command 'get' was used. Recall, that this command
+			has two arguments: an array or a list of any objects and an
+			index, and it returns an entry of an array or a list
+			at the given index.
+		</p>
+		<p>
+			Very often it is required to do something with all agents in
+			a list or an array. One way to do so is to use 'for' loop as
+			follows
+<pre class="programlisting">
+<b class="hl-keyword">for</b> i = <span class="hl-number">0</span> : count agents1
+[
+	<b class="hl-keyword">var</b> agent1 = get agents1 i
+	agent1.age = <span class="hl-number">100</span>
+]
+</pre>
+			There is a shorter way to do the same thing. With the command
+			'ask' you can simply write
+<pre class="programlisting">
+ask agents1
+[
+	age = <span class="hl-number">100</span>
+]
+</pre>
+			Recall that the command 'ask' is not just a shortcut for a 'for'
+			loop, it also modifies the 'self' reference, that is the reference
+			to the active object. 
+		</p>
+		<p>
+			Sometimes it is required to have a full control over a model
+			execution process. Assume that you don't want to rely on
+			a step method of agents and instead want to call some
+			agent's methods manually. In this case the 'ask' command
+			is also useful. But first you need to get a list of all
+			agents for which you want to call a specific method. All
+			agents of a given type can be obtained using the 'agents'
+			command. This command has one argument: a type name.
+			It makes sense to process agents manually in either
+			'begin-step' or 'end-step' methods of a model.
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+to begin-step
+	<i style="color: silver" class="hl-comment">; Process all agents of type Agent1 manually</i>
+	ask agents Agent1
+	[
+		do-something
+	]
+end
+
+
+<b class="hl-keyword">agent</b> Agent1 : Agent
+
+to do-something
+	<i style="color: silver" class="hl-comment">; do something	</i>
+end
+</pre>
+			Very often it is required to know the number of agents
+			of a specific type. It is possible to use the 'count'
+			command along with the 'agents' command, but it is more
+			convenient (and efficient) to use a special command
+			'agents-number'. This command has one argument: a type name.
+			This command is often used to collect statistical data, so
+			it is often used inside the 'end-step' method.
+<pre class="programlisting">
+to end-step
+	total-agent1 = agents-<b class="hl-keyword">number</b> Agent1
+	
+	<i style="color: silver" class="hl-comment">; The next command gives the same result</i>
+	<i style="color: silver" class="hl-comment">; but it is not very efficient</i>
+	total-agent1 = count agents Agent1
+end
+</pre>
+		</p>
+		<p>
+			To destroy an agent use its method 'die'. Agent can call
+			'die' by itself (in the 'step' method, for example), or it
+			can call this method on another agent to kill it. There is
+			also a command 'kill' with one argument: a list of agents
+			to be killed.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : Agent
+
+age = random <span class="hl-number">100</span>
+
+to step
+	age -= <span class="hl-number">1</span>
+	<b class="hl-keyword">if</b> age &lt; <span class="hl-number">0</span>
+		[ die ]
+end
+</pre>
+			In general, it is not safe to continue agent's activity
+			after it has died. That is, it is not recommended to have
+			any code after a call of the 'die' method. Because of this,
+			it is often required to use the command 'exit' immediately
+			after the 'die' method.
+<pre class="programlisting">
+to step
+	age -= <span class="hl-number">1</span>
+	<b class="hl-keyword">if</b> age &lt; <span class="hl-number">0</span>
+	[
+		<i style="color: silver" class="hl-comment">; equivalent to 'die'</i>
+		kill self
+		<b class="hl-keyword">exit</b>
+	]
+	
+	<i style="color: silver" class="hl-comment">; This method will not be called if the agent is already dead</i>
+	do-something
+end
+</pre>
+			To be more precise, it is not a requirement to exit
+			from a method after destroying an agent. The only thing
+			which is prohibited to do after this method is to use
+			methods related to a space in which the agent exists
+			(see next sections).
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2007A"></a>Space in SPARK-PL</h2></div></div></div>
+		
+		<p>
+			In SPARK it is not required to have a space, but it is
+			necessary to have a space in SPARK-PL. A space is declared
+			in a model type with the 'space' keyword
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+space StandardSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">20</span> <span class="hl-number">20</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+</pre>
+			You can treat the 'space' keyword as a command with 7 arguments.
+			The first argument specifies a type of a space. There are two available
+			types now: StandardSpace and NetLogoSpace. The Standard space
+			is a continuous space where agents can occupy any position.
+			The NetLogo space is also a continuous space where agents can
+			occupy any position, but it also has a special discrete structure.
+			The NetLogo space is divided into square cells (1 by 1 each)
+			and all agents in the same cell are considered to be at the same
+			location for some commands ('agents-at', 'agents-here' commands,
+			see the next section for details). The advantage of NetLogo space
+			is that some operation work faster there but the results are
+			not very accurate sometimes. Also, the NetLogo space is not as
+			flexible as the Standard space and it is not used for some types
+			of models (for example, models with agents which behave
+			like rigid bodies in classical mechanics).
+			</p>
+			<p>
+			Next four arguments specify the dimension of a space: minimum x
+			coordinate, maximum x coordinate, minimum y coordinate, maximum y coordinate.
+			The last two arguments determine a topology of a space. Each
+			space is a rectangle and the last two arguments specify whether
+			the opposite edges of this rectangle are glued together.
+			In other word, here are all possible combinations of these two
+			last parameters and the description of the resulting topology.
+			<table id="N20088">
+				<caption>Table&nbsp;1.&nbsp;
+					SPARK space topologies
+				</caption>
+				<tbody>
+					<tr>
+						<td>false</td><td>false</td><td>Rectangle</td>
+					</tr>
+					<tr>
+						<td>true</td><td>false</td><td>Vertical cylinder</td>
+					</tr>
+					<tr>
+						<td>false</td><td>true</td><td>Horizontal cylinder</td>
+					</tr>
+					<tr>
+						<td>true</td><td>true</td><td>Torus</td>
+					</tr>
+				</tbody>
+			</table>
+			Note: in the current SPARK-PL implementation only constants
+			can be used for specifying the dimension of a space.
+		</p>
+		<p>
+			There are several commands for working with a space. Commands
+<pre class="programlisting">
+space-xsize
+space-ysize
+space-xmin
+space-xmax
+space-ymin
+space-ymax
+</pre>
+			are quite intuitive. The size along x axis equals to the difference
+			between the maximum x coordinate and the minimum x coordinate. The
+			same is true for the size along y axis. Other commands work
+			with agents in a space and will be described in the next section.
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N200C2"></a>Space agents</h2></div></div></div>
+		
+		<p>
+			Space agents are located in a space, that is, they have a position
+			in a space. A position of a space agent can be always obtained
+			through 'position' field defined in the SpaceAgent type. It has
+			the vector type. It is not possible to assign this field directly,
+			instead the method 'move-to' should be used.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+to step
+	<i style="color: silver" class="hl-comment">; Add [1, 0, 0] to the current position</i>
+	move-to position + [<span class="hl-number">1</span>, <span class="hl-number">0</span>, <span class="hl-number">0</span>]
+end
+</pre>
+			Actually, it is better to use 'move-to' method for assigning 
+			a new position of an agent which is not related to the old
+			position. In order to move relatively to the current position
+			(as in the example above) it is better to use the 'move' command
+			which simply adds its argument to the current position.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<b class="hl-keyword">var</b> velocity = [<span class="hl-number">1</span>, <span class="hl-number">0</span>, <span class="hl-number">0</span>]
+
+to step
+	move velocity
+end
+</pre> 
+		</p>
+		<p>
+			When a new space agent is created its default position is the origin
+			(if there is no origin in a space, that is, no (0,0) point, then
+			the default position depends on the topology). Agents can be
+			assigned random positions in a space using a 'set-random-position'
+			command. Or they can be moved to some calculated positions.
+<pre class="programlisting">
+to setup
+	<i style="color: silver" class="hl-comment">; Assign to newly created agents random positions</i>
+	ask <b class="hl-keyword">create</b> Agent1 <span class="hl-number">100</span>
+	[
+		set-random-position
+	]
+	
+	<b class="hl-keyword">var</b> i = <span class="hl-number">0</span>
+	
+	<i style="color: silver" class="hl-comment">; Place new agents in a circular pattern</i>
+	ask <b class="hl-keyword">create</b> Agent1 <span class="hl-number">10</span>
+	[
+		move-to <b class="hl-keyword">vector</b>-in-direction <span class="hl-number">10</span> i
+		i += <span class="hl-number">30</span>
+	]
+end
+</pre>
+		</p>
+		<p>
+			Very often some space agents create another space agents in the
+			same position where they are located. This can be implemented
+			as follows
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<b class="hl-keyword">agent</b> Agent2 : SpaceAgent
+
+to step
+	ask <b class="hl-keyword">create</b> Agent1 <span class="hl-number">2</span>
+	[
+		<i style="color: silver" class="hl-comment">; 'myself' refers to the agent which executes</i>
+		<i style="color: silver" class="hl-comment">; the 'ask' command.</i>
+		<i style="color: silver" class="hl-comment">; Without 'myself' the position of a newly created</i>
+		<i style="color: silver" class="hl-comment">; agent would be used which is not our goal.</i>
+		move-to myself.position
+	]
+end
+</pre>
+			There are methods 'hatch' and 'hatch-one' in SpaceAgent type
+			which can do the same thing.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<b class="hl-keyword">agent</b> Agent2 : SpaceAgent
+
+to step
+	hatch Agent1 <span class="hl-number">2</span>
+end
+</pre> 
+		</p>
+		<p>
+			Space agents can be visualized. It is possible to customize
+			a color of each agent using its 'color' field. By default, all
+			space agents are black. Colors are treated as vectors with
+			RGB components in the interval [0,1]. There are several
+			predefined color constants like 'red', 'green', 'blue', 'white',
+			etc.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+<b class="hl-keyword">var</b> age = <span class="hl-number">100</span>
+
+
+to <b class="hl-keyword">create</b>
+	color = red
+end
+
+
+to step
+	age -= <span class="hl-number">1</span>
+	<b class="hl-keyword">if</b> age &lt; <span class="hl-number">0</span>
+		[ color = orange ]	
+end
+</pre>
+		</p>
+		<p>
+			Besides color, it is also possible to specify a shape of an agent.
+			In the current SPARK-PL implementation there is a significant
+			restriction for changing a standard circular shape. Only
+			agents derived from SpaceAgent can do this (it is quite natural). Moreover,
+			a shape can be changed only inside a constructor as the first
+			command.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent2 : SpaceAgent
+
+to <b class="hl-keyword">create</b>
+	<i style="color: silver" class="hl-comment">; Should be the first command</i>
+	super <span class="hl-number">0.5</span> square
+end
+</pre>
+			The 'super' command has two arguments: a radius of an agent
+			which determines a size of an agent and a shape. Shapes are
+			special constants with names. Available names are: 'circle'
+			(a standard shape), 'square', 'torus'.
+		</p>
+		<p>
+			Note: in the current SPARK implementation shapes only affect
+			the visual appearance of an agent, they do not change other
+			agent's properties. 
+		</p>
+		<p>
+			All space agents can have different sizes. A size of a space
+			agent is determined by the 'radius' field which can be read
+			or assigned. In the NetLogo space the sizes of agents do not
+			play any role except for visualization purpose. In the Standard
+			space sizes play an additional role which is explained below.
+		</p>
+		<p>
+			Using the 'agents' command it is possible to get all agents
+			of a specific type but very often it is required to get agents
+			only in a specific region of a space. There are several commands
+			to do so. First of all, there are commands 'agents-at' and
+			'all-agents-at'. The former has three arguments: a type name
+			of agents to be retrieved, a point (vector) specifying a center, and a radius
+			of a circular region in which agents are queried. The later has
+			only two arguments: a center and a radius of a circular region.
+			The command 'agents-at' returns a list of all agents of a specific
+			type which intersect with a specific circular region. The command
+			'all-agents-at' returns all agents in a circular region. In fact,
+			in the NetLogo space this commands completely ignore a radius
+			of a circular region and return agents in a cell of the NetLogo
+			space corresponding to a given point (center). It is the main
+			difference between Standard and Netlogo spaces.
+		</p>
+		<p>
+			Sometimes it is necessary to get the agents intersecting (or
+			at the same position) with an active agent. Then it is possible
+			to use commands 'agents-here' and 'all-agents-here'. The command
+			'agents-here' has one argument: a type name. The command 'all-agents-here'
+			does not have arguments at all.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> Agent1 : SpaceAgent
+
+to step
+	<i style="color: silver" class="hl-comment">; Returns all agents here, including the calling agent itself.</i>
+	<i style="color: silver" class="hl-comment">; Equivalent to</i>
+	<i style="color: silver" class="hl-comment">; var a = all-agents-at position radius</i>
+	<b class="hl-keyword">var</b> a = all-agents-here
+	
+	ask a
+	[
+		color = green
+	]
+end
+
+<b class="hl-keyword">agent</b> Agent2 : SpaceAgent
+
+to step
+	<i style="color: silver" class="hl-comment">; Equivalent to</i>
+	<i style="color: silver" class="hl-comment">; var agents1 = agents-at Agent1 position radius</i>
+	<b class="hl-keyword">var</b> agents1 = agents-here Agent1
+
+	kill agents1
+	
+	<i style="color: silver" class="hl-comment">; Changes radius of all agents of type Agent2</i>
+	<i style="color: silver" class="hl-comment">; at the current position (including the calling agent)</i>
+	ask agents-here Agent2
+	[
+		radius = <span class="hl-number">0.5</span>
+	]
+end
+</pre>		
+		</p>
+		<p>
+			Another thing to know about space agents is how to measure
+			a distance between two of them. Of course, it is always
+			possible to compute the difference between their positions
+			but it will not give a good result in the case of a topology
+			different from a rectangle. There is a command 'distance'
+			with two arguments: two references to space agents. This command
+			returns a vector which represents a component-wise distance
+			between two agents. If you need to know the absolute value
+			of the distance between two agents then use vector's 'length'
+			method to get it.
+<pre class="programlisting">
+<b class="hl-keyword">var</b> d = distance agent1 agent2
+<b class="hl-keyword">var</b> l = d.length
+</pre>
+		</p>
+		
+	</div>
+</div></body></html>

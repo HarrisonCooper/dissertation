@@ -1,0 +1,700 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>SPARK-PL: Introduction</title><link href="style.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><meta name="description" content="All basic elements of SPARK-PL are introduced."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="N2000B"></a>SPARK-PL: Introduction</h2></div><div><div class="author"><h3 class="author">Alexey Solovyev</h3></div></div><div><div class="abstract"><p class="title"><b>Abstract</b></p>
+			<p>
+				All basic elements of SPARK-PL are introduced.
+			</p>
+		</div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#N20021">Introduction to SPARK-PL</a></span></dt><dt><span class="sect1"><a href="#N20045">Alphabet of SPARK-PL</a></span></dt><dt><span class="sect1"><a href="#N20055">Types and variables</a></span></dt><dt><span class="sect1"><a href="#N2009D">SPARK-PL basic commands</a></span></dt><dt><span class="sect1"><a href="#N200CD">SPARK-PL basic types</a></span></dt><dd><dl><dt><span class="sect2"><a href="#N200D2">number</a></span></dt><dt><span class="sect2"><a href="#N200E5">boolean</a></span></dt><dt><span class="sect2"><a href="#N200F2">string</a></span></dt><dt><span class="sect2"><a href="#N200FF">vector</a></span></dt><dt><span class="sect2"><a href="#N20113">Arrays and lists</a></span></dt></dl></dd></dl></div>
+	
+	
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20021"></a>Introduction to SPARK-PL</h2></div></div></div>
+		
+		<p>
+			SPARK-PL (SPARK Programming Language) is a special language
+			for implementing SPARK models.
+			
+			Its syntax is derived primary from Logo programming language (influenced by NetLogo) and Java programming language. 
+			All models written in SPARK-PL are translated into Java source code first, and 
+			then a Java compiler is used to produce the machine code which can be executed by the SPARK simulation engine. 
+			SPARK-PL has static type system which helps to eliminate many programmers&rsquo; errors concerning an incorrect 
+			use of variables of incompatible type. Type inference mechanism of SPARK-PL makes it possible to implement 
+			models in the way similar to languages with dynamic type system. 
+			With type inference, it is not required to provide an explicit type for every new variable. 
+			The translator is capable to find the correct type of many variables automatically by looking at the expressions 
+			where a variable is used. 
+		</p>
+		<p>
+			Every SPARK model written in
+			SPARK-PL consists of several SPARK-PL source code files.
+			These files constitute a SPARK-PL project. SPARK-PL projects
+			are managed by a special program called the SPARK-PL Project Manager.
+			<div class="figure"><a name="N2002B"></a><p class="title"><b>Figure&nbsp;1.&nbsp;The SPARK-PL Project Manager</b></p><div class="figure-contents">
+				
+				<div class="mediaobject" align="left"><table cellpadding="0" cellspacing="0" summary="manufactured viewport for HTML img" border="0" width="360"><tr><td align="left"><img src="images/ProjectManager.png" align="left" width="360" alt="The SPARK-PL Project Manager"></td></tr></table></div>
+			</div></div><br class="figure-break">
+			The list on the left shows all files in a project. 
+			New files can be added by clicking 'Add' button which brings in 
+			an open file dialog. Button '&hellip;' allows to choose another 
+			model directory. Projects can be saved via 'File' menu 'Save project...' command. 
+			The button 'Translate' is used for translation a SPARK-PL source code into 
+			a Java source code which then can be compiled by clicking the 'Compile' button. 
+			'Run in SPARK button' runs the compiled model in SPARK. 
+			'Start' button is a shortcut for all three main actions: translate, compile, and run in SPARK.
+		</p>
+		<p>
+			Step by step instruction on creating new SPARK-PL projects.
+			First, create SPARK-PL source code files in any plain text
+			editor. Save them in a folder which will be a main project
+			folder. Click '...' button in the project manager and
+			select the project folder. Add source code files into the
+			manager using 'Add' button. Save the project description
+			file by selecting 'Save project...' item from the 'File' menu.
+			The project description file is a simple xml file which
+			contains the information about all files inside the project.
+			Note that this file should be in the same project folder as
+			source code files. Click 'Translate' button. If any error occurs,
+			correct it and click 'Translate' again. After elimination of
+			all translation errors and after successful translation,
+			click 'Compile' button. Again, there could be some compilation
+			errors which also can be corrected. After successful compilation
+			process, click 'Run in SPARK' button to run a model in SPARK.
+			It is always possible to use only 'Start' button instead of
+			three other buttons. But for the first time, it is better to
+			use 'Translate', 'Compile', 'Run in SPARK' sequence in order
+			to simplify the error correction process.
+		</p>
+		<p>
+			To open the existing project description file, select 'Open project...'
+			item from the 'File' menu. Also, ten most recent projects are
+			available directly in the 'File' menu. If you later add some
+			new files to an existing project, do not forget to save
+			the description file again using 'Save project...' command.
+		</p>
+	</div>
+	
+	
+	
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20045"></a>Alphabet of SPARK-PL</h2></div></div></div>
+		
+		<p>
+			Valid symbols in SPARK-PL source code files are all Latin
+			letters, digits, period '.', colon ':', comma ',', square
+			brackets '[' and ']', parentheses '(' and ')',  
+			and symbols '_', '^', '+', '-', '*', '/', '=', '%', '&lt;', '&gt;',
+			'!'. Semicolon ';' denotes a comment: everything after a semicolon
+			is not parsed by a SPARK-PL translator and treated as a
+			comment. 
+		</p>
+		<p>
+			Type names, variable names, command names are identifiers.
+			Identifiers start from a letter and can include any letters,
+			digits, and dashes '-'. All identifiers are case sensitive.
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; A comment</i>
+
+<i style="color: silver" class="hl-comment">; A variable named 'some-variable' is declared and</i>
+<i style="color: silver" class="hl-comment">; initialized</i>
+<b class="hl-keyword">var</b> some-variable = <span class="hl-number">20.2</span>
+
+<i style="color: silver" class="hl-comment">; This is a different variable</i>
+<b class="hl-keyword">var</b> Some-variable = <span class="hl-number">10.123e-10</span>
+
+<i style="color: silver" class="hl-comment">; This is the third variable</i>
+<b class="hl-keyword">var</b> SomeVariable = <b class="hl-string"><i style="color:red">"string"</i></b>
+</pre>
+			SPARK-PL has many similarities with languages from the Logo family.
+			That's why identifiers can include the dash symbol. Because of
+			that, an attention should be paid to distinguish dash and minus.
+			The rule is simple: minus should be always separated by spaces.
+		</p>
+	</div>
+	
+	
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20055"></a>Types and variables</h2></div></div></div>
+		
+		<p>
+			All SPARK-PL source files should begin with one of the following declarations
+<pre class="programlisting">
+<b class="hl-keyword">class</b> <b class="hl-keyword">class</b>-name : parent-type
+<b class="hl-keyword">agent</b> <b class="hl-keyword">agent</b>-name : parent-type
+<b class="hl-keyword">model</b> <b class="hl-keyword">model</b>-name : parent-type
+</pre>
+			In fact, everything in SPARK-PL is encapsulated inside classes
+			(or types). 'agent' and 'model' are special types which will
+			be described later. All types has a name and a parent type
+			from which they inherit functions and properties. Usual classes
+			and models are not required to have a parent type. For agents
+			a parent type is required (see the agent tutorial for details).
+			After a new type declaration on the first line of a source file,
+			a type definition follows. Everything written after a type
+			declaration is considered to be included inside that type.
+			But it is also possible to include several type declarations
+			in one source file. To do so, just simply start a new type
+			declaration in any place of a source file. Then everything
+			before that new declaration belongs to the previously declared
+			type, and everything after will belong to a new type.
+<pre class="programlisting">
+<b class="hl-keyword">class</b> Class1
+
+<i style="color: silver" class="hl-comment">; definition of Class1</i>
+
+<i style="color: silver" class="hl-comment">; Declare a new type which has the previous</i>
+<i style="color: silver" class="hl-comment">; type as its parent type</i>
+<b class="hl-keyword">class</b> Class2 : Class1
+
+<i style="color: silver" class="hl-comment">; definition of Class2</i>
+
+<i style="color: silver" class="hl-comment">; One more type</i>
+<b class="hl-keyword">class</b> Class3
+
+<i style="color: silver" class="hl-comment">; definition of Class3</i>
+</pre>
+			</p>
+			<p>
+				SPARK-PL consists of commands, control structures and declarations. 
+				There are many globally defined commands, for example
+				'ask', 'create', 'random', 'random-vector', etc.
+				Commands defined inside classes are called methods. 
+				Variables defined inside classes are called fields. 
+				Declaration of a variable looks like the following
+<pre class="programlisting">
+<b class="hl-keyword">var</b> x : <b class="hl-keyword">number</b>
+</pre>
+				Here 'var' is a keyword, 'number' is a type. 
+				Type can be omitted. In that case a variable is treated 
+				as a variable of unknown type. It is possible that the type
+				will be determined automatically later. 
+				For example, if we have a code
+<pre class="programlisting">
+<b class="hl-keyword">var</b> x
+x = <span class="hl-number">2</span>
+</pre>
+				Then after the assignment the type of x becomes 'number'. 
+				On the other hand, there are many situations 
+				when the type cannot be determined automatically 
+				(especially in the current implementation of 
+				the type inferring algorithm). Because of this, 
+				it is recommended to explicitly specify types of all fields 
+				and method arguments. It is possible to initialize 
+				a variable during its declaration
+<pre class="programlisting">
+<b class="hl-keyword">var</b> x = <span class="hl-number">3</span>
+</pre>
+				There is another keyword 'global' for declaring global
+				variables. These variables are available not only in
+				the type where they are declared but also in other types.
+				And you only need to know their name to access them in any
+				part of a code. Note that the global variables can be
+				declared only inside model types.
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+<i style="color: silver" class="hl-comment">; x will be available in any part of a code</i>
+<b class="hl-keyword">global</b> x = <span class="hl-number">30</span>
+</pre>
+			</p>
+			<p>				
+				Methods are declared as follows
+<pre class="programlisting">
+to method-name [arg1 : type arg2 : type] : method-type
+<i style="color: silver" class="hl-comment">; Method's body</i>
+end
+</pre>
+				If there are no arguments in a method then you
+				may omit square brackets for arguments.
+				All explicit type declarations are unnecessary. A return
+				type of a method, 'method-type', can also be omitted.
+				In that case a method will have no return type. If a method
+				has a return type then its last command should be
+				'return some-value' where 'some-value' has the same
+				type as a method's type.
+<pre class="programlisting">
+to add-numbers [a b] : <b class="hl-keyword">number</b>
+[
+	<b class="hl-keyword">var</b> result = a + b
+	<b class="hl-keyword">return</b> result
+]
+</pre> 
+			</p>
+			<p>
+				There is one very important rule associated with SPARK-PL
+				commands and methods. If a command returns some value then 
+				it is required to use parentheses for all its arguments which
+				have complex structure. For commands without return value
+				it is not required. It seems to be confusing and not useful
+				but it helps to reduce the number of parentheses in
+				a program.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> SomeAgent : SpaceAgent
+
+to some-method
+	<b class="hl-keyword">var</b> v : <b class="hl-keyword">vector</b>
+	<i style="color: silver" class="hl-comment">; The next command is translated as</i>
+	<i style="color: silver" class="hl-comment">; var x = (ranodm 100) + 20</i>
+	<i style="color: silver" class="hl-comment">; because 'random' returns a value so all its arguments</i>
+	<i style="color: silver" class="hl-comment">; cannot be complex</i>
+	<b class="hl-keyword">var</b> x = random <span class="hl-number">100</span> + <span class="hl-number">20</span>
+	
+	v.x = x
+	x = random (<span class="hl-number">100</span> + x)
+	v.y = y
+	
+	<i style="color: silver" class="hl-comment">; The next command is translated as</i>
+	<i style="color: silver" class="hl-comment">; move-to (v + (x * v))</i>
+	<i style="color: silver" class="hl-comment">; because 'move-to' does not return any value.</i>
+	move-to v + x * v	
+end
+</pre>
+			</p>
+			<p>
+				Every SPARK model should have a main class. This class
+				is declared using 'model' keyword. The minimal working
+				SPARK model written in SPARK-PL may look as follows
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+space StandardSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">10</span> <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+</pre>
+				Right now you may ignore the second line where a space
+				is declared. You will learn about spaces later. Now you
+				only need to know that it is a requirement to declare
+				a space.
+			</p>
+			<p>
+				This minimal model is not useful. To make it more interesting,
+				several methods should be added. The first method to add
+				is a 'setup' method. This method is called every time
+				when a model is initialized. Note that if you have an explicit
+				initialization for a global variable then this initialization
+				will be processed each time the 'setup' method is called. 
+				There are other two special
+				methods: 'begin-step' and 'end-step' inside a main model class.
+				The method 'begin-step' is called before each simulation
+				step, the method 'end-step' is called after each simulation
+				step. The precise declarations of these methods are the following
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+space StandardSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">10</span> <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+
+to setup
+	<i style="color: silver" class="hl-comment">; Initialize a model</i>
+end
+
+to begin-step [tick] : boolean
+end
+
+to end-step [tick] : boolean
+end
+</pre>
+			The return type 'boolean' is not required for 
+			'end-step' and 'begin-step' methods. It will be added automatically.
+			Moreover, you don't need to write a return command. By default,
+			these methods return false value. If any of these methods
+			returns true value, then a simulation will be stopped.
+			So these methods can control a simulation process and stop
+			it if necessary.
+<pre class="programlisting">
+to begin-step [tick]
+	<i style="color: silver" class="hl-comment">; Automatically stops a simulation after 1000 steps</i>
+	<b class="hl-keyword">if</b> tick &gt;= <span class="hl-number">1000</span>
+		[ <b class="hl-keyword">return</b> <b class="hl-keyword">true</b> ]
+end
+</pre>
+			Also, it is possible to omit 'tick' argument for these two
+			methods. This argument counts the number of steps passed
+			from the beginning of a simulation process. If you don't
+			supply this argument, then it will be automatically created. 
+		</p>
+	</div>
+	
+	
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2009D"></a>SPARK-PL basic commands</h2></div></div></div>
+		
+		<p>
+			The most important command which controls a program
+			flow is 'if'. It has two arguments: a boolean value
+			and a special argument representing a block of a code.
+			This block of code is executed only if the argument is
+			true.
+			An example clarifies everything.
+<pre class="programlisting">
+<b class="hl-keyword">var</b> a = <span class="hl-number">3</span>
+
+<b class="hl-keyword">if</b> a &gt; <span class="hl-number">2</span>
+[
+	do-something
+]
+</pre>
+			There is a modification of this command 'ifelse' which
+			has additional code block argument which is executed
+			when the conidtion (the first argument) is false.
+<pre class="programlisting">
+<b class="hl-keyword">ifelse</b> a &gt; <span class="hl-number">2</span>
+[
+	do-something
+]
+[
+	do-something-else
+]
+</pre>
+		</p>
+		<p>
+			The command 'repeat' allows to repeat a block of commands
+			several times.
+<pre class="programlisting">
+<b class="hl-keyword">var</b> n = <span class="hl-number">100</span>
+
+<i style="color: silver" class="hl-comment">; Do something 100 times</i>
+<b class="hl-keyword">repeat</b> n
+[
+	do-something
+]
+</pre>
+		</p>
+		<p>
+			The command 'while' repeatedly executes a given block of
+			commands meanwhile a condition is true.
+<pre class="programlisting">
+<b class="hl-keyword">var</b> n = <span class="hl-number">100</span>
+
+while n &gt; <span class="hl-number">0</span>
+[
+	do-something
+	n = n - <span class="hl-number">1</span>
+]
+</pre> 
+		</p>
+		<p>
+			There is a very special command (a keyword) 'for' which
+			is used for iterating some value. It has the following
+			syntax
+<pre class="programlisting">
+<b class="hl-keyword">for</b> <b class="hl-keyword">var</b>-name = first-value : step : last-value
+[
+	do-something
+	<i style="color: silver" class="hl-comment">; var-name is available here as a numerical variable</i>
+]
+</pre>
+			Here 'var-name' is any identifier. The only condition is
+			that there is no local variable with the same name.
+			'first-value', 'step', and 'last-value' are numbers (or
+			numerical expressions). 'first-value' specifies the initial
+			value of the variable 'var-name'. 'step' specifies an increment of that
+			variable. 'last-value' specify when to stop the iterations.
+			Iterations will stop when the value of 'var-name' becomes
+			greater than 'last-value'. 'step' is an optional argument
+			and can be omitted.
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; Prints out numbers from 1 to 100</i>
+<b class="hl-keyword">for</b> i = <span class="hl-number">1</span> : <span class="hl-number">100</span>
+[
+	print i
+]
+</pre>
+		</p>
+		<p>
+			If a user method in SPARK-PL has return type then the command
+			'return value' can be used to exit from this method at any point.
+			For methods without return type this command is not available
+			because it always requires an argument. But if there is no
+			return type then there could be no return value. In that case,
+			the command 'exit' can be used. 
+		</p>
+		<p>
+			There are two commands which control the iterative processes
+			'while', 'repeat', and 'for'. The command 'continue' inside
+			an iteration code block tells to stop the current iteration
+			immediately and start the next iteration. The command 'break'
+			stops all iterations immediately and the commands after an
+			iteration process are executed.
+		</p>
+	</div>
+	
+	
+	<div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N200CD"></a>SPARK-PL basic types</h2></div></div></div>
+		
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200D2"></a>number</h3></div></div></div>
+		
+		<p>
+			The most basic type is 'number' (or 'double'). This type
+			represents a numerical value. It corresponds to a double
+			type in many other programming languages. So it can be used
+			for representing both integers and floating point numbers.
+			And of course, it has all problems associated with numbers
+			in computer science.
+		</p>
+		<p>
+			By default, all numerical variables initialized with 0.
+			All usual arithmetical operations are available for numbers:
+			+, -, *, /. Also there is a unary minus for negating a number.
+			The operator '%' means finding a residual of a division.
+			The operator '^' raises its left hand side to the power
+			from the right hand size.
+			There are several operators which combines assignment with
+			an arithmetic operation: +=, -=, *=, /=. These operators are
+			explained in the following example.
+<pre class="programlisting">
+<b class="hl-keyword">var</b> x = <span class="hl-number">20</span>
+<b class="hl-keyword">var</b> y = <span class="hl-number">30</span>
+
+<i style="color: silver" class="hl-comment">; Equivalent to</i>
+<i style="color: silver" class="hl-comment">; x = x + 1</i>
+x += <span class="hl-number">1</span>
+
+<i style="color: silver" class="hl-comment">; Equivalent to</i>
+<i style="color: silver" class="hl-comment">; x = x * y</i>
+x *= y
+</pre>
+		</p>
+		<p>
+			There are all usual mathematical functions in SPARK-PL like
+			'sin', 'cos', 'exp'. Commands 'floor', 'ceil', and 'round' are
+			used for rounding a number (see SPARK-PL dictionary for
+			full description). The command 'random a' returns a random number
+			in the interval [0,a). The command 'random-in-interval a b' returns a
+			random number in the interval [a, b).
+		</p>
+		</div>
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200E5"></a>boolean</h3></div></div></div>
+		
+		<p>
+			The next basic type is 'boolean'. This is a logical
+			type. Variables of this type can have two values: true or false.
+			The default value is false. The operators for this boolean
+			values are: 'and', 'or', 'not'. The meaning of these operators
+			is clear. There are several comparison operators for numbers
+			which yields a boolean result: &lt;, &gt;, &lt;=, &gt;=,
+			==, !=. The last two operators mean equality and inequality
+			respectively. Very often logic operators are used in 'if'
+			command for combining different conditions.
+<pre class="programlisting">
+<b class="hl-keyword">if</b> (x &gt; <span class="hl-number">30</span> and x &lt; <span class="hl-number">100</span>) or y == <span class="hl-number">1</span>
+[
+	do-something x
+]
+</pre>
+		</p>
+		</div>
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200F2"></a>string</h3></div></div></div>
+		
+		<p>
+			Strings in SPARK-PL are represented by a 'string' type.
+			Constants of this type should be always
+			written inside double quotes. There is a concatenation operation
+			for strings representing by a '+' operator. In SPARK-PL
+			strings are not used very often. One command which has one
+			string argument is 'print'. This command prints out its argument
+			in the standard output stream. Also this command can be used
+			with numerical arguments to print out numbers or with
+			other types to print out information about that types.
+<pre class="programlisting">
+to do-something [x]
+	<b class="hl-keyword">var</b> str1 = <b class="hl-string"><i style="color:red">"hello,"</i></b>
+	<b class="hl-keyword">var</b> str2 = <b class="hl-string"><i style="color:red">" world"</i></b>
+	print str1 + str2
+	print x
+end
+</pre> 
+		</p>
+		</div>
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N200FF"></a>vector</h3></div></div></div>
+		
+		<p>
+			The next type is 'vector'. It is more advanced type representing
+			a 3-d (or 2-d) vector. The constants of this type has the form
+			'[a, b, c]' where a, b, c are some numerical constants (in the
+			current SPARK-PL implementation it is not allowed to have variables
+			inside vector constants). There is a command 'create-vector'
+			with three arguments which creates a new vector with the given
+			entries. For this command any arguments can be used. Also, vectors
+			has all usual arithmetic operations: +, - for vectors, * for
+			a vector and a number, / for a vector on the left and a number on
+			the right. Also shortcuts +=, -=, *=, /= work for vectors (last
+			two operators expect numbers on the right hand side). It is also
+			possible to compare two vectors using '==' and '!=' operators.
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; All vectors initialized by a zero vector by default</i>
+<b class="hl-keyword">var</b> v1 : <b class="hl-keyword">vector</b>
+<b class="hl-keyword">var</b> v2 = [<span class="hl-number">1</span>, <span class="hl-number">2</span>, <span class="hl-number">3.3</span>]
+
+<i style="color: silver" class="hl-comment">; v1 = [3, 6, 9.9]</i>
+v1 = v2 * <span class="hl-number">3</span>
+v2 -= v1 + v2 * <span class="hl-number">4</span>
+
+<b class="hl-keyword">var</b> v3 = <b class="hl-keyword">create</b>-<b class="hl-keyword">vector</b> v1.x (v2.y + <span class="hl-number">3</span>) v1.y
+</pre>
+		</p>
+		<p>
+			The vector type has some methods. The method 'length' returns
+			the length of a vector. The method 'normalize' normalizes a
+			vector (makes it of the unit length) and returns the result
+			of the normalization (it modifies the vector which called
+			'normalize' and returns a reference to the same vector after modification).
+			There are three fields in each vector: 'x', 'y', 'z' which
+			represent the corresponding vector entries.
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; After the normalization we get v1 == v2</i>
+v2 = v1.normalize
+
+<i style="color: silver" class="hl-comment">; Due to numerical errors it cannot be guaranteed that</i>
+<i style="color: silver" class="hl-comment">; v1.length == 1 exactly</i>
+v2.x = v1.length
+</pre>
+		</p>
+		</div>
+		<div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="N20113"></a>Arrays and lists</h3></div></div></div>
+		
+		<p>
+			All basic types discussed so far were usual SPARK-PL types.
+			Besides usual types there are some special types. These special
+			types cannot be declared directly but several SPARK-PL
+			commands yield results of these types. The most important
+			special types are arrays and lists. In SPARK-PL it is often
+			not important whether a given object has an array or a list type
+			because there are primary technical differences between them.
+			Roughly speaking, lists are more flexible, meanwhile arrays
+			are more efficient. These types are used for storing several
+			objects of other type in the same variable. The command
+			'count' returns the number of objects inside a list or an array.
+			The command 'create' creates an array of objects. This command
+			has two arguments: a type name of objects to be created and a
+			number of these objects. This operation cannot be used for numbers
+			and boolean values.
+			All objects in a created array are initialized by their default
+			values. To get a particular element of an array (or a list)
+			use the 'get' command. It has two arguments: an array or a list and
+			the index of an element there (indices start from 0).
+<pre class="programlisting">
+<i style="color: silver" class="hl-comment">; Creates an array with 100 vectors</i>
+<b class="hl-keyword">var</b> array = <b class="hl-keyword">create</b> <b class="hl-keyword">vector</b> <span class="hl-number">100</span>
+
+<i style="color: silver" class="hl-comment">; Get the 4-th element in the array</i>
+<b class="hl-keyword">var</b> v = get array <span class="hl-number">3</span>
+</pre>
+		</p>
+		<p>
+			The most useful command which can be used with arrays
+			and lists is the 'ask' command. This command do several
+			things. To understand it completely, first look at another
+			application of the 'ask' command. It can be used with
+			any object (only not for a number or a boolean value) as its argument.
+			When a method is executed there is always one implicit variable
+			named 'self'. This variable refers to an object for which the method
+			is executed. Very often it is used implicitly.
+<pre class="programlisting">
+<b class="hl-keyword">class</b> SomeClass
+
+to method1
+end
+
+to method2
+	<i style="color: silver" class="hl-comment">; The next command will be translated as</i>
+	<i style="color: silver" class="hl-comment">; self.method1</i>
+	<i style="color: silver" class="hl-comment">; that is, the method 'method1' is called</i>
+	<i style="color: silver" class="hl-comment">; for the current active object.</i>
+	method1
+end
+</pre>
+			This 'self' variable can be always used explicitly.
+			The command 'ask' with an object argument temporary changes
+			this 'self' reference to its argument.
+<pre class="programlisting">
+to method
+	<b class="hl-keyword">var</b> v : <b class="hl-keyword">vector</b>
+
+	v.x = <span class="hl-number">1</span>
+	v.y = <span class="hl-number">2</span>
+	v.z = <span class="hl-number">3</span>
+	
+	<i style="color: silver" class="hl-comment">; The same things in another way</i>
+	ask v
+	[
+		<i style="color: silver" class="hl-comment">; Inside this block 'self' reference is set</i>
+		<i style="color: silver" class="hl-comment">; to the vector 'v', so its fields x, y, z</i>
+		<i style="color: silver" class="hl-comment">; can be accessed directly without</i>
+		<i style="color: silver" class="hl-comment">; an explicit reference to the object 'v'.</i>
+		x = <span class="hl-number">1</span>
+		y = <span class="hl-number">2</span>
+		z = <span class="hl-number">3</span>
+	]
+end
+</pre>
+			Now it is easy to explain the effect of the 'ask' command
+			applied to an array (or a list). First of all, it iterates
+			through all objects inside an array, and during each iteration
+			it assigns the 'self' reference to the current object in 
+			the array and performs all commands inside the code block
+			for that object.
+<pre class="programlisting">
+to method
+	<b class="hl-keyword">var</b> array = <b class="hl-keyword">create</b> <b class="hl-keyword">vector</b> <span class="hl-number">100</span>
+	
+	<b class="hl-keyword">var</b> i = <span class="hl-number">0</span>
+	
+	ask array
+	[
+		x = i
+		y = <span class="hl-number">2</span> * i
+		z = <span class="hl-number">3</span> * i
+
+		i += <span class="hl-number">1</span>
+	]
+end
+</pre>
+		</p>
+		<p>
+			Sometimes it is required to refer to an object which started
+			the 'ask' command inside the 'ask' command block (remember
+			that inside that block the 'self' reference is different).
+			In order to do so, use 'myself' reference. This reference
+			always refers to an object which started the 'ask' command.
+			Furthermore, 'ask' commands can be nested in each other.
+			There is also the reference 'this' which returns a reference
+			to the object for which the current method is executed.
+			Another reference is 'parent' which returns a reference
+			to a parent type of a type of 'this'. In fact, 'this' and
+			'parent' references are quite rare. The main purpose of
+			the 'parent' reference is to call a parent class method that has the same
+			name as a method in a child class from this child class.
+<pre class="programlisting">
+<b class="hl-keyword">class</b> Parent
+
+<b class="hl-keyword">var</b> x : <b class="hl-keyword">number</b>
+
+to function
+end
+
+<b class="hl-keyword">class</b> Child : Parent
+
+<b class="hl-keyword">var</b> x : <b class="hl-keyword">vector</b>
+
+to function
+	parent.function
+	
+	ask <b class="hl-keyword">create</b> <b class="hl-keyword">vector</b> <span class="hl-number">100</span>
+	[
+		<i style="color: silver" class="hl-comment">; This refers to vector's x component</i>
+		x = <span class="hl-number">2</span>
+		
+		<i style="color: silver" class="hl-comment">; This refers to a variable x defined in Child</i>
+		myself.x = [<span class="hl-number">1</span>, <span class="hl-number">2</span>, <span class="hl-number">3</span>]
+		
+		<i style="color: silver" class="hl-comment">; This refers to a variable x defined in Parent</i>
+		parent.x = <span class="hl-number">2</span>
+		
+		<i style="color: silver" class="hl-comment">; myself.x is a vector</i>
+		ask myself.x
+		[
+			<i style="color: silver" class="hl-comment">; Now myself refers to a vector</i>
+			<i style="color: silver" class="hl-comment">; from the previous 'ask' code block</i>
+			myself.x = <span class="hl-number">1</span>
+			
+			<i style="color: silver" class="hl-comment">; Again we refer to Child.x</i>
+			this.x = [<span class="hl-number">3</span>, <span class="hl-number">4</span>, <span class="hl-number">5</span>]
+		]
+	]
+end
+</pre>
+		</p>
+		</div>
+	</div>
+</div></body></html>

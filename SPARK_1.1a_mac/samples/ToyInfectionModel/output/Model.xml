@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<spark version="1">
+  <files all="true" path="."/>
+  <model tick="1">
+    <setup>ToyInfectionModel.Model</setup>
+    <variables>
+      <variable get="get_totalTissueDamage" name="total-tissue-damage" set="set_totalTissueDamage" type="Double"/>
+      <variable get="get_initialInfectionNumber" name="initial-infection-number" set="set_initialInfectionNumber" type="Double"/>
+      <variable get="get_cidalCompoundProduction" name="cidal-compound-production" set="set_cidalCompoundProduction" type="Double"/>
+      <variable get="get_chemotaxisThreshold" name="chemotaxis-threshold" set="set_chemotaxisThreshold" type="Double"/>
+      <variable get="get_yesToxin" name="yes-toxin" set="set_yesToxin" type="Boolean"/>
+      <variable get="get_CONST" name="CONST" set="set_CONST" type="Double"/>
+    </variables>
+    <agents>
+      <agent name="InfectAgent" priority="2">ToyInfectionModel.InfectAgent</agent>
+      <agent name="BasicAgent">ToyInfectionModel.BasicAgent</agent>
+      <agent name="InflamCell" priority="1">ToyInfectionModel.InflamCell</agent>
+    </agents>
+  </model>
+  <interface>
+    <about path="readme.txt"/>
+    <windows>
+      <window height="200" name="Parameters" visible="true" width="666" x="583" y="0"/>
+      <window height="200" name="Total Tissue Damage" visible="true" width="300" x="583" y="200"/>
+      <window height="300" name="Toxin" visible="true" width="300" x="590" y="400"/>
+      <window height="300" name="Cidal Compound" visible="true" width="300" x="894" y="399"/>
+      <window height="683" main="true" name="Main Window" visible="true" width="583" x="0" y="0"/>
+    </windows>
+    <mainframe location="Main Window">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <datalayerstyle name="tissue-life" selected="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="InfectAgent" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="InflamCell" position="1" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="BasicAgent" position="2" texture-env="0" transparent="false" visible="true"/>
+    </mainframe>
+    <parameterframe location="Parameters">
+      <parameter max="1000.0" min="0.0" name="Initial infection" step="1.0" type="Double" variable="initial-infection-number" widget="Slider"/>
+      <parameter max="30.0" min="0.0" name="Cidal compound production" step="0.1" type="Double" variable="cidal-compound-production" widget="Slider"/>
+      <parameter max="1.0" min="0.0" name="Chemotaxis threshold" step="0.1" type="Double" variable="chemotaxis-threshold" widget="Slider"/>
+      <parameter max="0.0" min="0.0" name="yes-toxin" step="0.0" type="Boolean" variable="yes-toxin" widget="OnOff"/>
+    </parameterframe>
+    <variable-sets/>
+    <renderframe location="Toxin">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <datalayerstyle name="toxin" selected="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="InfectAgent" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="InflamCell" position="1" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="BasicAgent" position="2" texture-env="0" transparent="false" visible="true"/>
+    </renderframe>
+    <renderframe location="Cidal Compound">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <datalayerstyle name="cidal-compound" selected="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="InfectAgent" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="InflamCell" position="1" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="BasicAgent" position="2" texture-env="0" transparent="false" visible="true"/>
+    </renderframe>
+    <data-layers>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="cidal-compound" val1="0.0" val2="5.0"/>
+      <datalayer color1="1.0;0.0;0.0" color2="0.0;1.0;0.0" name="tissue-life" val1="0.0" val2="100.0"/>
+      <datalayer color1="1.0;1.0;1.0" color2="1.0;0.0;0.0" name="toxin" val1="0.0" val2="1.0"/>
+    </data-layers>
+    <chart interval="1" label="total-tissue-damage" location="Total Tissue Damage" name="Total Tissue Damage" variable="total-tissue-damage"/>
+  </interface>
+</spark>

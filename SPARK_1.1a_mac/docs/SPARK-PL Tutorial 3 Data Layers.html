@@ -1,0 +1,238 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>SPARK-PL: Data Layers</title><link href="style.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.74.0" name="generator"><meta name="description" content="In this tutorial I'll present a concept of data layers in SPARK. After that I'll show how to work with data layers in SPARK-PL."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="N2000B"></a>SPARK-PL: Data Layers</h2></div><div><div class="author"><h3 class="author">Alexey Solovyev</h3></div></div><div><div class="abstract"><p class="title"><b>Abstract</b></p>
+			<p>
+				In this tutorial I'll present a concept of data layers
+				in SPARK. After that I'll show how to work with
+				data layers in SPARK-PL.
+			</p>
+		</div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="#N20021">Data layers in SPARK</a></span></dt><dt><span class="section"><a href="#N2002D">Data layers in SPARK-PL</a></span></dt><dt><span class="section"><a href="#N20052">Working with grid values</a></span></dt><dt><span class="section"><a href="#N2006E">Global grid methods</a></span></dt></dl></div>
+	
+
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20021"></a>Data layers in SPARK</h2></div></div></div>
+		
+		<p>
+			A data layer is one of key components of SPARK. Roughly speaking,
+			it defines a function on a space, that is, it assigns
+			a numerical value to each point in a space.
+		</p>
+		<p>
+			[To be written]
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2002D"></a>Data layers in SPARK-PL</h2></div></div></div>
+		
+		<p>
+			There is one type for working with data layers in SPARK-PL
+			called 'grid'. Generally, all data layers in a model
+			should be available for all agents, so it is convenient
+			to have a global variable for each data layer. In this case
+			the declaration of a new data layer is very simple
+<pre class="programlisting">
+	<b class="hl-keyword">global</b> data-layer : <b class="hl-keyword">grid</b>
+</pre>
+			Globally defined data layer (grid) variables are treated in a special way in SPARK-PL:
+			if there is no initialization then a default initialization
+			will be created. This default initialization creates a grid
+			in a space and its dimension equals to the integer dimension of
+			a space.
+		</p>
+		<p>
+			Another way to create a grid is to use 'create-grid' command.
+			This command has three arguments: name of a new grid (this
+			name can be used to get a reference to a grid from any part
+			of a model, for example in the case when there is no global
+			reference to a grid), x dimension of a grid, y dimension of a
+			grid. As always in SPARK-PL, x and y could be non-integer
+			in which case they will be rounded toward zero.
+		</p>
+		<p> 
+			Note: in current implementation only grids declared as global
+			variables can be visualized during model simulation process;
+			if you are using 'create-grid' command to initialize a globally
+			defined grid then the name argument should be the same as
+			global variable's name.
+		</p>
+		<p>
+		 	Remember that whenever you define a global variable
+			of type 'grid' and do not provide an initialization for it,
+			then a default initialization will be always created.
+			For example, in the code below two grids will be created
+<pre class="programlisting">
+<b class="hl-keyword">model</b> Model
+
+space NetLogoSpace -<span class="hl-number">10</span> <span class="hl-number">10</span> -<span class="hl-number">10</span> <span class="hl-number">10</span> <b class="hl-keyword">true</b> <b class="hl-keyword">true</b>
+
+<i style="color: silver" class="hl-comment">; A default initialization is created for this</i>
+<i style="color: silver" class="hl-comment">; grid which is equivalent to a command</i>
+<i style="color: silver" class="hl-comment">; create-grid "data-layer" 20 20</i>
+<b class="hl-keyword">global</b> data-layer : <b class="hl-keyword">grid</b>
+
+to setup
+	data-layer = <b class="hl-keyword">create</b>-<b class="hl-keyword">grid</b> <b class="hl-string"><i style="color:red">"data"</i></b> <span class="hl-number">10</span> <span class="hl-number">10</span>
+	
+	<i style="color: silver" class="hl-comment">; Now the global variable 'data-layer' contains</i>
+	<i style="color: silver" class="hl-comment">; a reference to a 10 by 10 grid called "data".</i>
+	
+	<i style="color: silver" class="hl-comment">; If the name "data-layer" were used in the previous line,</i>
+	<i style="color: silver" class="hl-comment">; then an error would occur during runtime</i>
+	<i style="color: silver" class="hl-comment">; because all data layers should have unique names</i>
+	<i style="color: silver" class="hl-comment">; and there is already one grid called "data-layer"</i>
+end
+</pre>
+			In this example two grids will be created in the model. One
+			of them called "data" is available through a global variable
+			'data-layer'. Another grid called "data-layer" can be accessed
+			using a command
+<pre class="programlisting">
+	get-<b class="hl-keyword">grid</b> <b class="hl-string"><i style="color:red">"data-layer"</i></b>
+</pre>
+			This command returns a reference to a grid with the given
+			name. Note that only one of these two grids can be visualized
+			during runtime: "data-layer" grid because it has the same
+			name as a global variable (this issue will be resolved
+			in further SPARK-PL releases). 
+		</p>
+		<p>
+			It is convenient to use 'create-grid' as an initialization
+<pre class="programlisting">
+	<b class="hl-keyword">global</b> data = <b class="hl-keyword">create</b>-<b class="hl-keyword">grid</b> <b class="hl-string"><i style="color:red">"data"</i></b> <span class="hl-number">11</span> <span class="hl-number">2</span>
+</pre>
+		</p>
+	</div>
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N20052"></a>Working with grid values</h2></div></div></div>
+		
+		<p>
+			A method 'set-value' sets the same value in all grid entries.
+			It has one argument: a value to be set. There are several
+			methods for working with local grid values. A method
+			'value-at' returns a value from a grid entry corresponding to
+			a specific point in a space. To set value at a specific point,
+			use 'set-value-at' method. There is also a method 'add-value-at'
+			which adds a given value to the value at a specific point.
+<pre class="programlisting">
+	<i style="color: silver" class="hl-comment">; all grid entries will be 1</i>
+	data.set-value <span class="hl-number">1</span>
+	
+	<i style="color: silver" class="hl-comment">; get a value at a point [2, 3, 0]</i>
+	<i style="color: silver" class="hl-comment">; (the third component of a vector is ignored here)</i>
+	<b class="hl-keyword">var</b> value = data.value-at [<span class="hl-number">2</span>, <span class="hl-number">3</span>, <span class="hl-number">0</span>]
+	<b class="hl-keyword">var</b> new-value = value * value
+
+	<i style="color: silver" class="hl-comment">; set a new value at a point [2.4, 1, 0]	</i>
+	data.set-value-at [<span class="hl-number">2.4</span>, <span class="hl-number">1</span>, <span class="hl-number">0</span>] new-value
+	
+	<i style="color: silver" class="hl-comment">; add a number to a value at a point [2, 3, 0]</i>
+	data.add-value-at [<span class="hl-number">2</span>, <span class="hl-number">3</span>, <span class="hl-number">0</span>] value
+</pre>
+			Of course, all these methods are accurate up to the resolution
+			of a grid. So the following commands often do the same things
+<pre class="programlisting">
+	data.set-value-at [<span class="hl-number">1.02</span>, <span class="hl-number">2.5</span>, <span class="hl-number">0</span>] <span class="hl-number">0.1</span>
+	data.set-value-at [<span class="hl-number">1.01</span>, <span class="hl-number">2.53</span>, <span class="hl-number">0</span>] <span class="hl-number">0.1</span> 
+</pre>
+		</p>
+		<p>
+			Agents can work with data layers in a more convenient way.
+			For agents it is often required to know a value or to set a value
+			at the same position at which they are located. Of course,
+			it is always possible to do so using 'value-at', 'set-value-at'
+			methods with agent's position but there is a shorter way to
+			do this. There are methods 'value-here', 'set-value-here',
+			'add-value-here' which automatically use agent's position
+			to work with data values. Of course, only space agents
+			can use these methods.
+<pre class="programlisting">
+<b class="hl-keyword">agent</b> SomeAgent : SpaceAgent
+
+
+to step
+	<b class="hl-keyword">var</b> data-here = data.value-here
+	<b class="hl-keyword">var</b> new-data = data-here * <span class="hl-number">4</span> + <span class="hl-number">5</span>
+	
+	data.set-value-here new-data
+	
+	data.add-value-here <span class="hl-number">0.5</span>
+end
+</pre>
+			Instead of 'value-here' and 'set-value-here' methods, it is
+			more convenient to use a field 'value' of a grid. You can
+			work with this field as with a usual variable. The following
+			example do the same thing as the previous one.
+<pre class="programlisting">
+to step
+	data.value = data.value * <span class="hl-number">4</span> + <span class="hl-number">5.5</span> 
+end
+</pre>
+			Note: in the current SPARK-PL implementation it is not possible
+			to use operators '+=', '*=', etc., with fields.
+		</p>
+	</div>
+	
+	
+	<div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="N2006E"></a>Global grid methods</h2></div></div></div>
+		
+		<p>
+			By global methods I understand methods which depend (or affect)
+			grid as a whole. One such a method was already introduces:
+			it was 'set-value' method.
+		</p>
+		<p> 
+			The method 'total-value' returns
+			a sum of all values in a grid. There is a command counterpart
+			of this method called 'sum' which takes one argument: a grid.
+<pre class="programlisting">
+	<b class="hl-keyword">var</b> total-data = data.total-value
+	<b class="hl-keyword">var</b> total-data2 = sum data
+	
+	<b class="hl-keyword">if</b> total-data == total-data2
+	[
+		print <b class="hl-string"><i style="color:red">"I'm not surprised"</i></b>
+	]
+</pre>
+			There is a variation of the 'total-value' method called
+			'total-value-in-region'. This method has four arguments
+			which specify a region in which a data should be summed up.
+<pre class="programlisting">
+	<b class="hl-keyword">var</b> value-in-rectangle = 
+         data.total-value-in-region x-min x-max y-min y-max
+</pre>
+		</p>
+		<p>
+			Methods 'max' and 'min' return maximum and minimum values in
+			a grid respectively.
+<pre class="programlisting">
+	<b class="hl-keyword">var</b> max-value = data.max
+	<b class="hl-keyword">var</b> min-value = data.min
+</pre>
+		</p>
+		<p>
+			Method 'multiply' multiplies all grid values by a given number.
+			This method has an alias 'evaporate' which reflects one common
+			application of this method. Also there is command 'evaporate'
+			with one argument (a grid) which does the same thing, and there
+			is an operator '*=' with a grid on the left and a number on the right
+			which is equivalent to the 'multiply' method.
+<pre class="programlisting">
+	data.multiply <span class="hl-number">2</span>
+	data.evaporate <span class="hl-number">0.6</span>
+	evaporate data <span class="hl-number">0.3</span>
+	data *= <span class="hl-number">0.99</span>
+</pre>
+		</p>
+		<p>
+			Method 'diffuse' performs a diffusion operation on a grid.
+			It has one argument: a diffusion coefficient. There is a command
+			'diffuse' with two argument which does the same thing.
+<pre class="programlisting">
+	data.diffuse <span class="hl-number">0.5</span>
+	diffuse data <span class="hl-number">1</span>
+</pre>
+		</p>
+		<p>
+		This method works as follows. Each data layer cell gives
+		equal shares of (coefficient * 100) percent of its value to its eight neighbors.
+		Coefficient should be between 0 and 1 for well-defined behavior. 
+		</p>
+	</div>
+</div></body></html>

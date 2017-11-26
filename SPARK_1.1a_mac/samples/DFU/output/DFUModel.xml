@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<spark version="1">
+  <files all="true" path="."/>
+  <model tick="1">
+    <setup>DFU.DFUModel</setup>
+    <variables>
+      <variable get="get_magnitude" name="magnitude" set="set_magnitude" type="Double"/>
+      <variable get="get_totalMac" name="total-mac" set="set_totalMac" type="Double"/>
+      <variable get="get_totalNeu" name="total-neu" set="set_totalNeu" type="Double"/>
+      <variable get="get_totalAm" name="total-am" set="set_totalAm" type="Double"/>
+      <variable get="get_totalAn" name="total-an" set="set_totalAn" type="Double"/>
+      <variable get="get_totalFibroblasts" name="total-fibroblasts" set="set_totalFibroblasts" type="Double"/>
+      <variable get="get_totalAf" name="total-af" set="set_totalAf" type="Double"/>
+      <variable get="get_totalTNF" name="total-TNF" set="set_totalTNF" type="Double"/>
+      <variable get="get_totalIL1Beta" name="total-IL1-beta" set="set_totalIL1Beta" type="Double"/>
+      <variable get="get_totalCollagen" name="total-collagen" set="set_totalCollagen" type="Double"/>
+      <variable get="get_totalTGF" name="total-TGF" set="set_totalTGF" type="Double"/>
+      <variable get="get_totalDam" name="total-dam" set="set_totalDam" type="Double"/>
+      <variable get="get_totalIL10" name="total-IL-10" set="set_totalIL10" type="Double"/>
+      <variable get="get_damageDistance" name="damage-distance" set="set_damageDistance" type="Double"/>
+      <variable get="get_step" name="step" set="set_step" type="Double"/>
+      <variable get="get_hour" name="hour" set="set_hour" type="Double"/>
+      <variable get="get_day" name="day" set="set_day" type="Double"/>
+      <variable get="get_time" name="time" set="set_time" type="Double"/>
+      <variable get="get_damageSize" name="damage-size" set="set_damageSize" type="Double"/>
+      <variable get="get_prob" name="prob" set="set_prob" type="Double"/>
+      <variable get="get_p1" name="p1" set="set_p1" type="Double"/>
+      <variable get="get_p2" name="p2" set="set_p2" type="Double"/>
+      <variable get="get_probDamDie" name="prob-dam-die" set="set_probDamDie" type="Double"/>
+      <variable get="get_repeatDam" name="repeat-dam" set="set_repeatDam" type="Double"/>
+      <variable get="get_addTGF" name="add-TGF" set="set_addTGF" type="Double"/>
+      <variable get="get_TNFAffector" name="TNF-affector" set="set_TNFAffector" type="Double"/>
+    </variables>
+    <methods>
+      <method method="addDamage" name="add-damage"/>
+    </methods>
+    <agents>
+      <agent name="am">DFU.am</agent>
+      <agent name="dam">DFU.dam</agent>
+      <agent name="an">DFU.an</agent>
+      <agent name="mac">DFU.mac</agent>
+      <agent name="fibroblast">DFU.fibroblast</agent>
+      <agent name="patch">DFU.patch</agent>
+      <agent name="CellAgent">DFU.CellAgent</agent>
+      <agent name="neu">DFU.neu</agent>
+      <agent name="af">DFU.af</agent>
+    </agents>
+  </model>
+  <interface>
+    <about path="readme.txt"/>
+    <windows>
+      <window height="200" name="Parameters" visible="true" width="800" x="690" y="0"/>
+      <window height="200" name="total-am" visible="true" width="300" x="690" y="200"/>
+      <window height="200" name="total-an" visible="true" width="300" x="990" y="200"/>
+      <window height="200" name="total-af" visible="true" width="300" x="1290" y="200"/>
+      <window height="200" name="total-TNF" visible="true" width="300" x="1590" y="200"/>
+      <window height="200" name="total-IL1-beta" visible="true" width="300" x="690" y="400"/>
+      <window height="200" name="total-collagen" visible="true" width="300" x="990" y="400"/>
+      <window height="200" name="total-TGF" visible="true" width="300" x="1290" y="400"/>
+      <window height="200" name="total-dam" visible="true" width="300" x="1590" y="400"/>
+      <window height="200" name="total-IL-10" visible="true" width="300" x="690" y="600"/>
+      <window height="200" name="day" visible="true" width="300" x="990" y="600"/>
+      <window height="200" name="Methods" visible="true" width="200" x="1490" y="0"/>
+      <window height="200" name="Data" visible="true" width="200" x="1690" y="0"/>
+      <window height="790" main="true" name="Main Window" visible="true" width="690" x="0" y="0"/>
+    </windows>
+    <mainframe location="Main Window">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="af" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="CellAgent" position="1" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="am" position="2" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="neu" position="3" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="an" position="4" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="dam" position="5" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="fibroblast" position="6" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="false" name="patch" position="7" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="mac" position="8" texture-env="0" transparent="false" visible="true"/>
+    </mainframe>
+    <parameterframe location="Parameters">
+      <parameter default="16.0" max="30.0" min="0.0" name="magnitude" step="0.0" type="Double" variable="magnitude" widget="Slider"/>
+      <parameter default="1.0" max="2.0" min="0.0" name="TNF-affector" step="0.01" type="Double" variable="TNF-affector" widget="Slider"/>
+    </parameterframe>
+    <dataset location="Data">
+      <item name="Total AM" variable="total-am"/>
+      <item name="total-an" variable="total-an"/>
+    </dataset>
+    <variable-sets/>
+    <data-layers>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="TNF" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="TGF" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="IL1-beta" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="IL-10" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="platelet" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="damage" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="dam-number" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="collagen-number" val1="0.0" val2="1.0"/>
+      <datalayer color1="0.0;0.0;0.0" color2="0.0;0.0;1.0" name="collagen-number2" val1="0.0" val2="1.0"/>
+    </data-layers>
+    <chart interval="0" label="total-am" location="total-am" name="total-am" variable="total-am"/>
+    <chart interval="0" label="total-an" location="total-an" name="total-an" variable="total-an"/>
+    <chart interval="0" label="total-af" location="total-af" name="total-af" variable="total-af"/>
+    <chart interval="0" label="total-TNF" location="total-TNF" name="total-TNF" variable="total-TNF"/>
+    <chart interval="0" label="total-IL1-beta" location="total-IL1-beta" name="total-IL1-beta" variable="total-IL1-beta"/>
+    <chart interval="0" label="total-collagen" location="total-collagen" name="total-collagen" variable="total-collagen"/>
+    <chart interval="0" label="total-TGF" location="total-TGF" name="total-TGF" variable="total-TGF"/>
+    <chart interval="0" label="total-dam" location="total-dam" name="total-dam" variable="total-dam"/>
+    <chart interval="0" label="total-IL-10" location="total-IL-10" name="total-IL-10" variable="total-IL-10"/>
+    <chart interval="0" label="day" location="day" name="day" variable="day"/>
+    <methods-panel location="Methods"/>
+  </interface>
+</spark>

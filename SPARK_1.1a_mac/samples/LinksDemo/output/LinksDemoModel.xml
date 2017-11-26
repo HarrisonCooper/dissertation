@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<spark version="1">
+  <files all="true" path="."/>
+  <model tick="1">
+    <setup>LinksDemo.LinksDemoModel</setup>
+    <variables>
+      <variable get="get_initNumber" name="init-number" set="set_initNumber" type="Double"/>
+    </variables>
+    <agents>
+      <agent name="SimpleLink">LinksDemo.SimpleLink</agent>
+      <agent name="SimpleAgent">LinksDemo.SimpleAgent</agent>
+    </agents>
+  </model>
+  <interface>
+    <about path="readme.txt"/>
+    <windows>
+      <window height="144" name="Parameters" visible="false" width="638" x="775" y="111"/>
+      <window height="600" main="true" name="Main Window" visible="true" width="500" x="0" y="0"/>
+    </windows>
+    <mainframe location="Main Window">
+      <spacestyle name="space" selected="true" swapXY="false"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="SimpleLink" position="0" texture-env="0" transparent="false" visible="true"/>
+      <agentstyle alpha-function-value="0.0" border="true" name="SimpleAgent" position="1" texture-env="0" transparent="false" visible="true"/>
+    </mainframe>
+    <parameterframe location="Parameters">
+      <parameter default="2.0" max="0.0" min="0.0" name="init-number" step="0.0" type="Double" values="1,2,3,4,10,20" variable="init-number" widget="Slider"/>
+    </parameterframe>
+    <variable-sets/>
+    <data-layers/>
+  </interface>
+</spark>
