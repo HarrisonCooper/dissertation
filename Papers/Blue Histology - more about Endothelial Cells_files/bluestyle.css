@@ -1,0 +1,56 @@
+
+body 							{ background-color: #efefef; color: #000000; font-family: Arial, Helvetica, sans-serif }
+body.ute					{ background-color: #ccccff; color: #000000 }
+body.nav					{ background-color: #00008A; color: #ffffff; font-size: 10pt; }
+
+a									{ color: blue; text-decoration: none }
+a:visited					{ color: blue; text-decoration: none }
+a.ahome						{ text-align: right; font-size: 8pt; color: #999999 }
+a.ahome:visited		{ text-align: right; font-size: 8pt; color: #999999 }
+a.ahome:hover			{ text-align: right; font-size: 8pt; color: #000000 }
+.home							{ text-align: right; font-size: 8pt; color: #999999 }
+
+img.imgfull				{}
+img.imghalf				{}
+img.imgem					{}
+
+h2								{ font-size: 18pt; font-weight: bold }
+h2.h2header				{ font-size: 18pt; color: #00008A }
+h3								{ font-size: 14pt; font-weight: bold }
+h4								{ font-size: 12pt; font-weight: bold }
+
+p									{ line-height: 18pt; font-size: 12pt }
+p.pheadwhite			{ font-size: 12pt; color: #ffffff; font-weight: bold }
+p.docinfo					{ font-size: 10pt; font-style: italic }
+
+li								{ line-height: 18pt; font-size: 12pt }
+dt								{ line-height: 18pt; font-size: 12pt }
+dd								{ line-height: 18pt; font-size: 12pt }
+
+.headwhite				{ font-size: 12pt; color: #ffffff; font-weight: bold }
+.textsmall				{ line-height: 14pt; font-size: 9pt }
+.textred					{ color: #f00000 }
+.textitalic				{ font-style: italic }
+.textbold 				{ font-weight: bold }
+.textitalicbold		{ font-weight: bold; font-style: italic }
+.centered					{ text-align: center }
+.nicecolor				{ color: #800040 }
+.section					{ color: #800040; font-weight: bold }
+.todo							{ color: #008080; font-style: italic; font-weight: bold }
+.confuse					{ font-weight: bold; color: #FF0000}
+.blue							{ font-size: 18pt; font-weight: bold; color: #000099 }
+
+.labrec 					{ font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #800040 }
+.utility	  			{ font-family: arial, Helvetica, sans-serif; font-size: 10pt }
+
+table.tablealert	{ border-width: 2px; border-style: solid; border-color: red; padding: 5px }
+table.tableimage	{ border-width: 0px; border-style: none; width: 100% }
+table.tabletoc		{ border-width: 0px; border-style: none; width: 100% }
+
+td.tdhead					{ background-color: #000099 }
+td.tdbluelight 		{ background-color: #ccccff; padding: 3px }
+td.tdgrey					{ background-color: #efefef }
+td.td50						{ width: 50%; padding: 0px 10px 0px 0px; vertical-align: top }
+td.header-topic 	{ background-color: #ccccff; font-weight: bold; text-align: center; padding: 3px }
+td.header-lab 		{ background-color: #EBE9B7; font-weight: bold; text-align: center; padding: 3px }
+td.lab 						{ background: #EBE9B7; padding: 3px }
