@@ -12,16 +12,17 @@ from messages import messages     #Class representing messages passed to agents.
 
 class general_cell:
     # The following attributes will apply to all cell agents
-    radius = 120
-    min_radius = 20
+    radius = 5
+    min_radius = 4
     
     
-    def __init__(self, ID=[], stage=[], position=[], direc=[]):
+    def __init__(self, ID=[], stage=[], position=[], direc=[], turnover=[]):
         # These attributes vary per cell
         self.ID = ID        
         self.pos = position
         self.stage = stage
         self.direc = direc
+        self.turnover = turnover
         
         self.dead = False
         self.contact = {}
@@ -42,8 +43,8 @@ class general_cell:
     def kill_cell(self,env):
         self.dead = True
         self.messages.dead = True
-        print("%s ID%s is dead. radius = %s" \
-        %(self.__class__.__name__, self.ID, self.radius))
+        print("%s ID%s is dead. radius = %s turnover = %t" \
+        %(self.__class__.__name__, self.ID, self.radius, self.turnover))
         
     def migrate(self, env):
         mig = False
@@ -69,6 +70,8 @@ class general_cell:
                     
     def apoptosis(self,env):
         if self.radius <= self.min_radius:  #cell dies if it gets smaller than minradius
+            self.kill_cell(env)
+        if self.turnover == self.max_turnover: #cell dies if it proliferates enough
             self.kill_cell(env)
 
 

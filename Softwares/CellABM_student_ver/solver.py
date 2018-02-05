@@ -48,7 +48,8 @@ def agent_solve(env):
                             
         for agent in env.cancercells:    
             
-            #40% chance of migration
+            #40% chance of migration, currently set speed to 0, therefore
+            # no migration will occur.
             chance = random.random()
             if chance <= 0.4:
                 agent.migrate(env)

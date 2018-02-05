@@ -31,10 +31,11 @@ class environment:
         for s in range(nsc):
             ID = s
             pos = [sc.radius + (round(rand(),3))*(self.size-(2*sc.radius)), sc.radius +(round(rand(),3))*(self.size-(2*sc.radius))]
-            stage = np.ceil(rand()*90)
+            stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
+            turnover = 1
             
-            stemcells.append(sc(ID, stage, pos, direc))
+            stemcells.append(sc(ID, stage, pos, direc, turnover))
 
         #if list type is seperate (each agent type has its own list)
         self.cancercells=cancercells
