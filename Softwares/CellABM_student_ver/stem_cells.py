@@ -29,7 +29,7 @@ class sc(general_cell):
 
     def __repr__(self):
         out = ('\nClass(sc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage, self.pos, self.direc))
-        return (out)
+        rxeturn (out)
 
     #uses general_cell migration and move_cell methods
     #uses general_cell apoptosis and kill_cell methods
