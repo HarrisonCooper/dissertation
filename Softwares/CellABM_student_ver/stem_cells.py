@@ -37,6 +37,7 @@ class sc(general_cell):
     def split_cell(self,env):
         newcellpos=[self.pos[0]+random.uniform(-1,1)*self.radius, self.pos[1]+random.uniform(-1,1)* self.radius]
         newcell= sc(ID=self.num_sc, stage=1, pos=newcellpos, direc=random.random()*2*math.pi, turnover=1)
+        #self.radius = self.radius/2 #Daughter cell is half area of parent
         self.stage = 1
         self.turnover = self.turnover +1
         self.pos=[self.pos[0]+random.uniform(-1,1)*self.radius, self.pos[1]+random.uniform(-1,1)* self.radius]
@@ -48,6 +49,9 @@ class sc(general_cell):
         #This function should enable the EC's to double in size over their 4 stages, before undergoing mitosis.
         #WARNING: all this does is for n < 10 after 4 steps n = 10. Therefore no doubling occurs...
         #Could cheat and on 4th stage double radius. But then instant splitting into 2 half produces no result.
+        
+        #This is all wrong, the cells double is area not radius, area = pi*r^2
+        
         if self.stage == 1: #Increase orignial size by 1/4
             self.radius = self.radius + (self.radius)/4 
         elif self.stage == 2: #Decrease by 1/4 to achieve orignial, then increase by 2/4
@@ -63,19 +67,7 @@ class sc(general_cell):
         #print('stage: ', self.stage)
         #print('Turnover: ', self.turnover)
         print("Cell: %s Radius %s" %(self.ID, self.radius))
-        
-        """
-        Experimentation with doubling EC size during proliferation.
-        (therefore min starting size of 5um will go to 10um before splitting
-        and max starting size of 10um will go to 20um before splitting)
-        4 steps, in all steps , take current radius and increase by:
-            stage1: 
-                self.radius = radius + (2*radius)/4
-            stage2:
-                self.radius = radius + (10-radius)/4
-        """
-        
-        
+
         if self.stage == self.max_stage:
             #self.turnover = self.turnover +1
             new=self.split_cell(env)

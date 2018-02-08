@@ -132,78 +132,6 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
             values[i].append([new_xi, new_yi])
     check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it+1)
     
-    '''    
-            print "for cell %s the new x and y positions are: (%s, %s)" %(str(cells[i].ID), str(new_xi), str(new_yi))
-
-    #2d plot
-    fig = plt.figure()
-    ax = fig.add_subplot(111,aspect='equal')
-
-    for n in range (len(cells)):
-        if cells[n].__class__.__name__ == "cc":
-            color = 'g'
-        else:
-            color = 'b'
-        ax.add_artist(Circle((values[n][len(values[n])-1][0], values[n][len(values[n])-1][1]), cells[n].radius, fc=color, alpha = 0.5))
-        
-        if labels == True:            
-            ax.text(values[n][len(values[n])-1][0], values[n][len(values[n])-1][1], str(cells[n].ID))
-        
-    plt.axis([0, env.size, 0, env.size])
-    
-    if n_it == 0:
-        figname = 'Initial Setup \n (Overlap correction at OCM_it= %s)' %(str(OCM_it))
-        filename = 'Initial_Setup_overlap_t%s' %(str(OCM_it))
-    else:
-        figname = 'Iteration %s \n (Overlap correction at OCM_it= %s)' %(str(n_it), str(OCM_it))
-        filename = "Iteration_%s_overlap_t%s" %(str(n_it), str(OCM_it))
-    
-    ax.set_title(figname)
-    save(filename,directory,'2d')
-    plt.close(fig)
-    
-    #3d plot    
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-        
-    phi = np.linspace(0, 2 * np.pi, 100)
-    theta = np.linspace(0, np.pi, 100)
-    for n in range (len(cells)):
-        # [len(values[n])-1] --> locates the last column of row n (row n = cell n) so finds the last position
-        xm = cells[n].radius * np.outer(np.cos(phi), np.sin(theta)) + values[n][len(values[n])-1][0]
-        ym = cells[n].radius * np.outer(np.sin(phi), np.sin(theta)) + values[n][len(values[n])-1][1]
-        zm = cells[n].radius * np.outer(np.ones(np.size(phi)), np.cos(theta))
-
-        if labels == True:    
-            ax.text(values[n][len(values[n])-1][0], values[n][len(values[n])-1][1], 0, str(cells[n].ID))
-
-        if cells[n].__class__.__name__ == "cc":
-            color = 'g'
-        else:
-            color = 'b'
-        ax.plot_surface(xm, ym, zm,rstride=10, cstride=10,  linewidth =0, alpha = 0.5, color=color)
-
-    ax.set_zlim((-1, env.size))
-    ax.set_xlim((0, env.size))
-    ax.set_ylim((0, env.size))
-    ax.view_init(elev=65, azim =235) #camera position
-    ax.w_zaxis.line.set_lw(0.)
-    ax.set_zticks([])
-        
-    if n_it == 0:
-        figname = 'Initial Setup \n (Overlap correction at OCM_it= %s)' %(str(OCM_it))
-        filename = 'Initial_Setup_overlap_t' +str(OCM_it)
-    else:
-        figname = 'Iteration %s \n (Overlap correction at OCM_it= %s)' %(str(n_it), str(OCM_it))
-        filename = "Iteration_%s_overlap_t%s" %(str(n_it), str(OCM_it))
-    
-    ax.set_title(figname)
-    save(filename,directory,'3d')
-    plt.close(fig)    
-
-    check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it+1)
-    '''
-            
 def update_pos_ABM(env, values):
     i = 0        
     for agent in env.cancercells:
@@ -219,6 +147,7 @@ def update_pos_ABM(env, values):
         agent.move_cell(npos,env)
         i += 1
                 
+#I Think this is whats making the cells sometimes go tiny on some iterations
 def update_radii(env, cells, overlap, directory, labels):
     for i in range(len(overlap)):
         ri = cells[i].radius
@@ -245,23 +174,5 @@ def display_plot_values(plot_values, OCM_it, n_it):
     axarr[0].set_title('Number of pairs of overlapping cells')
     axarr[1].plot(time, plot_values[1])
     axarr[1].set_title('Total overlap error')
-    axarr[1].set_xlabel('OCM_it')
-    '''    
-    book = xlwt.Workbook()
-    sheet = book.add_sheet('sheet1')
-    for col, value in enumerate(time):
-            sheet.write(1, col, value)        
-    for col, value in enumerate(plot_values[0]):
-            sheet.write(2, col, value)
-    for col, value in enumerate(plot_values[1]):
-            sheet.write(3, col, value)
-    if n_it == 0:
-        filename = 'Initial_Setup_overlap_t%s.xls' %(str(OCM_it))
-    else:
-        filename = "Iteration_%s_overlap_t%s.xls" %(str(n_it), str(OCM_it))
-    book.save(filename)
-    '''            
-                    
-                    
-                    
+    axarr[1].set_xlabel('OCM_it')        
                 

@@ -34,6 +34,8 @@ class environment:
             stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
             turnover = 1
+            #radius = sc.radius
+            #print("Cell: %s Radius: %s"%s(ID, radius))
             
             stemcells.append(sc(ID, stage, pos, direc, turnover))
 
