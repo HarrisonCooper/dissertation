@@ -43,7 +43,7 @@ class general_cell:
     def kill_cell(self,env):
         self.dead = True
         self.messages.dead = True
-        print("%s ID%s is dead. radius = %s turnover = %t" \
+        print("%s ID%s is dead. radius = %s turnover = %s" \
         %(self.__class__.__name__, self.ID, self.radius, self.turnover))
         
     def migrate(self, env):
