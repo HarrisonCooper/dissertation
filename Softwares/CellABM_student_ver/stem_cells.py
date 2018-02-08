@@ -14,8 +14,8 @@ class sc(general_cell):
 
     #radius = 1.5
     radius = random.randint(5,10)
-    min_radius = 5
-    max_speed = 1 #360 #(move at 1micrometer a min, time period = 6hrs therefore this is speed)
+    min_radius = 4.9
+    max_speed = 360 #1 #(move at 1micrometer a min, time period = 6hrs therefore this is speed)
     max_direc = round((2.0/3)*math.pi,3)
     max_stage = 4 #each level =6hrs of real time (I believe this is turnover time)
     max_turnover = 50 
@@ -60,8 +60,9 @@ class sc(general_cell):
 
 
     def mitosis(self,env):
-        print('stage: ', self.stage)
-        print('Turnover: ', self.turnover)
+        #print('stage: ', self.stage)
+        #print('Turnover: ', self.turnover)
+        print("Cell: %s Radius %s" %(self.ID, self.radius))
         
         """
         Experimentation with doubling EC size during proliferation.
