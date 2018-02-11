@@ -6,6 +6,8 @@ Creating environment and initial model cells (inc pos, direc and stage info)
 """
 
 import numpy as np
+import math
+import random
 from cancer_cells import cc
 from stem_cells import sc
 from numpy.random import rand
@@ -30,14 +32,18 @@ class environment:
 
         for s in range(nsc):
             ID = s
-            pos = [sc.radius + (round(rand(),3))*(self.size-(2*sc.radius)), sc.radius +(round(rand(),3))*(self.size-(2*sc.radius))]
+            radius = random.randint(5,10)
+            area = math.pi*(radius*radius)
+            pos = [radius + (round(rand(),3))*(self.size-(2*radius)), radius +(round(rand(),3))*(self.size-(2*radius))]
             stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
             turnover = 1
+            #radius = rand.randint(5,10)
+            #area = math.pi*(radius*radius)
             #radius = sc.radius
             #print("Cell: %s Radius: %s"%s(ID, radius))
             
-            stemcells.append(sc(ID, stage, pos, direc, turnover))
+            stemcells.append(sc(ID, stage, pos, direc, turnover, radius))
 
         #if list type is seperate (each agent type has its own list)
         self.cancercells=cancercells

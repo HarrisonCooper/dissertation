@@ -13,7 +13,7 @@ import math
 class sc(general_cell):
 
     #radius = 1.5
-    radius = random.randint(5,10)
+    #radius = random.randint(5,10)
     min_radius = 4.9
     max_speed = 360 #1 #(move at 1micrometer a min, time period = 6hrs therefore this is speed)
     max_direc = round((2.0/3)*math.pi,3)
@@ -22,8 +22,8 @@ class sc(general_cell):
 
     num_sc = 0 #number of alive stem cells
 
-    def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover = []):
-        general_cell.__init__(self, ID, stage, pos, direc, turnover)
+    def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover = [], radius = []):
+        general_cell.__init__(self, ID, stage, pos, direc, turnover, radius)
         # Increase the number of living stem cells by one
         self.__class__.num_sc = self.__class__.num_sc + 1
 

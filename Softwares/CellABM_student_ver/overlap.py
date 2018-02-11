@@ -42,13 +42,22 @@ def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_
         xi = values[i][len(values[i])-1][0]
         yi = values[i][len(values[i])-1][1]
         ri = cells[i].radius
+        #print(i, " ", ri)
         for j in range(i, len(overlap)):
             if i !=j:
                 xj = values[j][len(values[j])-1][0]
                 yj = values[j][len(values[j])-1][1]
                 rj = cells[j].radius
                 
+                if rj == []:
+                    rj = ri
+                
+                #print("1Type ri:", ri, type(ri))
+                #print("1Type rj:", rj, type(rj))
+                
+                #print("ri:", ri, "rj:", rj)
                 overlap[i][j] = np.sqrt((xj-xi)**2 +(yj-yi)**2) - (ri+rj)
+                #print("****",ri+rj)
                 if overlap[i][j] < -(ri+rj)/100.0 :
                     overlap_tally = overlap_tally +1
                     overlap_error = overlap_error + overlap[i][j]
@@ -87,6 +96,16 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
                 rj = cells[j].radius
                 
                 dist_ij = np.sqrt((xj-xi)**2 +(yj-yi)**2)
+                
+                if ri == []:
+                    ri = rj
+                
+                if rj == []:
+                    rj = ri
+                    
+                #print("2Type ri:", ri, type(ri))
+                #print("2Type rj:", rj, type(rj))
+
                 
                 if (dist_ij -(ri+rj)) < -(ri+rj)/100.0 :
                     Lij = ri + rj

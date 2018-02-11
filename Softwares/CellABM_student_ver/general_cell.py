@@ -12,17 +12,18 @@ from messages import messages     #Class representing messages passed to agents.
 
 class general_cell:
     # The following attributes will apply to all cell agents
-    radius = 5
-    min_radius = 4
+    #radius = 5
+    #min_radius = 4
     
     
-    def __init__(self, ID=[], stage=[], position=[], direc=[], turnover=[]):
+    def __init__(self, ID=[], stage=[], position=[], direc=[], turnover=[], radius = []):
         # These attributes vary per cell
         self.ID = ID        
         self.pos = position
         self.stage = stage
         self.direc = direc
         self.turnover = turnover
+        self.radius = radius
         
         self.dead = False
         self.contact = {}
