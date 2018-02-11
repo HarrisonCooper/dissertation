@@ -36,7 +36,7 @@ class sc(general_cell):
 
     def split_cell(self,env):
         newcellpos=[self.pos[0]+random.uniform(-1,1)*self.radius, self.pos[1]+random.uniform(-1,1)* self.radius]
-        newcell= sc(ID=self.num_sc, stage=1, pos=newcellpos, direc=random.random()*2*math.pi, turnover=1)
+        newcell= sc(ID=self.num_sc, stage=1, pos=newcellpos, direc=random.random()*2*math.pi, turnover=1, radius=self.radius/2)
         #self.radius = self.radius/2 #Daughter cell is half area of parent
         self.stage = 1
         self.turnover = self.turnover +1

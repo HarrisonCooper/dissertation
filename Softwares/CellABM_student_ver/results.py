@@ -79,6 +79,9 @@ def plot_2d(env, directory, labels, n_it):
             ax.text(env.cancercells[n].pos[0]-0.7, env.cancercells[n].pos[1]-0.5, str(env.cancercells[n].ID), fontsize = 7)     #IDs    
     
     for n in range (len(env.stemcells)):
+        
+        print(n, env.stemcells[n].radius)
+        
         ax.add_artist(Circle((env.stemcells[n].pos[0], env.stemcells[n].pos[1]), env.stemcells[n].radius, fc='r', alpha = 0.5))
         if labels == True:            
             ax.text(env.stemcells[n].pos[0]-0.7, env.stemcells[n].pos[1]-0.5, str(env.stemcells[n].ID), fontsize=7)     #IDs    
