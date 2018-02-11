@@ -36,8 +36,10 @@ class sc(general_cell):
 
     def split_cell(self,env):
         newcellpos=[self.pos[0]+random.uniform(-1,1)*self.radius, self.pos[1]+random.uniform(-1,1)* self.radius]
-        newcell= sc(ID=self.num_sc, stage=1, pos=newcellpos, direc=random.random()*2*math.pi, turnover=1, radius=self.radius/2)
+        newcell= sc(ID=self.num_sc, stage=1, pos=newcellpos, direc=random.random()*2*math.pi, turnover=1, radius=math.sqrt(self.area/math.pi), area=self.area/2)
         #self.radius = self.radius/2 #Daughter cell is half area of parent
+        self.area = self.area/2 #Daughter cell is halve the size of the parent
+        self.radius = math.sqrt(self.area/math.pi)#Daughter cell is halve the size of the parent
         self.stage = 1
         self.turnover = self.turnover +1
         self.pos=[self.pos[0]+random.uniform(-1,1)*self.radius, self.pos[1]+random.uniform(-1,1)* self.radius]
@@ -70,12 +72,16 @@ class sc(general_cell):
         
         if self.stage == 1: #Increase orignial size by 1/4
             self.area = self.area + (self.area)/4 
+            print(self.area)
         elif self.stage == 2: #Decrease by 1/4 to achieve orignial, then increase by 2/4
             self.area = (self.area-(self.area)/4) + (self.area+(self.area)/2)
+            print(self.area)
         elif self.stage == 3: #Decrease by 2/4 to achieve orignial, the increase by 3/4
             self.area = (self.area-(self.area)/2) + (self.area+(3*(self.area))/4)
+            print(self.area)
         else: #Decrease by 3/4 to achieve orignial, then double
             self.area = (self.area-(3*(self.area))/4) + (self.area+2*(self.area))
+            print(self.area)
         #Send this result onto mitosis.
         self.radius = math.sqrt(self.area/math.pi)
         
