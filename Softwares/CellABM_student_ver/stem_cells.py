@@ -44,6 +44,19 @@ class sc(general_cell):
         print('new stem cell created with cell ID = %s' %str(newcell.ID))
         return(newcell)
         
+    def mitosis(self,env):
+        #print('stage: ', self.stage)
+        #print('Turnover: ', self.turnover)
+        print("Cell: %s Radius %s" %(self.ID, self.radius))
+
+        if self.stage == self.max_stage:
+            #self.turnover = self.turnover +1
+            new=self.split_cell(env)
+        else:
+            self.stage = self.stage +1
+            new = None
+        return(new)
+        
 
         """Harrison P Cooper - 7/2/18"""
     def growth(self,env):
@@ -69,18 +82,8 @@ class sc(general_cell):
         print("*2*", "CellID:", self.ID, "Stage:", self.stage, "Area:", self.area, "Radius:", self.radius)
         
         new=self.mitosis(env)
-
-
-    def mitosis(self,env):
-        #print('stage: ', self.stage)
-        #print('Turnover: ', self.turnover)
-        print("Cell: %s Radius %s" %(self.ID, self.radius))
-
-        if self.stage == self.max_stage:
-            #self.turnover = self.turnover +1
-            new=self.split_cell(env)
-        else:
-            self.stage = self.stage +1
-            new = None
         return(new)
+
+
+
         
