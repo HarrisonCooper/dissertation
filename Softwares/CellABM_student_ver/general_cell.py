@@ -16,7 +16,7 @@ class general_cell:
     #min_radius = 4
     
     
-    def __init__(self, ID=[], stage=[], position=[], direc=[], turnover=[], radius = []):
+    def __init__(self, ID=[], stage=[], position=[], direc=[], turnover=[], radius = [], area = []):
         # These attributes vary per cell
         self.ID = ID        
         self.pos = position
@@ -24,6 +24,7 @@ class general_cell:
         self.direc = direc
         self.turnover = turnover
         self.radius = radius
+        self.area = area
         
         self.dead = False
         self.contact = {}

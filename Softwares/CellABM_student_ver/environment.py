@@ -37,13 +37,8 @@ class environment:
             pos = [radius + (round(rand(),3))*(self.size-(2*radius)), radius +(round(rand(),3))*(self.size-(2*radius))]
             stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
-            turnover = 1
-            #radius = rand.randint(5,10)
-            #area = math.pi*(radius*radius)
-            #radius = sc.radius
-            #print("Cell: %s Radius: %s"%s(ID, radius))
-            
-            stemcells.append(sc(ID, stage, pos, direc, turnover, radius))
+            turnover = 1 #Adapt logic so older the patient, the higher the average starting turnover of seed ECs.
+            stemcells.append(sc(ID, stage, pos, direc, turnover, radius, area))
 
         #if list type is seperate (each agent type has its own list)
         self.cancercells=cancercells
