@@ -73,8 +73,8 @@ def agent_solve(env):
             agent.apoptosis(env)
 
             if not agent.messages.dead:
-                agent.growth(env)
-                new = agent.mitosis(env)
+                new = agent.growth(env)
+                #new = agent.mitosis(env)
                 if new is not None:
                     new_stemcells.append(new)
 
