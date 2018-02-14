@@ -50,11 +50,11 @@ def agent_solve(env):
             
             #40% chance of migration, currently set speed to 0, therefore
             # no migration will occur.
-            chance = random.random()
-            if chance <= 0.4:
-                agent.migrate(env)
-            else:
-                pass
+#            chance = random.random()
+#            if chance <= 0.4:
+#                agent.migrate(env)
+#            else:
+#                pass
  
             agent.apoptosis(env)
 
