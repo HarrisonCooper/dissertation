@@ -24,13 +24,13 @@ class environment:
 
         for c in range(ncc):
             ID = c
-            radius = random.randint(5,10) #why is this not working like it did for ECs?
+            radius = random.randint(10,50) #why is this not working like it did for ECs?
             area = math.pi*(radius*radius)
             pos = [radius + (round(rand(),3))*(self.size-(2*radius)), radius +(round(rand(),3))*(self.size-(2*radius))]
             stage = np.ceil(rand()*4380)
             direc = rand()*2*np.pi
-            
-            cancercells.append(cc(ID, stage, pos, direc, radius, area))
+            turnover = 1;
+            cancercells.append(cc(ID, stage, pos, direc, turnover, radius, area))
 
         for s in range(nsc):
             ID = s

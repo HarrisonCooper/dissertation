@@ -26,12 +26,13 @@ class cc(general_cell):
     max_direc = round((2.0/3)*math.pi,3) #2/3pi radians 
     #So 1 stage is 1 iteration?
     max_stage = 4380 #each level = 6hrs of real time
+#    max_turnover = 4381
     
     #But we declare the number of cells at terminal?
     num_cc = 0 #number of alive cancer cells
     
-    def __init__(self, ID=[], stage=[], pos=[], direc=[], radius = [], area = []):
-        general_cell.__init__(self, ID, stage, pos, direc, radius, area)
+    def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover = [], radius = [], area = []):
+        general_cell.__init__(self, ID, stage, pos, direc, turnover, radius, area)
         # Increase the number of living cancer cells by one
         self.__class__.num_cc = self.__class__.num_cc + 1
     
