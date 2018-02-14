@@ -73,7 +73,7 @@ class general_cell:
     def apoptosis(self,env):
         if self.radius <= self.min_radius:  #cell dies if it gets smaller than minradius
             self.kill_cell(env)
-        if self.turnover == self.max_turnover: #senescent cell dies if it proliferates enough... Need to include ECs senescent rule, not here though
-            self.kill_cell(env)
+#        if self.turnover == self.max_turnover: #senescent cell dies if it proliferates enough... Need to include ECs senescent rule, not here though
+#            self.kill_cell(env)
 
 

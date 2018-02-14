@@ -4,6 +4,8 @@ Agents - cancer cells (cc)
 
 @author: Marzieh, 2014
 @commented: Harrison Paul Cooper, 2017
+@updated: Harrison Paul Cooper, 2018
+@last_updated: Harrison Paul Cooper, 14/02/2018
 """
 import random
 import math
@@ -15,7 +17,7 @@ from general_cell import general_cell
 class cc(general_cell):
     
     #How large the cell is
-    radius = random.randint(10,50)
+#    radius = random.randint(10,50)
     #Implies the cell decreases over time? Or randomly generates too small?
     min_radius = 1
     #Implies senescent cell doesn't move
@@ -28,8 +30,8 @@ class cc(general_cell):
     #But we declare the number of cells at terminal?
     num_cc = 0 #number of alive cancer cells
     
-    def __init__(self, ID=[], stage=[], pos=[], direc=[]):
-        general_cell.__init__(self, ID, stage, pos, direc)
+    def __init__(self, ID=[], stage=[], pos=[], direc=[], radius = [], area = []):
+        general_cell.__init__(self, ID, stage, pos, direc, radius, area)
         # Increase the number of living cancer cells by one
         self.__class__.num_cc = self.__class__.num_cc + 1
     
@@ -57,6 +59,6 @@ class cc(general_cell):
         return(new)    
         
     """Harrison P Cooper 14/7/18"""
-    def growth(self,env):
+#    def growth(self,env):
         
         

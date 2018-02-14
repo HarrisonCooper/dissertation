@@ -91,7 +91,6 @@ class sc(general_cell):
         
         print("*2*", "CellID:", self.ID, "Stage:", self.stage, "Area:", self.area, "Radius:", self.radius)
         
-        #new=self.mitosis(env)
         return(self.mitosis(env))
 
 
