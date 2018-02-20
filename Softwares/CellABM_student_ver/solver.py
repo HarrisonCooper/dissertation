@@ -55,16 +55,17 @@ def agent_solve(env):
 #                agent.migrate(env)
 #            else:
 #                pass
- 
+            
             agent.apoptosis(env)
 
             if not agent.messages.dead:
-                new = agent.mitosis(env)
-                if new is not None:
-                    new_cancercells.append(new)
+                agent.growth(env)
+#                new = agent.mitosis(env)
+#                if new is not None:
+#                    new_cancercells.append(new)
 
         # Add new agents to list
-        env.cancercells.extend(new_cancercells)
+#        env.cancercells.extend(new_cancercells)
 
         for agent in env.stemcells:
             

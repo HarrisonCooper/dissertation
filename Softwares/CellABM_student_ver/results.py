@@ -22,11 +22,6 @@ def plot_3d(env, directory, labels, n_it):
     fig = plt.figure()
     ax = fig.gca(projection='3d')
     
-    '''#projecting INSIGNEO logo (size 100x100 pixels)
-    img = read_png(("_INSIGNEO.png"))
-    x, y = np.ogrid[0:img.shape[0], 0:img.shape[1]]
-    ax.plot_surface(x, y, -2, rstride=2, cstride=2, facecolors=img)'''
-    
     phi = np.linspace(0, 2 * np.pi, 100)
     theta = np.linspace(0, np.pi, 100)
     for n in range (len(env.cancercells)):

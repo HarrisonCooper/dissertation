@@ -60,6 +60,8 @@ class cc(general_cell):
         return(new)    
         
     """Harrison P Cooper 14/7/18"""
-#    def growth(self,env):
+    def growth(self,env):
+        self.area = self.area * (1.5)
+        self.radius = math.sqrt(self.area/math.pi)
         
         

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>287</y>
+      <w>147</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>General Cell
+--
+id: Int
+position: [Float,Float]
+stage: Int
+direction: Float 
+turnover: Int
+radius: Float
+area: Float
+--
+move_cell: position
+kill_cell: 
+migrate:
+apoptosis:
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>427</x>
+      <y>490</y>
+      <w>147</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Endothelial Cell
+--
+max_stage: Int
+max_direction: Float
+max_turnover: Int
+min_radius: Float
+max_speed: Int
+--
+split_cell:
+mitosis:
+growth:
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>427</y>
+      <w>70</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;80.0;160.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>651</x>
+      <y>427</y>
+      <w>49</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0;50.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>490</y>
+      <w>147</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Senescent Cell
+--
+max_stage: Int
+max_direction: Float
+max_turnover: Int
+min_radius: Float
+max_speed: Int
+--
+growth:
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

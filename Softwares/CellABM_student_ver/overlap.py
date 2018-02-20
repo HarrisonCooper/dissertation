@@ -66,13 +66,14 @@ def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_
     plot_values[1].append(overlap_error*-1.0)
 
     
+    # But what is OCM_it? Overlap class method iteration number?
     if overlap_tally > 0 and OCM_it < 200:
         correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it)
         
     if overlap_tally == 0 and OCM_it < 200:
         update_pos_ABM(env, values)    
         display_plot_values(plot_values, OCM_it, n_it)
-
+    # Why does it update the radii here but not in the other ones?
     if overlap_tally >= 0 and OCM_it == 200:
         update_pos_ABM(env, values)
         update_radii(env, cells, overlap, directory, labels)
