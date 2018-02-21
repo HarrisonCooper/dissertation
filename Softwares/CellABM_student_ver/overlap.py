@@ -120,8 +120,8 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
 
                     neighbour.append([Lij, dist_ijx, dist_ijy, uijx, uijy])
         
-#        if len(neighbour) > 5:
-#            print(" is surrounded, therefore turning quiescent")
+        if len(neighbour) > 5:
+            print(cells[i].ID, " is surrounded, therefore turning quiescent")
         
         if len(neighbour) > 0:
             totalx = 0
