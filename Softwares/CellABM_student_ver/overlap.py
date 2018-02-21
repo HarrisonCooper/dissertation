@@ -85,7 +85,7 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
     for i in range(len(values)):
         ri = cells[i].radius
         xi = values[i][len(values[i])-1][0] #current x value (most updated)
-        yi = values[i][len(values[i])-1][1] #current x value (most updated)
+        yi = values[i][len(values[i])-1][1] #current y value (most updated)
 
 
         neighbour = []
@@ -119,6 +119,9 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
 
 
                     neighbour.append([Lij, dist_ijx, dist_ijy, uijx, uijy])
+        
+#        if len(neighbour) > 5:
+#            print(" is surrounded, therefore turning quiescent")
         
         if len(neighbour) > 0:
             totalx = 0
