@@ -69,17 +69,24 @@ def agent_solve(env):
 
         for agent in env.stemcells:
             
+            senescence = agent.senescence(env)
+            
+            if senescence is not None:
+                new_cancercells.append(senescence)
+            
             agent.migrate(env)
 
             agent.apoptosis(env)
 
             if not agent.messages.dead:
+                
                 new = agent.growth(env)
                 #new = agent.mitosis(env)
                 if new is not None:
                     new_stemcells.append(new)
 
         # Add new agents to list
+        env.cancercells.extend(new_cancercells)
         env.stemcells.extend(new_stemcells)
         
         # Update messages

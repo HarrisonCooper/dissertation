@@ -6,6 +6,7 @@ Agents - stem cells (sc)
 """
 from messages import messages
 from general_cell import general_cell
+from cancer_cells import cc
 
 import random
 import math
@@ -18,7 +19,7 @@ class sc(general_cell):
     max_speed = 360 #1 #(move at 1micrometer a min, time period = 6hrs therefore this is speed)
     max_direc = round((2.0/3)*math.pi,3)
     max_stage = 4 #each level =6hrs of real time (I believe this is turnover time)
-    max_turnover = 50 
+    max_turnover = 2
 
     num_sc = 0 #number of alive stem cells
 
@@ -47,6 +48,26 @@ class sc(general_cell):
         self.pos=[self.pos[0]+random.uniform(-1,1)*self.radius, self.pos[1]+random.uniform(-1,1)* self.radius]
         print('new stem cell created with cell ID = %s' %str(newcell.ID))
         return(newcell)
+        
+    def senescence(self,env):
+        
+        if self.turnover == self.max_turnover:
+        
+            print('****', cc.num_cc, '****')
+            self.kill_cell(env)
+            print(len(env.cancercells)) #could use this +1 as new ID val
+            senescentpos = [self.pos[0], self.pos[1]]
+            senescentcell = cc(ID=cc.num_cc, stage=1, pos=senescentpos, direc=random.random()*2*math.pi, turnover=1, radius=self.radius, area=self.area)
+            
+            print(self.ID, ' has hit max turnover -> Senescent ', senescentcell.ID)
+            
+#            return(senescentcell)
+            senescence=senescentcell
+        else:
+            senescence = None
+        return(senescence)
+            
+#        return(self)
         
     def mitosis(self,env):
         #print('stage: ', self.stage)

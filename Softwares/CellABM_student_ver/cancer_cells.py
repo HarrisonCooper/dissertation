@@ -28,7 +28,6 @@ class cc(general_cell):
     max_stage = 4380 #each level = 6hrs of real time
 #    max_turnover = 4381
     
-    #But we declare the number of cells at terminal?
     num_cc = 0 #number of alive cancer cells
     
     def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover = [], radius = [], area = []):
@@ -63,5 +62,6 @@ class cc(general_cell):
     def growth(self,env):
         self.area = self.area * (1.5)
         self.radius = math.sqrt(self.area/math.pi)
+        self.stage += 1
         
         

@@ -24,7 +24,7 @@ class environment:
 
         for c in range(ncc):
             ID = c
-            radius = random.randint(10,50) #why is this not working like it did for ECs?
+            radius = random.randint(10,50) 
             area = math.pi*(radius*radius)
             pos = [radius + (round(rand(),3))*(self.size-(2*radius)), radius +(round(rand(),3))*(self.size-(2*radius))]
             stage = np.ceil(rand()*4380)
