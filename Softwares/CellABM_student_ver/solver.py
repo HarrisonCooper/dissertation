@@ -78,7 +78,7 @@ def agent_solve(env):
 
             agent.apoptosis(env)
 
-            if not agent.messages.dead:
+            if not agent.messages.dead: #Might want to move this to line 76 as they can now be dead there.
                 
                 new = agent.growth(env)
                 #new = agent.mitosis(env)
