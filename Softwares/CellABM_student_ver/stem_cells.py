@@ -7,6 +7,7 @@ Agents - stem cells (sc)
 from messages import messages
 from general_cell import general_cell
 from cancer_cells import cc
+from quiescent_cells import qc
 
 import random
 import math
@@ -109,6 +110,18 @@ class sc(general_cell):
 #        print("*2*", "CellID:", self.ID, "Stage:", self.stage, "Area:", self.area, "Radius:", self.radius)
         
         return(self.mitosis(env))
+        
+        
+    def quiescence(self,env):
+        
+        self.kill_cell(env)
+        quiescentpos = [self.pos[0], self.pos[1]]
+        quiescentcell = qc(ID=qc.num_qc, stage=1, pos=quiescentpos, direc=random.random()*2*math.pi, turnover=self.turnover, radius=self.radius, area=self.area)
+        
+        print(self.ID, ' has 4 or more neighbours -> Quiescent ', quiescentcell.ID)
+        quiescence=quiescentcell
+        return(quiescence)
+    
 
 
 

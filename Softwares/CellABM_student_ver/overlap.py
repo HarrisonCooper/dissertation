@@ -5,12 +5,16 @@ Correct overlap
 @author: Marzieh Tehrani
 """
 import random
+import math
 import numpy as np
 import xlwt
 
 from mpl_toolkits.mplot3d import Axes3D, proj3d
 from matplotlib.patches import Circle
+from quiescent_cells import qc
 import matplotlib.pyplot as plt
+
+#from stem_cell import quiescence
 
 from results import save
 
@@ -120,10 +124,15 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
 
                     neighbour.append([Lij, dist_ijx, dist_ijy, uijx, uijy])
         
+        # This should send it across to sc.py to turn to quiescent
         if len(neighbour) > 5:
-            print(cells[i].ID, " is surrounded, therefore turning quiescent")
+            print("Will this work...")
+            print(cells[i].ID, " | ", cells[i].iscluster)
+#            quiescence(cells[i], env)
+            cells[i].iscluster = True
+            print(cells[i].ID, " | ", cells[i].iscluster)
+#            print("...EC - > QC")
             
-            #Implement Logic making EC -> Q, Q - > EC
         
         if len(neighbour) > 0:
             totalx = 0
