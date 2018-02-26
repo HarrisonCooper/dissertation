@@ -126,13 +126,15 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
         
         # This should send it across to sc.py to turn to quiescent
         if len(neighbour) > 5:
-            print("Will this work...")
+            print("-----")
             print(cells[i].ID, " | ", cells[i].iscluster)
 #            quiescence(cells[i], env)
             cells[i].iscluster = True
             print(cells[i].ID, " | ", cells[i].iscluster)
-#            print("...EC - > QC")
-            
+#            print("...EC - > QC"
+        else:
+            cells[i].isCluster = False
+   
         
         if len(neighbour) > 0:
             totalx = 0
@@ -164,6 +166,14 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
                 new_yi = ri+random.random()*0.02    
     
             values[i].append([new_xi, new_yi])
+            
+    #After assigning the local variables their cluster value, this should
+    #line up with the cells in the other class
+    i=0        
+    for agent in env.stemcells:
+        agent.iscluster = cells[i].iscluster
+    i += 1
+            
     check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it+1)
     
 def update_pos_ABM(env, values):
