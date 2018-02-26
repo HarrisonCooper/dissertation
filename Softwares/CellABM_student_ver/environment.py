@@ -20,6 +20,7 @@ class environment:
     def create_agents(self, ncc, nsc):
         cancercells = []
         stemcells = []
+        quiescentcells = []
         print(ncc, nsc)
 
         for c in range(ncc):
@@ -45,3 +46,4 @@ class environment:
         #if list type is seperate (each agent type has its own list)
         self.cancercells=cancercells
         self.stemcells=stemcells
+        self.quiescentcells=quiescentcells

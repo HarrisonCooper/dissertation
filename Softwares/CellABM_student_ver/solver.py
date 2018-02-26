@@ -43,6 +43,7 @@ def agent_solve(env):
         
     new_cancercells= []  # List of new cancer cells created for this iteration
     new_stemcells= []  # List of new stem cells created for this iteration
+    new_quiescentcells = [] # List of new quiecent cells created this itteration 
 
     if env.mode == 'sync':        
                             
@@ -88,6 +89,7 @@ def agent_solve(env):
         # Add new agents to list
         env.cancercells.extend(new_cancercells)
         env.stemcells.extend(new_stemcells)
+        env.quiescentcells.extend(new_quiescentcells)
         
         # Update messages
         update_messages(env)

@@ -10,6 +10,7 @@ import numpy as np
 
 from cancer_cells import cc
 from stem_cells import sc
+from quiescent_cells import qc
 from environment import environment
 from solver import agent_solve
 from results import plot_2d, plot_3d, growth_curve, save
@@ -21,13 +22,15 @@ from overlap import initiate_OC
 def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = False):
     cc.num_cc = 0
     sc.num_sc = 0
+    qc.num_qc = 0
 
     env = environment(size, mode)
     env.create_agents(ncc, nsc)
 
-    num_cells = np.zeros((2, steps+1))
+    num_cells = np.zeros((3, steps+1))
     num_cells[0, (0)] = cc.num_cc
-    num_cells[1, (0)] = sc.num_sc     
+    num_cells[1, (0)] = sc.num_sc    
+    num_cells[2, (0)] = qc.num_qc
     
 
     initiate_OC(env, directory, labels, n_it=0)    
@@ -52,8 +55,9 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
                         
         num_cells[0, n_it] = cc.num_cc 
         num_cells[1, n_it] = sc.num_sc
+        num_cells[2, n_it] = qc.num_qc
 
-        print('cancer cells = %s | stem cells = %s'%(cc.num_cc, sc.num_sc))
+        print('Senescent cells = %s | Endothelial cells = %s | Quiscent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
     growth_curve(num_cells,directory)
 
     return(env,num_cells)
