@@ -125,6 +125,9 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
                     neighbour.append([Lij, dist_ijx, dist_ijy, uijx, uijy])
         
         # This should send it across to sc.py to turn to quiescent
+        """
+        Error: Output seems to duplicate cells a lot on itterations (however, may be the automatic reassigning of ID nums - more testing)
+        """
         if len(neighbour) > 5:
             print("-----")
             print(cells[i].ID, " | ", cells[i].iscluster)
@@ -132,6 +135,10 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
             cells[i].iscluster = True
             print(cells[i].ID, " | ", cells[i].iscluster)
 #            print("...EC - > QC"
+            cells[i].quiescence(env)
+            #if cells[i].ID in env.stemcells:
+             #   print(cells[i].ID, " is a EC")
+            
         else:
             cells[i].isCluster = False
    

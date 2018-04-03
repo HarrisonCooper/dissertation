@@ -2,6 +2,8 @@
 """
 Agents - stem cells (sc)
 
+Used as Endothelial cells
+
 @author: Marzieh, 2014
 """
 from messages import messages
@@ -20,7 +22,7 @@ class sc(general_cell):
     max_speed = 360 #1 #(move at 1micrometer a min, time period = 6hrs therefore this is speed)
     max_direc = round((2.0/3)*math.pi,3)
     max_stage = 4 #each level =6hrs of real time (I believe this is turnover time)
-    max_turnover = 2
+    max_turnover = 50 #Hayflick limit of 50
 
     num_sc = 0 #number of alive stem cells
 
@@ -113,13 +115,17 @@ class sc(general_cell):
         
         
     def quiescence(self,env):
-        
+        new_quiescentcell = [] # List of new quiecent cell created this itteration     
+        print(self.ID, " is quiescent")
         self.kill_cell(env)
         quiescentpos = [self.pos[0], self.pos[1]]
         quiescentcell = qc(ID=qc.num_qc, stage=1, pos=quiescentpos, direc=random.random()*2*math.pi, turnover=self.turnover, radius=self.radius, area=self.area)
         
         print(self.ID, ' has 4 or more neighbours -> Quiescent ', quiescentcell.ID)
         quiescence=quiescentcell
+        new_quiescentcell.append(quiescence)
+        env.quiescentcells.extend(new_quiescentcell)
+
         return(quiescence)
     
 

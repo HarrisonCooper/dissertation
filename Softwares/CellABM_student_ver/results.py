@@ -83,6 +83,7 @@ def plot_2d(env, directory, labels, n_it):
             ax.text(env.stemcells[n].pos[0]-0.7, env.stemcells[n].pos[1]-0.5, str(env.stemcells[n].ID), fontsize=7)     #IDs    
             
     for n in range (len(env.quiescentcells)):
+        print(n, env.quiescentcells[n].radius)
         ax.add_artist(Circle((env.quiescentcells[n].pos[0], env.quiescentcells[n].pos[1]), env.quiescentcells[n].radius, fc='b', alpha = 0.5))
         if labels == True:            
             ax.text(env.quiescentcells[n].pos[0]-0.7, env.quiescentcells[n].pos[1]-0.5, str(env.quiescentcells[n].ID), fontsize = 7)     #IDs   

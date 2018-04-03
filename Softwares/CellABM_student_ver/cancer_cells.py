@@ -2,6 +2,8 @@
 """
 Agents - cancer cells (cc) 
 
+Used as Senescent Cells
+
 @author: Marzieh, 2014
 @commented: Harrison Paul Cooper, 2017
 @updated: Harrison Paul Cooper, 2018
@@ -58,10 +60,13 @@ class cc(general_cell):
 #            new = None    
 #        return(new)    
         
-    """Harrison P Cooper 14/7/18"""
+    """Harrison P Cooper 14/2/18"""
     def growth(self,env):
         self.area = self.area * (1.5)
         self.radius = math.sqrt(self.area/math.pi)
         self.stage += 1
+        
+    def quiescence(self,env):
+        return
         
         

@@ -28,8 +28,8 @@ class qc(general_cell):
     
     def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover = [], radius = [], area = []):
         general_cell.__init__(self, ID, stage, pos, direc, turnover, radius, area)
-        # Increase the number of living cancer cells by one
-        self.__class__.num_cc = self.__class__.num_cc + 1
+        # Increase the number of living quiescent cells by one
+        self.__class__.num_qc = self.__class__.num_qc + 1
     
     def __repr__(self):
         out = ('\nClass(cc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage, self.pos, self.direc))
@@ -44,7 +44,13 @@ class qc(general_cell):
 #            new = None    
 #        return(new)    
         
-    """Harrison P Cooper 14/7/18"""
+    #When a QC has been in this state for long enough -> Senesent 
+    #def senescence():
+        
+    #When a QC can proliforate  -> Endothelial Cell
+    #def endothelial():
+        
+    
     def growth(self,env):
         self.area = self.area * (1.5)
         self.radius = math.sqrt(self.area/math.pi)
