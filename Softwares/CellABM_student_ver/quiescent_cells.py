@@ -11,6 +11,8 @@ import math
 
 from messages import messages     
 from general_cell import general_cell
+from cancer_cells import cc
+
 
 
 class qc(general_cell):
@@ -45,11 +47,31 @@ class qc(general_cell):
 #        return(new)    
         
     #When a QC has been in this state for long enough -> Senesent 
-    #def senescence():
+    def senescence(self, env):
+        if self.stage == self.max_stage: #Required minimum of 239 iterations
+        
+            print('****', cc.num_cc, '****')
+            self.kill_cell(env)
+            print(len(env.cancercells)) #could use this +1 as new ID val
+            senescentpos = [self.pos[0], self.pos[1]]
+            senescentcell = cc(ID=cc.num_cc, stage=1, pos=senescentpos, direc=random.random()*2*math.pi, turnover=1, radius=self.radius, area=self.area)
+            
+            print(self.ID, ' has hit max stage -> Senescent ', senescentcell.ID)
+            
+            senescence=senescentcell
+        else:
+            senescence = None
+            self.stage += 1 #is this the correct place to put it?
+        return(senescence)
+        
         
     #When a QC can proliferate  -> Endothelial Cell
-    #def endothelial():
-        
+    """
+    Difficult, needs to work off neighbours, however thats awkwardly stuck
+    in another class
+    """
+    def endothelium(self, env): 
+        return
     
     def growth(self,env):
         self.area = self.area * (1.5)

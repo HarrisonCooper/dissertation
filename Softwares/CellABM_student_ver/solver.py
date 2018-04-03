@@ -48,48 +48,34 @@ def agent_solve(env):
     if env.mode == 'sync':        
                             
         for agent in env.cancercells:    
-            
-            #40% chance of migration, currently set speed to 0, therefore
-            # no migration will occur.
-#            chance = random.random()
-#            if chance <= 0.4:
-#                agent.migrate(env)
-#            else:
-#                pass
-            
             agent.apoptosis(env)
-
             if not agent.messages.dead:
                 agent.growth(env)
-#                new = agent.mitosis(env)
-#                if new is not None:
-#                    new_cancercells.append(new)
-
-        # Add new agents to list
-#        env.cancercells.extend(new_cancercells)
-
+        
         for agent in env.stemcells:
-            
             senescence = agent.senescence(env)
-            
             if senescence is not None:
                 new_cancercells.append(senescence)
-                
 #            quiscence = agent.correct_overlap
 #            
 #            if quiscence is not None:
 #                new_quiescentcells.append(quiscence) 
-            
             agent.migrate(env)
-
             agent.apoptosis(env)
-
             if not agent.messages.dead: #Might want to move this to line 76 as they can now be dead there.
-                
                 new = agent.growth(env)
                 #new = agent.mitosis(env)
                 if new is not None:
                     new_stemcells.append(new)
+                    
+        for agent in env.quiescentcells:
+            endothelium = agent.endothelium(env)
+            if endothelium is not None:
+                new_stemcells.append(endothelium)
+            senescence = agent.senescence(env)
+            if senescence is not None:
+                    new_cancercells.append(senescence)
+            agent.migrate(env)
 
         # Add new agents to list
         env.cancercells.extend(new_cancercells)
