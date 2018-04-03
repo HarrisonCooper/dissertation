@@ -60,11 +60,14 @@ class cc(general_cell):
 #            new = None    
 #        return(new)    
         
-    """Harrison P Cooper 14/2/18"""
+    """Harrison P Cooper 14/2/18
+    Currently grows indefinitely, add logic to limit growth
+    """
     def growth(self,env):
-        self.area = self.area * (1.5)
-        self.radius = math.sqrt(self.area/math.pi)
-        self.stage += 1
+        if self.radius < 50:
+            self.area = self.area * (1.5)
+            self.radius = math.sqrt(self.area/math.pi)
+            self.stage += 1
         
     def quiescence(self,env):
         return

@@ -47,7 +47,7 @@ class qc(general_cell):
     #When a QC has been in this state for long enough -> Senesent 
     #def senescence():
         
-    #When a QC can proliforate  -> Endothelial Cell
+    #When a QC can proliferate  -> Endothelial Cell
     #def endothelial():
         
     
@@ -55,5 +55,8 @@ class qc(general_cell):
         self.area = self.area * (1.5)
         self.radius = math.sqrt(self.area/math.pi)
         self.stage += 1
+        
+    def quiescence(self,env):
+        return
         
         

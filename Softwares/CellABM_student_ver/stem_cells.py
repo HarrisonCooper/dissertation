@@ -126,7 +126,7 @@ class sc(general_cell):
         new_quiescentcell.append(quiescence)
         env.quiescentcells.extend(new_quiescentcell)
 
-        return(quiescence)
+        return
     
 
 

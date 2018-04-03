@@ -20,7 +20,12 @@ from results import save
 
 def initiate_OC(env, directory, labels, n_it):
     cells = []
-    for cell in env.cancercells:
+    """
+    As Senescent Cells (CC) cant be pushed around, may remove the env.cancercells and 
+    replace with env.quiescentcells - therefore CCs will never be adjusted (however 
+    they also may never be seen thus cause overlap.)
+    """
+    for cell in env.quiescentcells:
         cells.append(cell)
     for cell in env.stemcells:
         cells.append(cell)    
@@ -124,23 +129,7 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
 
                     neighbour.append([Lij, dist_ijx, dist_ijy, uijx, uijy])
         
-        # This should send it across to sc.py to turn to quiescent
-        """
-        Error: Output seems to duplicate cells a lot on itterations (however, may be the automatic reassigning of ID nums - more testing)
-        """
-        if len(neighbour) > 5:
-            print("-----")
-            print(cells[i].ID, " | ", cells[i].iscluster)
-#            quiescence(cells[i], env)
-            cells[i].iscluster = True
-            print(cells[i].ID, " | ", cells[i].iscluster)
-#            print("...EC - > QC"
-            cells[i].quiescence(env)
-            #if cells[i].ID in env.stemcells:
-             #   print(cells[i].ID, " is a EC")
-            
-        else:
-            cells[i].isCluster = False
+
    
         
         if len(neighbour) > 0:
@@ -174,13 +163,32 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
     
             values[i].append([new_xi, new_yi])
             
+                # This should send it across to sc.py to turn to quiescent
+        """
+        Error: Output seems to duplicate cells a lot on itterations (however, may be the automatic reassigning of ID nums - more testing)
+        """
+        if len(neighbour) > 5:
+            print("-----")
+            print(cells[i].ID, " | ", cells[i].iscluster)
+#            quiescence(cells[i], env)
+            if cells[i].iscluster != True:
+                cells[i].iscluster = True
+                print(cells[i].ID, " | ", cells[i].iscluster)
+    #            print("...EC - > QC"
+                cells[i].quiescence(env)
+            #if cells[i].ID in env.stemcells:
+             #   print(cells[i].ID, " is a EC")
+            
+        else:
+            cells[i].isCluster = False
+    """     
     #After assigning the local variables their cluster value, this should
     #line up with the cells in the other class
     i=0        
     for agent in env.stemcells:
         agent.iscluster = cells[i].iscluster
     i += 1
-            
+    """
     check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it+1)
     
 def update_pos_ABM(env, values):
