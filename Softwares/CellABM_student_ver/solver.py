@@ -56,8 +56,13 @@ def agent_solve(env):
             senescence = agent.senescence(env)
             if senescence is not None:
                 new_cancercells.append(senescence)
+                
+            if agent.iscluster == True:
+                quiesence = agent.quiescence(env)
+                if quiesence is not None:
+                    new_quiescentcells.append(quiesence)
+                
 #            quiscence = agent.correct_overlap
-#            
 #            if quiscence is not None:
 #                new_quiescentcells.append(quiscence) 
             agent.migrate(env)

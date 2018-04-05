@@ -115,7 +115,7 @@ class sc(general_cell):
         
         
     def quiescence(self,env):
-        new_quiescentcell = [] # List of new quiecent cell created this itteration     
+#        new_quiescentcell = [] # List of new quiecent cell created this itteration     
         print(self.ID, " is quiescent")
         self.kill_cell(env)
         quiescentpos = [self.pos[0], self.pos[1]]
@@ -123,10 +123,10 @@ class sc(general_cell):
         
         print(self.ID, ' has 4 or more neighbours -> Quiescent ', quiescentcell.ID)
         quiescence=quiescentcell
-        new_quiescentcell.append(quiescence)
-        env.quiescentcells.extend(new_quiescentcell)
+#        new_quiescentcell.append(quiescence)
+#        env.quiescentcells.extend(new_quiescentcell)
 
-        return
+        return(quiescence)
     
 
 

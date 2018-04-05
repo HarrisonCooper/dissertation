@@ -29,6 +29,8 @@ def initiate_OC(env, directory, labels, n_it):
         cells.append(cell)
     for cell in env.stemcells:
         cells.append(cell)    
+#    for cell in env.quiescentcells:
+#        cells.append(cell)
     
     values = [[[0 for k in range(2)] for j in range(1)] for i in range(len(cells))]
     
@@ -175,7 +177,9 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
                 cells[i].iscluster = True
                 print(cells[i].ID, " | ", cells[i].iscluster)
     #            print("...EC - > QC"
-                cells[i].quiescence(env)
+                
+#                cells[i].quiescence(env)
+                
             #if cells[i].ID in env.stemcells:
              #   print(cells[i].ID, " is a EC")
             
@@ -205,6 +209,12 @@ def update_pos_ABM(env, values):
         npos[1] = values[i][len(values[i])-1][1]
         agent.move_cell(npos,env)
         i += 1
+#    for agent in env.quiescentcells:
+#        npos = np.zeros(2)
+#        npos[0] = values[i][len(values[i])-1][0]
+#        npos[1] = values[i][len(values[i])-1][1]
+#        agent.move_cell(npos,env)
+#        i += 1
                 
 #I Think this is whats making the cells sometimes go tiny on some iterations
 def update_radii(env, cells, overlap, directory, labels):
@@ -223,6 +233,9 @@ def update_radii(env, cells, overlap, directory, labels):
     for agent in env.stemcells:
         agent.radius = cells[i].radius
         i += 1
+#    for agent in env.quiescentcells:
+#        agent.radius = cells[i].radius
+#        i += 1
     
 def display_plot_values(plot_values, OCM_it, n_it):
     time = []
