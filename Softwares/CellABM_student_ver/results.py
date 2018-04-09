@@ -91,10 +91,10 @@ def plot_2d(env, directory, labels, n_it):
     plt.axis([0, env.size, 0, env.size])
     
     if n_it == 0:
-        figname = 'Initial Setup \n No of Cancer cells = %s \n No of Stem cells = %s \n No of Quiescent cells = %s' %(str(cc.num_cc), str(sc.num_sc), str(qc.num_qc))
+        figname = 'Initial Setup \n No of Senescent cells = %s \n No of Endothelial cells = %s \n No of Quiescent cells = %s' %(str(cc.num_cc), str(sc.num_sc), str(qc.num_qc))
         filename = 'Initial_Setup' 
     else:
-        figname = 'Iteration %s \n No of Cancer cells = %s \n No of Stem cells = %s \n No of Quiescent cells = %s' %(str(n_it), str(cc.num_cc), str(sc.num_sc), str(qc.num_qc))
+        figname = 'Iteration %s \n No of Senescent cells = %s \n No of Endothelial cells = %s \n No of Quiescent cells = %s' %(str(n_it), str(cc.num_cc), str(sc.num_sc), str(qc.num_qc))
         filename = "Iteration_" + str(n_it)
     
     ax.set_title(figname)
@@ -106,7 +106,7 @@ def growth_curve(num_cells,directory):
     fig=plt.figure()
     plt.plot(num_cells[0,:],'g',label='Senescent cells')
     plt.hold(True)
-    plt.plot(num_cells[1,:],'r',label='Stem cells')
+    plt.plot(num_cells[1,:],'r',label='Endothelial cells')
     plt.plot(num_cells[2,:],'b',label='Quiescent cells')
     fig.suptitle('growth_curve')
     plt.xlabel('interation')
