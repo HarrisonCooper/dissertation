@@ -63,7 +63,7 @@ class qc(general_cell):
             senescence=senescentcell
         else:
             senescence = None
-            self.stage += 1 #is this the correct place to put it?
+            self.stage += 1 
         return(senescence)
         
         

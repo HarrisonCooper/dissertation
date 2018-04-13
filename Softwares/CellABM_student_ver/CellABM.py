@@ -53,7 +53,7 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
         of cells, then return to orignial logic until below condition reached 
         again.
         """
-        if qc.num_qc >= 1: #(sc.num_sc/3):#sc.num_sc:
+        if qc.num_qc >= (sc.num_sc/5):#sc.num_sc:
             if counter == 0:
                 env.wound()#Remove a strip of cells
                 print("***WOUNDED***")

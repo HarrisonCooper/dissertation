@@ -25,7 +25,7 @@ def initiate_OC(env, directory, labels, n_it):
     replace with env.quiescentcells - therefore CCs will never be adjusted (however 
     they also may never be seen thus cause overlap.)
     """
-    for cell in env.cancercells: #removing env.cancercells causes crash :S 
+    for cell in env.cancercells:
         cells.append(cell)
     for cell in env.stemcells:
         cells.append(cell)    

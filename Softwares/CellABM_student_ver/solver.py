@@ -14,6 +14,17 @@ from messages import messages
 
 # update_messages used for sync mode
 def update_messages(env):
+    
+        # Update messages for each quiescent cell
+        for agent in env.quiescentcells:
+            agent.process_messages(env)
+
+        # Create new list that only contains the living
+        env.quiescentcells = ([a for a in env.quiescentcells if not a.messages.dead]) #and not a.messages.contact])
+
+        # Update stem cell counter        
+        qc.num_qc = sum([isinstance(agent,qc) for agent in env.quiescentcells])
+    
         # Update messages for each cancer cell
         for agent in env.cancercells:
             agent.process_messages(env)
@@ -34,15 +45,7 @@ def update_messages(env):
         # Update quiescent cell counter        
         sc.num_sc = sum([isinstance(agent,sc) for agent in env.stemcells])
         
-        # Update messages for each quiescent cell
-        for agent in env.quiescentcells:
-            agent.process_messages(env)
 
-        # Create new list that only contains the living
-        env.quiescentcells = ([a for a in env.quiescentcells if not a.messages.dead]) #and not a.messages.contact])
-
-        # Update stem cell counter        
-        qc.num_qc = sum([isinstance(agent,qc) for agent in env.quiescentcells])
 
 #temp_shuffle used for async mode
 def temp_shuffle(lst):

@@ -79,6 +79,6 @@ class environment:
                 self.quiescentcells[n].kill_cell(self)
                 
         # remove dead cells
-#        self.stemcells = ([a for a in self.stemcells if not a.dead])
-#        self.cancercells = ([a for a in self.cancercells if not a.dead])
-#        self.quiescentcells = ([a for a in self.quiescentcells if not a.dead])
+        self.stemcells = ([a for a in self.stemcells if not a.dead])
+        self.cancercells = ([a for a in self.cancercells if not a.dead])
+        self.quiescentcells = ([a for a in self.quiescentcells if not a.dead])
