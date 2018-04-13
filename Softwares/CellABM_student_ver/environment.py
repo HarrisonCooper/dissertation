@@ -47,3 +47,38 @@ class environment:
         self.cancercells=cancercells
         self.stemcells=stemcells
         self.quiescentcells=quiescentcells
+        
+    """
+    From meeting with medical expert, Paul, he stated a wound size of 100 and 500
+    microns is a typical scratch assay size, but larger sizes would be good.
+    For now we will be using 100 microns (50 each side of midpoint)
+    As all cells will be removed from between x1 and x2, no need to worry about 
+    Y.
+    """
+    def wound(self):
+        xlength = 100 #wound length
+        x1 = (self.size/2) - (xlength/2)
+        x2 = (self.size/2) + (xlength/2)
+        
+        print("EC: ", len(self.stemcells))
+        print("CC: ", len(self.cancercells))
+        print("QC: ", len(self.quiescentcells))
+#        import sys
+#        sys.exit("WOUNDED")
+        
+        for n in range(len(self.cancercells)):
+            if self.cancercells[n].pos[0] > x1 and self.cancercells[n].pos[0] < x2:
+                self.cancercells[n].kill_cell(self)
+                
+        for n in range(len(self.stemcells)):
+            if self.stemcells[n].pos[0] > x1 and self.stemcells[n].pos[0] < x2:
+                self.stemcells[n].kill_cell(self)
+                
+        for n in range(len(self.quiescentcells)):
+            if self.quiescentcells[n].pos[0] > x1 and self.quiescentcells[n].pos[0] < x2:
+                self.quiescentcells[n].kill_cell(self)
+                
+        # remove dead cells
+#        self.stemcells = ([a for a in self.stemcells if not a.dead])
+#        self.cancercells = ([a for a in self.cancercells if not a.dead])
+#        self.quiescentcells = ([a for a in self.quiescentcells if not a.dead])

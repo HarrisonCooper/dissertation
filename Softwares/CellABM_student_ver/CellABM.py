@@ -36,14 +36,34 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
 
     initiate_OC(env, directory, labels, n_it=0)    
         
-    #3D could be useful if senescent cells enlarge
     plot_2d(env, directory, labels, n_it=0)
     plot_3d(env, directory, labels, n_it=0)
+    
+    counter = 0
     
     for n_it in range(1,steps+1):
         print("iteration %s" %(str(n_it)))        
         agent_solve(env)
         initiate_OC(env, directory, labels, n_it)    
+        
+        """
+        Logic for confluence: works off number of senescent and quiescent 
+        cells in env.
+        Instead of sys.exit() add a function in environment to remove a segment 
+        of cells, then return to orignial logic until below condition reached 
+        again.
+        """
+        if qc.num_qc >= 1: #(sc.num_sc/3):#sc.num_sc:
+            if counter == 0:
+                env.wound()#Remove a strip of cells
+                print("***WOUNDED***")
+                timer = n_it
+                counter += 1
+            else:
+                time = n_it - timer
+                print("CONFLUENCE DETECTED, time taken: %s itteration == %s hours."%(time, time*6))
+                #plot_2d(env,directory, labels, n_it)
+                #sys.exit("End")
         
         if freq > 0:
             if not n_it%freq :
@@ -57,18 +77,12 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
         num_cells[0, n_it] = cc.num_cc 
         num_cells[1, n_it] = sc.num_sc
         num_cells[2, n_it] = qc.num_qc
-
-        print('Senescent cells = %s | Endothelial cells = %s | Quiscent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
         
-        """
-        Logic for confluence: works off number of senescent and quiescent 
-        cells in env.
-        Instead of sys.exit() add a function in environment to remove a segment 
-        of cells, then return to orignial logic until below condition reached 
-        again.
-        """
-        if qc.num_qc >= sc.num_sc:
-            sys.exit("CONFLUENCE DETECTED")
+
+
+        print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
+        
+
         
     growth_curve(num_cells,directory)
 

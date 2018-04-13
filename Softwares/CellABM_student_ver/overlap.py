@@ -169,7 +169,7 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
         """
         Error: Output seems to duplicate cells a lot on itterations (however, may be the automatic reassigning of ID nums - more testing)
         """
-        if len(neighbour) > 5:
+        if len(neighbour) > 4:
             print("-----")
             print(cells[i].ID, " | ", cells[i].iscluster)
 #            quiescence(cells[i], env)
@@ -184,7 +184,7 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
              #   print(cells[i].ID, " is a EC")
             
         else:
-            cells[i].isCluster = False
+            cells[i].iscluster = False
     """     
     #After assigning the local variables their cluster value, this should
     #line up with the cells in the other class

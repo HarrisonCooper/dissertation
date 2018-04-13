@@ -9,6 +9,7 @@ import numpy as np
 
 from cancer_cells import cc
 from stem_cells import sc
+from quiescent_cells import qc
 from messages import messages
 
 # update_messages used for sync mode
@@ -30,8 +31,18 @@ def update_messages(env):
         # Create new list that only contains the living
         env.stemcells = ([a for a in env.stemcells if not a.messages.dead]) #and not a.messages.contact])
 
-        # Update stem cell counter        
+        # Update quiescent cell counter        
         sc.num_sc = sum([isinstance(agent,sc) for agent in env.stemcells])
+        
+        # Update messages for each quiescent cell
+        for agent in env.quiescentcells:
+            agent.process_messages(env)
+
+        # Create new list that only contains the living
+        env.quiescentcells = ([a for a in env.quiescentcells if not a.messages.dead]) #and not a.messages.contact])
+
+        # Update stem cell counter        
+        qc.num_qc = sum([isinstance(agent,qc) for agent in env.quiescentcells])
 
 #temp_shuffle used for async mode
 def temp_shuffle(lst):
@@ -67,19 +78,20 @@ def agent_solve(env):
 #                new_quiescentcells.append(quiscence) 
             agent.migrate(env)
             agent.apoptosis(env)
-            if not agent.messages.dead: #Might want to move this to line 76 as they can now be dead there.
+            if not agent.messages.dead: 
                 new = agent.growth(env)
                 #new = agent.mitosis(env)
                 if new is not None:
                     new_stemcells.append(new)
                     
         for agent in env.quiescentcells:
-            endothelium = agent.endothelium(env)
-            if endothelium is not None:
-                new_stemcells.append(endothelium)
             senescence = agent.senescence(env)
             if senescence is not None:
-                    new_cancercells.append(senescence)
+                new_cancercells.append(senescence)
+            if agent.iscluster == False:
+                endothelial = agent.endothelial(env)
+                if endothelial is not None:
+                    new_stemcells.append(endothelial)
             agent.migrate(env)
 
         # Add new agents to list
