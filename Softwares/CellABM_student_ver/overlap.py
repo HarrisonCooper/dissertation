@@ -169,13 +169,13 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
         """
         Error: Output seems to duplicate cells a lot on itterations (however, may be the automatic reassigning of ID nums - more testing)
         """
-        if len(neighbour) > 4:
-            print("-----")
-            print(cells[i].ID, " | ", cells[i].iscluster)
+        if len(neighbour) > 3:
+#            print("-----")
+#            print(cells[i].ID, " | ", cells[i].iscluster)
 #            quiescence(cells[i], env)
             if cells[i].iscluster != True:
                 cells[i].iscluster = True
-                print(cells[i].ID, " | ", cells[i].iscluster)
+#                print(cells[i].ID, " | ", cells[i].iscluster)
     #            print("...EC - > QC"
                 
 #                cells[i].quiescence(env)
@@ -223,7 +223,7 @@ def update_radii(env, cells, overlap, directory, labels):
         for j in range(len(overlap)):
             rj = cells[j].radius
             if overlap[i][j] < -(ri+rj)/50.0 :
-                cells[i].radius = ri - overlap[i][j]/-2.0
+                cells[i].radius = ri - overlap[i][j]/-2.0 #Try -5 as a larger denominator will decrease the radius by less.
                 cells[j].radius = rj - overlap[i][j]/-2.0
                 
     i = 0        

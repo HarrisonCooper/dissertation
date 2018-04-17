@@ -53,7 +53,7 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
         of cells, then return to orignial logic until below condition reached 
         again.
         """
-        if qc.num_qc >= (sc.num_sc/5):#sc.num_sc:
+        if qc.num_qc >= (sc.num_sc/4):#sc.num_sc:
             if counter == 0:
                 env.wound()#Remove a strip of cells
                 print("***WOUNDED***")
@@ -61,9 +61,15 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
                 counter += 1
             else:
                 time = n_it - timer
-                print("CONFLUENCE DETECTED, time taken: %s itteration == %s hours."%(time, time*6))
-                #plot_2d(env,directory, labels, n_it)
-                #sys.exit("End")
+                if time > 2:
+                    print("CONFLUENCE DETECTED, time taken: %s itteration == %s hours."%(time, time*6))
+                    print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
+                    num_cells[0, n_it] = cc.num_cc 
+                    num_cells[1, n_it] = sc.num_sc
+                    num_cells[2, n_it] = qc.num_qc
+                    plot_2d(env,directory, labels, n_it)
+                    growth_curve(num_cells,directory)
+                    sys.exit("End")
         
         if freq > 0:
             if not n_it%freq :
