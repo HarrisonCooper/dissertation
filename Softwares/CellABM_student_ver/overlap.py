@@ -87,7 +87,7 @@ def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_
     # Why does it update the radii here but not in the other ones?
     if overlap_tally >= 0 and OCM_it == 200:
         update_pos_ABM(env, values)
-        update_radii(env, cells, overlap, directory, labels)
+#        update_radii(env, cells, overlap, directory, labels)
         display_plot_values(plot_values, OCM_it, n_it)
 
         
@@ -217,25 +217,25 @@ def update_pos_ABM(env, values):
         i += 1
                 
 #I Think this is whats making the cells sometimes go tiny on some iterations
-def update_radii(env, cells, overlap, directory, labels):
-    for i in range(len(overlap)):
-        ri = cells[i].radius
-        for j in range(len(overlap)):
-            rj = cells[j].radius
-            if overlap[i][j] < -(ri+rj)/50.0 :
-                cells[i].radius = ri - overlap[i][j]/-2.0 #Try -5 as a larger denominator will decrease the radius by less.
-                cells[j].radius = rj - overlap[i][j]/-2.0
-                
-    i = 0        
-    for agent in env.cancercells:
-        agent.radius = cells[i].radius
-        i += 1
-    for agent in env.stemcells:
-        agent.radius = cells[i].radius
-        i += 1
-    for agent in env.quiescentcells:
-        agent.radius = cells[i].radius
-        i += 1
+#def update_radii(env, cells, overlap, directory, labels):
+#    for i in range(len(overlap)):
+#        ri = cells[i].radius
+#        for j in range(len(overlap)):
+#            rj = cells[j].radius
+#            if overlap[i][j] < -(ri+rj)/50.0 :
+#                cells[i].radius = ri - overlap[i][j]/-2.0 #Try -5 as a larger denominator will decrease the radius by less.
+#                cells[j].radius = rj - overlap[i][j]/-2.0
+#                
+#    i = 0        
+#    for agent in env.cancercells:
+#        agent.radius = cells[i].radius
+#        i += 1
+#    for agent in env.stemcells:
+#        agent.radius = cells[i].radius
+#        i += 1
+#    for agent in env.quiescentcells:
+#        agent.radius = cells[i].radius
+#        i += 1
     
 def display_plot_values(plot_values, OCM_it, n_it):
     time = []
