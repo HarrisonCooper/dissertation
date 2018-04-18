@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>350</y>
+      <w>105</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Environment
+--
+self.size: Int
+--
+__init__(self, size)
+create_agents(self, nss, npc)
+wound(self)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>295</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>CellABM
+--
+counter: Int
+num_cells: Int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>170</x>
+      <y>415</y>
+      <w>145</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>General_Cell
+--
+self.ID: Int
+self.pos: [Int, Int]
+self.stage: Int
+self.direc: Float
+self.turnover: Int
+self.radius: Float
+self.area: Float
+self.dead: Boolean
+self.iscluster: Boolean
+--
+__init__(self, ID=[], stage=[], position=[], 
+			direc=[], turnover=[] radius=[], area=[])
+process_message(self, env)
+move_cell(self, new_pos, env)
+kill_cell(self, env)
+migrate(self, env)
+apoptosis(self, env)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>580</y>
+      <w>155</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>Senescent_Cell
+--
+min_radius: Int
+max_speed: Int
+max_direc: Float
+max_stage: Int
+--
+__init__(self, ID=[], stage=[], pos=[],
+direc=[], turnover = [], radius = [], area = [])
+growth(self, env)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>165</x>
+      <y>580</y>
+      <w>155</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>Proliferating_Cell
+--
+min_radius: Int
+max_speed: Int
+max_direc: Float
+max_stage: Int
+max_turnover: Int
+--
+__init__(self, ID=[], stage=[], pos=[],
+direc=[], turnover = [], radius = [], area = [])
+growth(self, env)
+split_cell(self, env)
+senescence(self, env)
+mitosis(self, env)
+quiescence(self, env)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>580</y>
+      <w>155</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Quiescent_Cell
+--
+min_radius: Int
+max_speed: Int
+max_direc: Float
+max_stage: Int
+--
+__init__(self, ID=[], stage=[], pos=[],
+direc=[], turnover = [], radius = [], area = [])
+growth(self, env)
+senescence(self, env)
+proliferate(self, env)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>235</x>
+      <y>545</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>235</x>
+      <y>545</y>
+      <w>180</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;340.0;50.0;340.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>545</y>
+      <w>180</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>340.0;10.0;340.0;50.0;10.0;50.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>150</y>
+      <w>165</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>Overlap
+--
+
+--
+initiate_OC(env, directory, labels, n_it)
+check_overlap(env, cells, values, plot_values,
+directory, labels, n_it, OCM_it)
+correct_ocerlap(env, cells, values, plot_values,
+directory, labels, n_it, OCM_it)
+update_pos_ABM(env, values)
+display_plot_values(plot_values, OCM_it, n_it)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>285</y>
+      <w>105</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Messages
+--
+
+--
+__init__(self, pos=[], dead=[], 
+contact={}, cluster=[])
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>350</y>
+      <w>125</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Results
+--
+
+--
+plot_2d(env, directory, labels, n_it)
+growth_curve(num_cells, directory)
+save(filename, directory, sub='')</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>240</y>
+      <w>85</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Solver
+--
+
+--
+update_messages(env)
+agent_solve(env)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
