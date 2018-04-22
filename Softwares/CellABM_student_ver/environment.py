@@ -55,8 +55,8 @@ class environment:
     As all cells will be removed from between x1 and x2, no need to worry about 
     Y.
     """
-    def wound(self):
-        xlength = 100 #wound length
+    def wound(self, wsize):
+        xlength = wsize #wound length
         x1 = (self.size/2) - (xlength/2)
         x2 = (self.size/2) + (xlength/2)
         

@@ -20,7 +20,7 @@ from overlap import initiate_OC
 
 # (size of environemnt, number of cancer cells, number of stem cells, number of steps, location of image files)
 # Main line called from terminal
-def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = False):
+def CellABM(size, ncc, nsc, steps, wsize, directory, mode = 'sync', freq=0, labels = False):
     cc.num_cc = 0
     sc.num_sc = 0
     qc.num_qc = 0
@@ -55,7 +55,7 @@ def CellABM(size, ncc, nsc, steps, directory, mode = 'sync', freq=0, labels = Fa
         """
         if qc.num_qc >= (sc.num_sc/4):#sc.num_sc:
             if counter == 0:
-                env.wound()#Remove a strip of cells
+                env.wound(wsize)#Remove a strip of cells
                 print("***WOUNDED***")
                 timer = n_it
                 counter += 1
