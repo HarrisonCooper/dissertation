@@ -5,18 +5,18 @@ Correct overlap
 @author: Marzieh Tehrani
 """
 import random
-import math
+#import math
 import numpy as np
-import xlwt
+#import xlwt
 
-from mpl_toolkits.mplot3d import Axes3D, proj3d
-from matplotlib.patches import Circle
-from quiescent_cells import qc
+#from mpl_toolkits.mplot3d import Axes3D, proj3d
+#from matplotlib.patches import Circle
+#from quiescent_cells import qc
 import matplotlib.pyplot as plt
 
 #from stem_cell import quiescence
 
-from results import save
+#from results import save
 
 def initiate_OC(env, directory, labels, n_it):
     cells = []

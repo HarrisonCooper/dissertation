@@ -4,66 +4,66 @@ Methods to store and display results
 
 @author: Marzieh, 2014
 """
-from mpl_toolkits.mplot3d import Axes3D, proj3d
+#from mpl_toolkits.mplot3d import Axes3D, proj3d
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 import numpy as np
-import pylab
+#import pylab
 from cancer_cells import cc
-from stem_cells import sc
+from proliferative_cells import pc
 from quiescent_cells import qc
 import os
-import operator
+#import operator
 #import matplotlib.animation as animation
 #from matplotlib._png import read_png
 #import PIL
 #from PIL import Image
 #%%
-def plot_3d(env, directory, labels, n_it):
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-    
-    phi = np.linspace(0, 2 * np.pi, 100)
-    theta = np.linspace(0, np.pi, 100)
-    for n in range (len(env.cancercells)):
-        xm = env.cancercells[n].radius * np.outer(np.cos(phi), np.sin(theta)) + env.cancercells[n].pos[0]
-        ym = env.cancercells[n].radius * np.outer(np.sin(phi), np.sin(theta)) + env.cancercells[n].pos[1]
-        zm = env.cancercells[n].radius * np.outer(np.ones(np.size(phi)), np.cos(theta))
-                            
-        ax.plot_surface(xm, ym, zm,rstride=10, cstride=10,  linewidth =0, alpha = 0.5, color='g')                    
-        
-        if labels == True:        
-            ax.text(env.cancercells[n].pos[0], env.cancercells[n].pos[1], 0, str(env.cancercells[n].ID)) #IDs
-    
-    for n in range (len(env.stemcells)):
-        xm = env.stemcells[n].radius * np.outer(np.cos(phi), np.sin(theta)) + env.stemcells[n].pos[0]
-        ym = env.stemcells[n].radius * np.outer(np.sin(phi), np.sin(theta)) + env.stemcells[n].pos[1]
-        zm = env.stemcells[n].radius * np.outer(np.ones(np.size(phi)), np.cos(theta))
-        
-        ax.plot_surface(xm, ym, zm,rstride=10, cstride=10,  linewidth =0, alpha = 0.5, color='r')
-    
-        if labels == True:        
-            ax.text(env.stemcells[n].pos[0], env.stemcells[n].pos[1], 0, str(env.stemcells[n].ID))     #IDs
-    
-    ax.set_zlim((-1, env.size))
-    ax.set_xlim((0, env.size))
-    ax.set_ylim((0, env.size))
-    ax.zaxis.set_visible(False)
-    ax.view_init(elev=65, azim =235) #camera position
-    ax.w_zaxis.line.set_lw(0.)
-    ax.set_zticks([])
-#    ax._axis3don = False
-    
-    if n_it == 0:
-        figname = 'Initial Setup \n No of Senescent cells = %s \n No of Proliferating cells = %s' %(str(cc.num_cc), str(sc.num_sc))
-        filename = 'Initial_Setup'
-    else:
-        figname = 'Iteration %s \n No of Senescent cells = %s \n No of Proliferating cells = %s' %(str(n_it), str(cc.num_cc), str(sc.num_sc))
-        filename = "Iteration_" + str(n_it)
-    
-    ax.set_title(figname)
-    save(filename,directory,'3d')
-    plt.close(fig)
+#def plot_3d(env, directory, labels, n_it):
+#    fig = plt.figure()
+#    ax = fig.gca(projection='3d')
+#    
+#    phi = np.linspace(0, 2 * np.pi, 100)
+#    theta = np.linspace(0, np.pi, 100)
+#    for n in range (len(env.cancercells)):
+#        xm = env.cancercells[n].radius * np.outer(np.cos(phi), np.sin(theta)) + env.cancercells[n].pos[0]
+#        ym = env.cancercells[n].radius * np.outer(np.sin(phi), np.sin(theta)) + env.cancercells[n].pos[1]
+#        zm = env.cancercells[n].radius * np.outer(np.ones(np.size(phi)), np.cos(theta))
+#                            
+#        ax.plot_surface(xm, ym, zm,rstride=10, cstride=10,  linewidth =0, alpha = 0.5, color='g')                    
+#        
+#        if labels == True:        
+#            ax.text(env.cancercells[n].pos[0], env.cancercells[n].pos[1], 0, str(env.cancercells[n].ID)) #IDs
+#    
+#    for n in range (len(env.stemcells)):
+#        xm = env.stemcells[n].radius * np.outer(np.cos(phi), np.sin(theta)) + env.stemcells[n].pos[0]
+#        ym = env.stemcells[n].radius * np.outer(np.sin(phi), np.sin(theta)) + env.stemcells[n].pos[1]
+#        zm = env.stemcells[n].radius * np.outer(np.ones(np.size(phi)), np.cos(theta))
+#        
+#        ax.plot_surface(xm, ym, zm,rstride=10, cstride=10,  linewidth =0, alpha = 0.5, color='r')
+#    
+#        if labels == True:        
+#            ax.text(env.stemcells[n].pos[0], env.stemcells[n].pos[1], 0, str(env.stemcells[n].ID))     #IDs
+#    
+#    ax.set_zlim((-1, env.size))
+#    ax.set_xlim((0, env.size))
+#    ax.set_ylim((0, env.size))
+#    ax.zaxis.set_visible(False)
+#    ax.view_init(elev=65, azim =235) #camera position
+#    ax.w_zaxis.line.set_lw(0.)
+#    ax.set_zticks([])
+##    ax._axis3don = False
+#    
+#    if n_it == 0:
+#        figname = 'Initial Setup \n No of Senescent cells = %s \n No of Proliferating cells = %s' %(str(cc.num_cc), str(sc.num_sc))
+#        filename = 'Initial_Setup'
+#    else:
+#        figname = 'Iteration %s \n No of Senescent cells = %s \n No of Proliferating cells = %s' %(str(n_it), str(cc.num_cc), str(sc.num_sc))
+#        filename = "Iteration_" + str(n_it)
+#    
+#    ax.set_title(figname)
+#    save(filename,directory,'3d')
+#    plt.close(fig)
 #%%    
 def plot_2d(env, directory, labels, n_it):
     fig = plt.figure()
@@ -91,10 +91,10 @@ def plot_2d(env, directory, labels, n_it):
     plt.axis([0, env.size, 0, env.size])
     
     if n_it == 0:
-        figname = 'Initial Setup \n No of Senescent cells = %s \n No of Proliferating cells = %s \n No of Quiescent cells = %s' %(str(cc.num_cc), str(sc.num_sc), str(qc.num_qc))
+        figname = 'Initial Setup \n No of Senescent cells = %s \n No of Proliferating cells = %s \n No of Quiescent cells = %s' %(str(cc.num_cc), str(pc.num_pc), str(qc.num_qc))
         filename = 'Initial_Setup' 
     else:
-        figname = 'Iteration %s \n No of Senescent cells = %s \n No of Proliferating cells = %s \n No of Quiescent cells = %s' %(str(n_it), str(cc.num_cc), str(sc.num_sc), str(qc.num_qc))
+        figname = 'Iteration %s \n No of Senescent cells = %s \n No of Proliferating cells = %s \n No of Quiescent cells = %s' %(str(n_it), str(cc.num_cc), str(pc.num_pc), str(qc.num_qc))
         filename = "Iteration_" + str(n_it)
     
     ax.set_title(figname)

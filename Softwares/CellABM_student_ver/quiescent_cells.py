@@ -9,7 +9,7 @@ Created on Mon Feb 26 18:29:05 2018
 import random
 import math
 
-from messages import messages     
+#from messages import messages     
 from general_cell import general_cell
 from cancer_cells import cc
 #from stem_cells import sc
@@ -73,11 +73,11 @@ class qc(general_cell):
     in another class
     """
     def endothelial(self, env): 
-        from stem_cells import sc
+        from proliferative_cells import pc
         print(self.ID, " is endothelial")
         self.kill_cell(env)
         endothelialpos = [self.pos[0], self.pos[1]]
-        endothelialcell = sc(ID=sc.num_sc, stage=1, pos=endothelialpos, direc=random.random()*2*math.pi, turnover=self.turnover, radius=self.radius, area=self.area)        
+        endothelialcell = pc(ID=pc.num_pc, stage=1, pos=endothelialpos, direc=random.random() * 2 * math.pi, turnover=self.turnover, radius=self.radius, area=self.area)
         print(self.ID, ' has fewer than 5 neighbours -> Endothelial ', endothelialcell.ID)
         endothelial=endothelialcell
         return(endothelial)
@@ -87,7 +87,7 @@ class qc(general_cell):
         self.radius = math.sqrt(self.area/math.pi)
         self.stage += 1
         
-    def quiescence(self,env):
-        return
+#    def quiescence(self,env):
+#        return
         
         

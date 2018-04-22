@@ -11,18 +11,19 @@ import sys
 
 
 from cancer_cells import cc
-from stem_cells import sc
+from proliferative_cells import pc
 from quiescent_cells import qc
 from environment import environment
 from solver import agent_solve
-from results import plot_2d, plot_3d, growth_curve, save
+from results import plot_2d, growth_curve
 from overlap import initiate_OC
 
-# (size of environemnt, number of cancer cells, number of stem cells, number of steps, location of image files)
+
+# (size of environment, number of cancer cells, number of stem cells, number of steps, location of image files)
 # Main line called from terminal
-def CellABM(size, ncc, nsc, steps, wsize, directory, mode = 'sync', freq=0, labels = False):
+def CellABM(size, ncc, nsc, steps, wsize, directory, mode='sync', freq=0, labels=False):
     cc.num_cc = 0
-    sc.num_sc = 0
+    pc.num_pc = 0
     qc.num_qc = 0
 
     env = environment(size, mode)
@@ -30,19 +31,18 @@ def CellABM(size, ncc, nsc, steps, wsize, directory, mode = 'sync', freq=0, labe
 
     num_cells = np.zeros((3, steps+1))
     num_cells[0, (0)] = cc.num_cc
-    num_cells[1, (0)] = sc.num_sc    
+    num_cells[1, (0)] = pc.num_pc
     num_cells[2, (0)] = qc.num_qc
-    
 
     initiate_OC(env, directory, labels, n_it=0)    
         
     plot_2d(env, directory, labels, n_it=0)
-    plot_3d(env, directory, labels, n_it=0)
+#    plot_3d(env, directory, labels, n_it=0)
     
     counter = 0
     
-    for n_it in range(1,steps+1):
-        print("iteration %s" %(str(n_it)))        
+    for n_it in range(1, steps+1):
+        print("iteration %s" % (str(n_it)))
         agent_solve(env)
         initiate_OC(env, directory, labels, n_it)    
         
@@ -53,40 +53,40 @@ def CellABM(size, ncc, nsc, steps, wsize, directory, mode = 'sync', freq=0, labe
         of cells, then return to orignial logic until below condition reached 
         again.
         """
-        if qc.num_qc >= (sc.num_sc/4):#sc.num_sc:
+        if qc.num_qc >= (pc.num_pc/4):  # sc.num_sc:
             if counter == 0:
-                env.wound(wsize)#Remove a strip of cells
+                env.wound(wsize)  # Remove a strip of cells
                 print("***WOUNDED***")
                 timer = n_it
                 counter += 1
             else:
                 time = n_it - timer
                 if time > 2:
-                    print("CONFLUENCE DETECTED, time taken: %s itteration == %s hours."%(time, time*6))
-                    print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
-                    num_cells[0, n_it] = cc.num_cc 
-                    num_cells[1, n_it] = sc.num_sc
+                    print("CONFLUENCE DETECTED, time taken: %s itteration == %s hours." % (time, time*6))
+                    print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s' % (cc.num_cc, pc.num_pc, qc.num_qc))
+                    num_cells[0, n_it] = cc.num_cc
+                    num_cells[1, n_it] = pc.num_pc
                     num_cells[2, n_it] = qc.num_qc
-                    plot_2d(env,directory, labels, n_it)
-                    growth_curve(num_cells,directory)
+                    plot_2d(env, directory, labels, n_it)
+                    growth_curve(num_cells, directory)
                     sys.exit("End")
         
         if freq > 0:
-            if not n_it%freq :
+            if not n_it % freq:
                 plot_2d(env,directory, labels, n_it)
-                plot_3d(env,directory, labels, n_it)    
+#                plot_3d(env,directory, labels, n_it)    
 
         else:
             plot_2d(env,directory, labels, n_it)
-            plot_3d(env,directory, labels, n_it)    
+#            plot_3d(env,directory, labels, n_it)    
                         
-        num_cells[0, n_it] = cc.num_cc 
-        num_cells[1, n_it] = sc.num_sc
+        num_cells[0, n_it] = cc.num_cc
+        num_cells[1, n_it] = pc.num_pc
         num_cells[2, n_it] = qc.num_qc
         
 
 
-        print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
+        print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s' % (cc.num_cc, pc.num_pc, qc.num_qc))
         
 
         
@@ -95,3 +95,24 @@ def CellABM(size, ncc, nsc, steps, wsize, directory, mode = 'sync', freq=0, labe
     return(env,num_cells)
     
 #%%    
+
+#def confluence_detection(nqc, npc, counter, env, wsize, num_cells, directory, labels, n_it):
+#    if nqc >= (npc/4):
+#        if counter == 0:
+#            env.wound(wsize)#Remove a strip of cells
+#            print("***WOUNDED***")
+#            timer = n_it
+#            counter += 1
+#        else:
+#            time = n_it - timer
+#            if time > 2:
+#                print("CONFLUENCE DETECTED, time taken: %s itteration == %s hours."%(time, time*6))
+#                print('Senescent cells = %s | Endothelial cells = %s | Quiescent cells = %s'%(cc.num_cc, sc.num_sc, qc.num_qc))
+#                num_cells[0, n_it] = cc.num_cc 
+#                num_cells[1, n_it] = sc.num_sc
+#                num_cells[2, n_it] = qc.num_qc
+#                plot_2d(env,directory, labels, n_it)
+#                growth_curve(num_cells,directory)
+#                sys.exit("End")
+#                
+#def plot_graph(env,wsize)

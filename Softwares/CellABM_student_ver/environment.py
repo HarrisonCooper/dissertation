@@ -9,7 +9,7 @@ import numpy as np
 import math
 import random
 from cancer_cells import cc
-from stem_cells import sc
+from proliferative_cells import pc
 from numpy.random import rand
 
 class environment:
@@ -41,7 +41,7 @@ class environment:
             stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
             turnover = 1 #Adapt logic so older the patient, the higher the average starting turnover of seed ECs.
-            stemcells.append(sc(ID, stage, pos, direc, turnover, radius, area))
+            stemcells.append(pc(ID, stage, pos, direc, turnover, radius, area))
 
         #if list type is seperate (each agent type has its own list)
         self.cancercells=cancercells
