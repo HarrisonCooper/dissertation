@@ -98,11 +98,12 @@ def growth_curve(num_cells, directory):
 
 def save(filename, directory, sub=''):
     """
+    Saves graphs into user defenced directory.
 
-    :param filename:
-    :param directory:
+    :param filename: Name of the save file
+    :param directory: Name of the save directory
     :param sub:
-    :return:
+    :return: File structure of graphs showing simulation progression
     """
     if directory:
         d = directory

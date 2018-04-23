@@ -21,11 +21,11 @@ class qc(general_cell):
     :senescence: When cell is old enough differentiates to senescent
     :proliferating: When cell can proliferate differentiates to proliferating
     Instance variables:
-    :min_radius:
-    :max_speed:
+    :min_radius: The smallest the cell can be before dying
+    :max_speed: How fast the cell moves per iteration
     :max_direc:
-    :max_stage:
-    :num_qc:
+    :max_stage: How many iterations until the cell differentiates to senescent
+    :num_qc: The total number of quiescent cells
     """
     min_radius = 1
     max_speed = 0  # Quiescent cells cannot move
@@ -46,14 +46,13 @@ class qc(general_cell):
         :param area: The area of the cell
         """
         general_cell.__init__(self, ID, stage, pos, direc, turnover, radius, area)
-        self.__class__.num_qc = self.__class__.num_qc + 1
+        self.__class__.num_qc += 1
     
     def __repr__(self):
         out = ('\nClass(qc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage,
                                                                                       self.pos, self.direc))
         return out
 
-    # When a QC has been in this state for long enough -> senesent
     def senescence(self):
         """
         Differentiate current (quiescent) cell into senescent cell.

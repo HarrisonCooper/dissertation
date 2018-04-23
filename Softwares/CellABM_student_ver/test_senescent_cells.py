@@ -5,9 +5,8 @@ Created on Mon Apr 23 16:30:43 2018
 
 @author: Harrison Paul Cooper
 """
-
-import unittest
 from senescent_cells import sc
+import unittest
 import random
 import math
 

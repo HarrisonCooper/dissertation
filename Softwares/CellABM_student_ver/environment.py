@@ -23,7 +23,7 @@ class environment:
 
     Public methods:
     :create_agents: Instantiation of initial cells
-    :wound:
+    :wound: Creation of simulated wound
     """
     def __init__(self, size):
         """
@@ -91,15 +91,15 @@ class environment:
         x2 = (self.size/2) + (xlength/2)
         
         for n in range(len(self.senescent_cells)):
-            if self.senescent_cells[n].pos[0] > x1 and self.senescent_cells[n].pos[0] < x2:
+            if x1 < self.senescent_cells[n].pos[0] < x2:
                 self.senescent_cells[n].kill_cell()
                 
         for n in range(len(self.proliferating_cells)):
-            if self.proliferating_cells[n].pos[0] > x1 and self.proliferating_cells[n].pos[0] < x2:
+            if x1 < self.proliferating_cells[n].pos[0] < x2:
                 self.proliferating_cells[n].kill_cell()
                 
         for n in range(len(self.quiescent_cells)):
-            if self.quiescent_cells[n].pos[0] > x1 and self.quiescent_cells[n].pos[0] < x2:
+            if x1 < self.quiescent_cells[n].pos[0] < x2:
                 self.quiescent_cells[n].kill_cell()
                 
         # remove dead cells

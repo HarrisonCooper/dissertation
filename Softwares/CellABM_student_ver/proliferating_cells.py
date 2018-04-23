@@ -22,25 +22,25 @@ class pc(general_cell):
     This is a subclass of general cell for the proliferating agent.
 
     Public methods:
-    :split_cell:
-    :senescence:
-    :mitosis:
-    :growth:
-    :quiescence:
+    :split_cell: Creation of daughter cell
+    :senescence: When max_turnover is reached cell differentiates to senescent
+    :mitosis: M phase of the cell cycle where the cell splits
+    :growth: The cell doubles in size during one cycle
+    :quiescence: When the cell can no longer proliferate it differentiates to quiescent
     Instance variables:
-    :min_radius:
-    :max_speed:
+    :min_radius: The smallest the cell can be before dying
+    :max_speed: How fast the cell moves per iteration
     :max_direc:
-    :max_stage:
-    :max_turnover:
-    :num_pc:
+    :max_stage: How many iterations are in one cell cycle
+    :max_turnover: How many times the cell can proliferate before becoming senescent
+    :num_pc: The total number of proliferative cells
     """
     min_radius = 4.9
-    max_speed = 360  # move at 1micrometer a min, time period = 6hrs therefore this is speed
+    max_speed = 360  # move at 1micrometer a min
     max_direc = round((2.0/3)*math.pi, 3)
     max_stage = 4
     max_turnover = 50  # Hayflick limit of 50
-    num_pc = 0  # number of alive stem cells
+    num_pc = 0
 
     def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover=[], radius=[], area=[]):
         """
@@ -55,7 +55,7 @@ class pc(general_cell):
         :param area: The area of the cell
         """
         general_cell.__init__(self, ID, stage, pos, direc, turnover, radius, area)
-        self.__class__.num_pc = self.__class__.num_pc + 1
+        self.__class__.num_pc += 1
 
     def __repr__(self):
         out = ('\nClass(pc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage,
@@ -66,9 +66,10 @@ class pc(general_cell):
         """
         During mitosis the cell divides into two daughter cells.
 
+        The two cells are now half the size of the orignial cell
         :return: The new daughter cell
         """
-        self.area = self.area/2  # Daughter cell is halve the size of the parent
+        self.area /= 2
         self.radius = math.sqrt(self.area/math.pi)
         new_cell_pos = [self.pos[0]+random.uniform(-1, 1)*self.radius, self.pos[1]+random.uniform(-1, 1)*self.radius]
         new_cell = pc(ID=self.num_pc, stage=1, pos=new_cell_pos, direc=random.random() * 2 * math.pi,
@@ -121,7 +122,7 @@ class pc(general_cell):
         :return: The grown cell
         """
         if self.stage == 1:                 # Increase original size by 1/4
-            self.area = self.area * 1.25
+            self.area *= 1.25
         elif self.stage == 2:               # Decrease by 1/4 to achieve original, then increase by 2/4
             sa = self.area / 1.25
             self.area = sa * 1.5

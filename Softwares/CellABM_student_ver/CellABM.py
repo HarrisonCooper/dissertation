@@ -49,7 +49,7 @@ def CellABM(size, nsc, npc, steps, wsize, directory, freq=0, labels=False):
     num_cells[1, 0] = pc.num_pc
     num_cells[2, 0] = qc.num_qc
 
-    initiate_OC(env, directory, labels, n_it=0)  # Correct any overlapping cells
+    initiate_OC(env)  # Correct any overlapping cells
     plot_2d(env, directory, labels, n_it=0)  # Create initial graph of cell positions
 
     counter = 0  # Counter to check if monolayer has been wounded
@@ -57,7 +57,7 @@ def CellABM(size, nsc, npc, steps, wsize, directory, freq=0, labels=False):
     for n_it in range(1, steps+1):
         print("iteration %s" % (str(n_it)))
         agent_solve(env)
-        initiate_OC(env, directory, labels, n_it)
+        initiate_OC(env)
         """
         Logic for confluence.
 

@@ -14,14 +14,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def initiate_OC(env, directory, labels, n_it):
+def initiate_OC(env):
     """
+    Main overlap function.
 
-    :param env:
-    :param directory:
-    :param labels:
-    :param n_it:
-    :return:
+    Adds the three agents to the list cells and their positions to the list values
+    :param env: The size of the environment and number and type of agents present
+    :return: An environment where no cells are overlapping
     """
     cells = []
     for cell in env.senescent_cells:
@@ -30,29 +29,27 @@ def initiate_OC(env, directory, labels, n_it):
         cells.append(cell)    
     for cell in env.quiescent_cells:
         cells.append(cell)
-    
+
     values = [[[0 for k in range(2)] for j in range(1)] for i in range(len(cells))]
-    
+
     for cell in range(len(cells)):
         # initial position and displacement values for all the cells (t=0)
         values[cell][0] = [cells[cell].pos[0], cells[cell].pos[1]]  # [xi, yi]
 
     plot_values = [[0 for j in range(0)] for i in range(2)]  # row1 = tally, row2 = overlap error
-    check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it=0)
+    check_overlap(env, cells, values, plot_values, OCM_it=0)
 
 
-def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it):
+def check_overlap(env, cells, values, plot_values, OCM_it):
     """
+    Checks to see if any two cells are overlapping.
 
-    :param env:
-    :param cells:
-    :param values:
-    :param plot_values:
-    :param directory:
-    :param labels:
-    :param n_it:
+    :param env: The size of the environment and number and type of agents present
+    :param cells: List of each agent currently in iteration
+    :param values: Array of each cells xi, yi position
+    :param plot_values: row1 = tally, row2 = overlap error
     :param OCM_it:
-    :return:
+    :return: List of overlapping cells
     """
     overlap_tally = 0    
     overlap_error = 0
@@ -68,12 +65,12 @@ def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_
                 yj = values[j][len(values[j])-1][1]
                 rj = cells[j].radius
                 
-                if rj == []:
+                if not rj:
                     rj = ri
 
-                overlap[i][j] = np.sqrt((xj-xi)**2 +(yj-yi)**2) - (ri+rj)
+                overlap[i][j] = np.sqrt((xj-xi)**2+(yj-yi)**2) - (ri+rj)
 
-                if overlap[i][j] < -(ri+rj)/100.0 :
+                if overlap[i][j] < -(ri+rj)/100.0:
                     overlap_tally += 1
                     overlap_error += overlap[i][j]
     
@@ -81,7 +78,7 @@ def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_
     plot_values[1].append(overlap_error*-1.0)
 
     if overlap_tally > 0 and OCM_it < 200:
-        correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it)
+        correct_overlap(env, cells, values, plot_values, OCM_it)
         
     if overlap_tally == 0 and OCM_it < 200:
         update_pos_ABM(env, values)    
@@ -89,22 +86,20 @@ def check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_
 
     if overlap_tally >= 0 and OCM_it == 200:
         update_pos_ABM(env, values)
-#        update_radii(env, cells, overlap, directory, labels)
+        update_radii(env, cells, overlap)
         display_plot_values(plot_values, OCM_it)
 
         
-def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it):
+def correct_overlap(env, cells, values, plot_values, OCM_it):
     """
+    Any overlapping cells have different localised positions tested to see if that corrects them.
 
-    :param env:
-    :param cells:
-    :param values:
-    :param plot_values:
-    :param directory:
-    :param labels:
-    :param n_it:
+    :param env: The size of the environment and number and type of agents present
+    :param cells: List of each agent currently in iteration
+    :param values: Array of each cells xi, yi position
+    :param plot_values: row1 = tally, row2 = overlap error
     :param OCM_it:
-    :return:
+    :return: List of positions overlapping cells need to be moved to
     """
     for i in range(len(values)):
         ri = cells[i].radius
@@ -120,10 +115,10 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
                 rj = cells[j].radius
                 dist_ij = np.sqrt((xj-xi)**2+(yj-yi)**2)
 
-                if ri == []:
+                if not ri:
                     ri = rj
 
-                if rj == []:
+                if not rj:
                     rj = ri
 
                 if (dist_ij-(ri+rj)) < -(ri+rj)/100.0:
@@ -164,21 +159,22 @@ def correct_overlap(env, cells, values, plot_values, directory, labels, n_it, OC
     
             values[i].append([new_xi, new_yi])
 
-        if len(neighbour) > 3:
-            if cells[i].iscluster != True:
+        if len(neighbour) > 3:  # parameter: changeable for confluence
+            if not cells[i].iscluster:
                 cells[i].iscluster = True
         else:
             cells[i].iscluster = False
 
-    check_overlap(env, cells, values, plot_values, directory, labels, n_it, OCM_it+1)
+    check_overlap(env, cells, values, plot_values, OCM_it+1)
 
 
 def update_pos_ABM(env, values):
     """
+    Updates overlapping cells positions.
 
-    :param env:
-    :param values:
-    :return:
+    :param env: The size of the environment and number and type of agents present
+    :param values: Array of each cells xi, yi position
+    :return: Updated cells positions
     """
     i = 0        
     for agent in env.senescent_cells:
@@ -199,35 +195,43 @@ def update_pos_ABM(env, values):
         npos[1] = values[i][len(values[i])-1][1]
         agent.move_cell(npos)
         i += 1
-                
-#I Think this is whats making the cells sometimes go tiny on some iterations
-#def update_radii(env, cells, overlap, directory, labels):
-#    for i in range(len(overlap)):
-#        ri = cells[i].radius
-#        for j in range(len(overlap)):
-#            rj = cells[j].radius
-#            if overlap[i][j] < -(ri+rj)/50.0 :
-#                cells[i].radius = ri - overlap[i][j]/-2.0 #Try -5 as a larger denominator will decrease the radius by less.
-#                cells[j].radius = rj - overlap[i][j]/-2.0
-#                
-#    i = 0        
-#    for agent in env.cancercells:
-#        agent.radius = cells[i].radius
-#        i += 1
-#    for agent in env.stemcells:
-#        agent.radius = cells[i].radius
-#        i += 1
-#    for agent in env.quiescentcells:
-#        agent.radius = cells[i].radius
-#        i += 1
+
+
+def update_radii(env, cells, overlap):
+    """
+
+    :param env:
+    :param cells:
+    :param overlap:
+    :return:
+    """
+    for i in range(len(overlap)):
+        ri = cells[i].radius
+        for j in range(len(overlap)):
+            rj = cells[j].radius
+            if overlap[i][j] < -(ri+rj)/50.0:
+                cells[i].radius = ri - overlap[i][j]/-10.0
+                cells[j].radius = rj - overlap[i][j]/-10.0
+
+    i = 0
+    for agent in env.senescent_cells:
+        agent.radius = cells[i].radius
+        i += 1
+    for agent in env.proliferating_cells:
+        agent.radius = cells[i].radius
+        i += 1
+    for agent in env.quiescent_cells:
+        agent.radius = cells[i].radius
+        i += 1
 
 
 def display_plot_values(plot_values, OCM_it):
     """
+    Displays graph of number of overlapping cells each OCM_it
 
-    :param plot_values:
+    :param plot_values: row1 = tally, row2 = overlap error
     :param OCM_it:
-    :return:
+    :return: Graph of overlapping cell numbers
     """
     time = []
     for i in range(OCM_it+1):

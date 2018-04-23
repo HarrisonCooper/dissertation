@@ -15,25 +15,25 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="senescent_cells.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/senescent_cells.py">
+      <file leaf-file-name="CellABM.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CellABM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="578">
+              <caret line="91" column="26" lean-forward="false" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
               <folding>
-                <element signature="e#240#251#0" expanded="true" />
+                <element signature="e#208#226#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_senescent_cells.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_senescent_cells.py">
+      <file leaf-file-name="test_quiescent_cells.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_quiescent_cells.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="400">
-              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+              <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
               <folding>
-                <element signature="e#123#138#0" expanded="true" />
+                <element signature="e#122#152#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,10 +42,22 @@
       <file leaf-file-name="test_CellABM.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_CellABM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+            <state relative-caret-position="240">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="e#114#129#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="senescent_cells.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/senescent_cells.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="624">
+              <caret line="39" column="52" lean-forward="true" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
+              <folding>
+                <element signature="e#240#251#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,10 +66,22 @@
       <file leaf-file-name="proliferating_cells.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/proliferating_cells.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="60" column="25" lean-forward="false" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+            <state relative-caret-position="-480">
+              <caret line="57" column="32" lean-forward="false" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
               <folding>
                 <element signature="e#241#254#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1728">
+              <caret line="108" column="21" lean-forward="true" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
+              <folding>
+                <element signature="e#217#248#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,10 +90,22 @@
       <file leaf-file-name="quiescent_cells.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiescent_cells.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+            <state relative-caret-position="736">
+              <caret line="46" column="11" lean-forward="true" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
               <folding>
                 <element signature="e#173#186#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overlap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/overlap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="546">
+              <caret line="220" column="3" lean-forward="false" selection-start-line="220" selection-start-column="3" selection-end-line="220" selection-end-column="3" />
+              <folding>
+                <element signature="e#198#211#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,8 +114,8 @@
       <file leaf-file-name="environment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="68" column="32" lean-forward="false" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="32" />
+            <state relative-caret-position="1648">
+              <caret line="103" column="16" lean-forward="true" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="e#257#275#0" expanded="true" />
               </folding>
@@ -90,46 +126,10 @@
       <file leaf-file-name="general_cell.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/general_cell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="992">
-              <caret line="62" column="24" lean-forward="true" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+            <state relative-caret-position="402">
+              <caret line="95" column="85" lean-forward="true" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="85" />
               <folding>
                 <element signature="e#208#221#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="overlap.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/overlap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1312">
-              <caret line="82" column="42" lean-forward="true" selection-start-line="82" selection-start-column="42" selection-end-line="82" selection-end-column="42" />
-              <folding>
-                <element signature="e#198#211#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="results.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-              <folding>
-                <element signature="e#217#248#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="solver.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/solver.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1376">
-              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="e#190#220#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,9 +149,13 @@
       <find>sc</find>
       <find>display_plot_values</find>
       <find>move_cell</find>
-      <find>env</find>
       <find>contact</find>
       <find>mode</find>
+      <find>env</find>
+      <find>filename</find>
+      <find>sub</find>
+      <find>directory</find>
+      <find>cells</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -160,18 +164,19 @@
         <option value="$PROJECT_DIR$/../../COM3110 - Text Processing/Assesment/my_retriever.py" />
         <option value="$PROJECT_DIR$/cancer_cells.py" />
         <option value="$PROJECT_DIR$/stem_cells.py" />
-        <option value="$PROJECT_DIR$/results.py" />
-        <option value="$PROJECT_DIR$/overlap.py" />
         <option value="$PROJECT_DIR$/messages.py" />
-        <option value="$PROJECT_DIR$/general_cell.py" />
-        <option value="$PROJECT_DIR$/environment.py" />
         <option value="$PROJECT_DIR$/solver.py" />
-        <option value="$PROJECT_DIR$/CellABM.py" />
+        <option value="$PROJECT_DIR$/test_quiescent_cells.py" />
+        <option value="$PROJECT_DIR$/test_senescent_cells.py" />
         <option value="$PROJECT_DIR$/test_CellABM.py" />
         <option value="$PROJECT_DIR$/proliferating_cells.py" />
-        <option value="$PROJECT_DIR$/quiescent_cells.py" />
         <option value="$PROJECT_DIR$/senescent_cells.py" />
-        <option value="$PROJECT_DIR$/test_senescent_cells.py" />
+        <option value="$PROJECT_DIR$/quiescent_cells.py" />
+        <option value="$PROJECT_DIR$/environment.py" />
+        <option value="$PROJECT_DIR$/general_cell.py" />
+        <option value="$PROJECT_DIR$/results.py" />
+        <option value="$PROJECT_DIR$/overlap.py" />
+        <option value="$PROJECT_DIR$/CellABM.py" />
       </list>
     </option>
   </component>
@@ -438,7 +443,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -640,41 +645,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../COM3110 - Text Processing/Assesment/my_retriever.py" />
-    <entry file="file://$PROJECT_DIR$/CellABM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-          <folding>
-            <element signature="e#208#226#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/messages.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overlap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1312">
-          <caret line="82" column="42" lean-forward="true" selection-start-line="82" selection-start-column="42" selection-end-line="82" selection-end-column="42" />
-          <folding>
-            <element signature="e#198#211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="26" column="10" lean-forward="false" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding>
-            <element signature="e#217#248#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -688,72 +663,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proliferating_cells.py">
+    <entry file="file://$USER_HOME$/anaconda/lib/python2.7/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="60" column="25" lean-forward="false" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+        <state relative-caret-position="310">
+          <caret line="230" column="8" lean-forward="false" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_senescent_cells.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="44" lean-forward="false" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
           <folding>
-            <element signature="e#241#254#0" expanded="true" />
+            <element signature="e#122#152#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiescent_cells.py">
+    <entry file="file://$PROJECT_DIR$/test_quiescent_cells.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        <state relative-caret-position="400">
+          <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
           <folding>
-            <element signature="e#173#186#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/general_cell.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="992">
-          <caret line="62" column="24" lean-forward="true" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
-          <folding>
-            <element signature="e#208#221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="68" column="32" lean-forward="false" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="32" />
-          <folding>
-            <element signature="e#257#275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/senescent_cells.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#240#251#0" expanded="true" />
+            <element signature="e#122#152#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_CellABM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="e#114#129#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_senescent_cells.py">
+    <entry file="file://$PROJECT_DIR$/quiescent_cells.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        <state relative-caret-position="736">
+          <caret line="46" column="11" lean-forward="true" selection-start-line="46" selection-start-column="11" selection-end-line="46" selection-end-column="11" />
           <folding>
-            <element signature="e#123#138#0" expanded="true" />
+            <element signature="e#173#186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proliferating_cells.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="57" column="32" lean-forward="false" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="e#241#254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/senescent_cells.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="39" column="52" lean-forward="true" selection-start-line="39" selection-start-column="52" selection-end-line="39" selection-end-column="52" />
+          <folding>
+            <element signature="e#240#251#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1728">
+          <caret line="108" column="21" lean-forward="true" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
+          <folding>
+            <element signature="e#217#248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1648">
+          <caret line="103" column="16" lean-forward="true" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
+          <folding>
+            <element signature="e#257#275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/general_cell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="95" column="85" lean-forward="true" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="85" />
+          <folding>
+            <element signature="e#208#221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/overlap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="220" column="3" lean-forward="false" selection-start-line="220" selection-start-column="3" selection-end-line="220" selection-end-column="3" />
+          <folding>
+            <element signature="e#198#211#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CellABM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="91" column="26" lean-forward="false" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+          <folding>
+            <element signature="e#208#226#0" expanded="true" />
           </folding>
         </state>
       </provider>

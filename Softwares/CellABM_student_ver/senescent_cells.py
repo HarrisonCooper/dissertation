@@ -21,16 +21,16 @@ class sc(general_cell):
     Public methods:
     :growth: Increases area of cell
     Instance variables:
-    :min_radius:
-    :max_speed:
+    :min_radius: The smallest the cell can be before dying
+    :max_speed: How fast the cell moves per iteration
     :max_direc:
-    :max_stage:
-    :num_sc:
+    :max_stage: How many iterations the cell can last for
+    :num_sc: The total number of senescent cells
     """
     min_radius = 1
     max_speed = 0  # Senescent cells don't move
     max_direc = round((2.0/3)*math.pi, 3)
-    max_stage = 4380  # each level = 6hrs of real time -> represents 3 years
+    max_stage = 4380  # represents 3 years
     num_sc = 0
     
     def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover=[], radius=[], area=[]):
@@ -46,7 +46,7 @@ class sc(general_cell):
         :param area: The area of the cell
         """
         general_cell.__init__(self, ID, stage, pos, direc, turnover, radius, area)
-        self.__class__.num_sc = self.__class__.num_sc + 1
+        self.__class__.num_sc += 1
     
     def __repr__(self):
         out = ('\nClass(sc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage, self.pos,
@@ -62,7 +62,9 @@ class sc(general_cell):
         :return: The cell with incremented stage and either the same size or larger
         """
         if self.radius < 50:
-            self.area = self.area * (1.5)
-            self.radius = math.sqrt(self.area/math.pi)
+            self.radius += 0.8
+            self.area = math.pi*(self.radius*self.radius)
+            # self.area = self.area * (1.25)
+            # self.radius = math.sqrt(self.area/math.pi)
         self.stage += 1
         return self
