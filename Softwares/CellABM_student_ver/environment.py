@@ -3,82 +3,106 @@
 Creating environment and initial model cells (inc pos, direc and stage info)
 
 @author: Marzieh, 2014
+@commented: Harrison Paul Cooper, 2017
+@updated: Harrison Paul Cooper, 2018
+@last_updated: Harrison Paul Cooper, 23/04/2018
 """
-
 import numpy as np
 import math
 import random
-from cancer_cells import cc
-from proliferative_cells import pc
+
+
+from senescent_cells import sc
+from proliferating_cells import pc
 from numpy.random import rand
 
+
 class environment:
-    def __init__(self, size, mode):
+    """
+    Controls the instantiation of the initial cells and wound
+
+    Public methods:
+    :create_agents: Instantiation of initial cells
+    :wound:
+    """
+    def __init__(self, size):
+        """
+        How the environment is defined.
+
+        :param size: Size of environment in micrometers
+        """
         self.size = size
-        self.mode = mode
 
-    def create_agents(self, ncc, nsc):
-        cancercells = []
-        stemcells = []
-        quiescentcells = []
-        print(ncc, nsc)
+    def create_agents(self, nsc, npc):
+        """
+        Populates simulation with starting cells.
 
-        for c in range(ncc):
-            ID = c
-            radius = random.randint(10,50) 
-            area = math.pi*(radius*radius)
-            pos = [radius + (round(rand(),3))*(self.size-(2*radius)), radius +(round(rand(),3))*(self.size-(2*radius))]
-            stage = np.ceil(rand()*4380)
-            direc = rand()*2*np.pi
-            turnover = 1;
-            cancercells.append(cc(ID, stage, pos, direc, turnover, radius, area))
+        Creates a user defined number of senescent and proliferating
+        cells, giving them a random size (within a range), a random position,
+        a random stage (age, within a range), a random direction, a set
+        turnover (number of times divided and appends them to the list
+        of cells.
+        :param nsc: User defined starting number of senescent cells
+        :param npc: User defined starting number of proliferating cells
+        :return: Three lists containing the different starting cell agents
+        """
+        senescent_cells = []
+        proliferating_cells = []
+        quiescent_cells = []
+        print(nsc, npc)
 
         for s in range(nsc):
             ID = s
+            radius = random.randint(10,50) 
+            area = math.pi*(radius*radius)
+            pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), radius+(round(rand(), 3))*(self.size-(2*radius))]
+            stage = np.ceil(rand()*4380)
+            direc = rand()*2*np.pi
+            turnover = 1
+            senescent_cells.append(sc(ID, stage, pos, direc, turnover, radius, area))
+
+        for p in range(npc):
+            ID = p
             radius = random.randint(5,10)
             area = math.pi*(radius*radius)
-            pos = [radius + (round(rand(),3))*(self.size-(2*radius)), radius +(round(rand(),3))*(self.size-(2*radius))]
+            pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), radius+(round(rand(), 3))*(self.size-(2*radius))]
             stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
-            turnover = 1 #Adapt logic so older the patient, the higher the average starting turnover of seed ECs.
-            stemcells.append(pc(ID, stage, pos, direc, turnover, radius, area))
+            turnover = 1
+            proliferating_cells.append(pc(ID, stage, pos, direc, turnover, radius, area))
 
         #if list type is seperate (each agent type has its own list)
-        self.cancercells=cancercells
-        self.stemcells=stemcells
-        self.quiescentcells=quiescentcells
-        
-    """
-    From meeting with medical expert, Paul, he stated a wound size of 100 and 500
-    microns is a typical scratch assay size, but larger sizes would be good.
-    For now we will be using 100 microns (50 each side of midpoint)
-    As all cells will be removed from between x1 and x2, no need to worry about 
-    Y.
-    """
+        self.senescent_cells = senescent_cells
+        self.proliferating_cells = proliferating_cells
+        self.quiescent_cells = quiescent_cells
+
     def wound(self, wsize):
-        xlength = wsize #wound length
+        """
+        Creates the user defined wound.
+
+        The wound is across the entire Y axis and centered on the X axis.
+        From meeting with medical expert, Paul, he stated a wound size of 100 and 500
+        microns is a typical scratch assay size, but larger sizes would be good.
+        :param wsize: User defined wound size in micrometers
+        :return: The environment with cells removed from wounded area
+        """
+        xlength = wsize
         x1 = (self.size/2) - (xlength/2)
         x2 = (self.size/2) + (xlength/2)
         
-        print("EC: ", len(self.stemcells))
-        print("CC: ", len(self.cancercells))
-        print("QC: ", len(self.quiescentcells))
-#        import sys
-#        sys.exit("WOUNDED")
-        
-        for n in range(len(self.cancercells)):
-            if self.cancercells[n].pos[0] > x1 and self.cancercells[n].pos[0] < x2:
-                self.cancercells[n].kill_cell(self)
+        for n in range(len(self.senescent_cells)):
+            if self.senescent_cells[n].pos[0] > x1 and self.senescent_cells[n].pos[0] < x2:
+                self.senescent_cells[n].kill_cell()
                 
-        for n in range(len(self.stemcells)):
-            if self.stemcells[n].pos[0] > x1 and self.stemcells[n].pos[0] < x2:
-                self.stemcells[n].kill_cell(self)
+        for n in range(len(self.proliferating_cells)):
+            if self.proliferating_cells[n].pos[0] > x1 and self.proliferating_cells[n].pos[0] < x2:
+                self.proliferating_cells[n].kill_cell()
                 
-        for n in range(len(self.quiescentcells)):
-            if self.quiescentcells[n].pos[0] > x1 and self.quiescentcells[n].pos[0] < x2:
-                self.quiescentcells[n].kill_cell(self)
+        for n in range(len(self.quiescent_cells)):
+            if self.quiescent_cells[n].pos[0] > x1 and self.quiescent_cells[n].pos[0] < x2:
+                self.quiescent_cells[n].kill_cell()
                 
         # remove dead cells
-        self.stemcells = ([a for a in self.stemcells if not a.dead])
-        self.cancercells = ([a for a in self.cancercells if not a.dead])
-        self.quiescentcells = ([a for a in self.quiescentcells if not a.dead])
+        self.proliferating_cells = ([a for a in self.proliferating_cells if not a.dead])
+        self.senescent_cells = ([a for a in self.senescent_cells if not a.dead])
+        self.quiescent_cells = ([a for a in self.quiescent_cells if not a.dead])

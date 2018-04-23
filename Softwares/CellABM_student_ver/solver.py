@@ -3,147 +3,86 @@
 Solve ABM
 
 @author: Marzieh, 2014
+@commented: Harrison Paul Cooper, 2017
+@updated: Harrison Paul Cooper, 2018
+@last_updated: Harrison Paul Cooper, 23/04/2018
 """
-#import random
-#import numpy as np
-
-from cancer_cells import cc
-from proliferative_cells import pc
+from senescent_cells import sc
+from proliferating_cells import pc
 from quiescent_cells import qc
-#from messages import messages
 
-# update_messages used for sync mode
+
 def update_messages(env):
+    """
+
+
+    General procedure:
+        Update messages for each agent
+        Create new list containing only living agents
+        Update agent counter
+    :param env:
+    :return:
+    """
+    for agent in env.quiescent_cells:
+        agent.process_messages()
+    env.quiescent_cells = ([a for a in env.quiescent_cells if not a.messages.dead])
+    qc.num_qc = sum([isinstance(agent, qc) for agent in env.quiescent_cells])
     
-        # Update messages for each quiescent cell
-        for agent in env.quiescentcells:
-            agent.process_messages(env)
-
-        # Create new list that only contains the living
-        env.quiescentcells = ([a for a in env.quiescentcells if not a.messages.dead]) #and not a.messages.contact])
-
-        # Update stem cell counter        
-        qc.num_qc = sum([isinstance(agent,qc) for agent in env.quiescentcells])
-    
-        # Update messages for each cancer cell
-        for agent in env.cancercells:
-            agent.process_messages(env)
-
-        # Create new list that only contains the living
-        env.cancercells = ([a for a in env.cancercells if not a.messages.dead]) #and not a.messages.contact])
-
-        # Update cancer cell counter
-        cc.num_cc = sum([isinstance(agent,cc) for agent in env.cancercells])
+    for agent in env.senescent_cells:
+        agent.process_messages()
+    env.senescent_cells = ([a for a in env.senescent_cells if not a.messages.dead])
+    sc.num_sc = sum([isinstance(agent, sc) for agent in env.senescent_cells])
         
-        # Update messages for each stem cell
-        for agent in env.stemcells:
-            agent.process_messages(env)
-
-        # Create new list that only contains the living
-        env.stemcells = ([a for a in env.stemcells if not a.messages.dead]) #and not a.messages.contact])
-
-        # Update quiescent cell counter        
-        pc.num_pc = sum([isinstance(agent, pc) for agent in env.stemcells])
+    for agent in env.proliferating_cells:
+        agent.process_messages()
+    env.proliferating_cells = ([a for a in env.proliferating_cells if not a.messages.dead])
+    pc.num_pc = sum([isinstance(agent, pc) for agent in env.proliferating_cells])
         
-
-
-#temp_shuffle used for async mode
-#def temp_shuffle(lst):
-#    shuffled = list(lst)
-#    random.shuffle(shuffled)
-#    return shuffled
 
 def agent_solve(env):
-        
-    new_cancercells= []  # List of new cancer cells created for this iteration
-    new_stemcells= []  # List of new stem cells created for this iteration
-    new_quiescentcells = [] # List of new quiecent cells created this itteration 
+    """
 
-    if env.mode == 'sync':        
-                            
-        for agent in env.cancercells:    
-            agent.apoptosis(env)
-            if not agent.messages.dead:
-                agent.growth(env)
-        
-        for agent in env.stemcells:
-            senescence = agent.senescence(env)
-            if senescence is not None:
-                new_cancercells.append(senescence)
-                
-            if agent.iscluster == True:
-                quiesence = agent.quiescence(env)
-                if quiesence is not None:
-                    new_quiescentcells.append(quiesence)
-                
-#            quiscence = agent.correct_overlap
-#            if quiscence is not None:
-#                new_quiescentcells.append(quiscence) 
-            agent.migrate(env)
-            agent.apoptosis(env)
-            if not agent.messages.dead: 
-                new = agent.growth(env)
-                #new = agent.mitosis(env)
-                if new is not None:
-                    new_stemcells.append(new)
-                    
-        for agent in env.quiescentcells:
-            senescence = agent.senescence(env)
-            if senescence is not None:
-                new_cancercells.append(senescence)
-            if agent.iscluster == False:
-                endothelial = agent.endothelial(env)
-                if endothelial is not None:
-                    new_stemcells.append(endothelial)
-            agent.migrate(env)
+    :param env:
+    :return:
+    """
+    new_senescent_cells = []  # List of new senescent cells created for this iteration
+    new_proliferating_cells = []  # List of new proliferating cells created for this iteration
+    new_quiescent_cells = []  # List of new quiescent cells created this iteration
 
-        # Add new agents to list
-        env.cancercells.extend(new_cancercells)
-        env.stemcells.extend(new_stemcells)
-        env.quiescentcells.extend(new_quiescentcells)
-        
-        # Update messages
-        update_messages(env)
-    #return {'cancercells' :env.cancercells, 'stemcells' :env.stemcells}
-    
-#    if env.mode == 'async':
-#        for agent in temp_shuffle(env.cancercells):
-#            #40% chance of migration
-#            chance = random.random()
-#            if chance <= 0.4:
-#                agent.migrate(env)
-#            else:
-#                pass
-#
-#            agent.apoptosis(env)
-#
-#            if not agent.dead:
-#                new = agent.mitosis(env)
-#                if new is not None:
-#                    new_cancercells.append(new)
-#
-#        # Add new agents to list
-#        env.cancercells.extend(new_cancercells)
-#        
-#        # remove dead cells
-#        env.cancercells = ([a for a in env.cancercells if not a.dead])
-#                            
-#        for agent in temp_shuffle(env.stemcells):    
-#            
-#            agent.migrate(env)
-# 
-#            agent.apoptosis(env)
-#
-#            if not agent.dead:
-#                new = agent.mitosis(env)
-#                if new is not None:
-#                    new_stemcells.append(new)
-#
-#        # Add new agents to list
-#        env.stemcells.extend(new_stemcells)
-#
-#        # remove dead cells
-#        env.stemcells = ([a for a in env.stemcells if not a.dead])
-#    #return {'cancercells' :env.cancercells, 'stemcells' :env.stemcells}        
-        
-        
+    for agent in env.senescent_cells:
+        if agent.stage == agent.max_stage:
+            agent.kill_cell()
+        if not agent.messages.dead:
+            agent.growth()
+
+    for agent in env.proliferating_cells:
+        senescence = agent.senescence()
+        if senescence is not None:
+            new_senescent_cells.append(senescence)
+        if agent.iscluster is True:
+            quiescence = agent.quiescence()
+            if quiescence is not None:
+                new_quiescent_cells.append(quiescence)
+        agent.migrate(env)
+        agent.apoptosis()
+        if not agent.messages.dead:
+            new = agent.growth()
+            if new is not None:
+                new_proliferating_cells.append(new)
+
+    for agent in env.quiescent_cells:
+        senescence = agent.senescence()
+        if senescence is not None:
+            new_senescent_cells.append(senescence)
+        if agent.iscluster is False:
+            proliferating = agent.proliferating()
+            if proliferating is not None:
+                new_proliferating_cells.append(proliferating)
+        agent.migrate(env)
+
+    # Add new agents to list
+    env.senescent_cells.extend(new_senescent_cells)
+    env.proliferating_cells.extend(new_proliferating_cells)
+    env.quiescent_cells.extend(new_quiescent_cells)
+
+    update_messages(env)

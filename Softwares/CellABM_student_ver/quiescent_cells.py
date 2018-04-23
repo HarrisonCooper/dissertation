@@ -3,91 +3,86 @@
 """
 Created on Mon Feb 26 18:29:05 2018
 
-@author: harrycooper
+@author: Harrison Paul Cooper, 2018
+@last_updated: Harrison Paul Cooper, 23/4/18
 """
-
 import random
 import math
 
-#from messages import messages     
 from general_cell import general_cell
-from cancer_cells import cc
-#from stem_cells import sc
-
-
+from senescent_cells import sc
 
 
 class qc(general_cell):
-    
+    """
+    This is a subclass of general cell for the quiescent agent.
+
+    Public methods:
+    :senescence: When cell is old enough differentiates to senescent
+    :proliferating: When cell can proliferate differentiates to proliferating
+    Instance variables:
+    :min_radius:
+    :max_speed:
+    :max_direc:
+    :max_stage:
+    :num_qc:
+    """
     min_radius = 1
-    #Quiescent cells cannot move
-    max_speed = 0
-    # Not entirely sure of the reason to use 2/3 pi radians? Wouldn't random work?
-    max_direc = round((2.0/3)*math.pi,3) #2/3pi radians 
-    #So 1 stage is 1 iteration?
-    max_stage = 240 #each level = 6hrs of real time
-#    max_turnover = 4381
+    max_speed = 0  # Quiescent cells cannot move
+    max_direc = round((2.0/3)*math.pi, 3)
+    max_stage = 240  # each level = 6hrs of real time
+    num_qc = 0
     
-    num_qc = 0 #number of alive cancer cells
-    
-    def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover = [], radius = [], area = []):
+    def __init__(self, ID=[], stage=[], pos=[], direc=[], turnover=[], radius=[], area=[]):
+        """
+        How the quiescent cell is defined.
+
+        :param ID: The unique identifier of the cell
+        :param stage: The age of the cell
+        :param pos: The position of the cell
+        :param direc: The direction of the cell
+        :param turnover: The age of the cell
+        :param radius: The radius of the cell
+        :param area: The area of the cell
+        """
         general_cell.__init__(self, ID, stage, pos, direc, turnover, radius, area)
-        # Increase the number of living quiescent cells by one
         self.__class__.num_qc = self.__class__.num_qc + 1
     
     def __repr__(self):
-        out = ('\nClass(cc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage, self.pos, self.direc))
-        return (out)
-    
-    
-#    def mitosis(self,env):
-#        if self.stage >= self.max_stage:
-#            new=self.split_cell(env)
-#        else:
-#            self.stage = self.stage +1 
-#            new = None    
-#        return(new)    
-        
-    #When a QC has been in this state for long enough -> Senesent 
-    def senescence(self, env):
-        if self.stage == self.max_stage: #Required minimum of 239 iterations
-        
-            print('****', cc.num_cc, '****')
-            self.kill_cell(env)
-            print(len(env.cancercells)) #could use this +1 as new ID val
-            senescentpos = [self.pos[0], self.pos[1]]
-            senescentcell = cc(ID=cc.num_cc, stage=1, pos=senescentpos, direc=random.random()*2*math.pi, turnover=1, radius=self.radius, area=self.area)
-            
-            print(self.ID, ' has hit max stage -> Senescent ', senescentcell.ID)
-            
-            senescence=senescentcell
+        out = ('\nClass(qc)\nID : {0}\nStage : {1}\nPos : {2}\ndirec : {3}\n'. format(self.ID, self.stage,
+                                                                                      self.pos, self.direc))
+        return out
+
+    # When a QC has been in this state for long enough -> senesent
+    def senescence(self):
+        """
+        Differentiate current (quiescent) cell into senescent cell.
+
+        If the cell has passed its Hayflick limit, it will differentiate,
+        else the cell remains unchanged and continues
+        :return: Either aged cell or a new senescent cell in the same position
+        """
+        if self.stage == self.max_stage:  # Required minimum of 239 iterations
+            self.kill_cell()
+            senescent_pos = [self.pos[0], self.pos[1]]
+            senescent_cell = sc(ID=sc.num_sc, stage=1, pos=senescent_pos, direc=random.random() * 2 * math.pi,
+                                turnover=1, radius=self.radius, area=self.area)
+            senescence = senescent_cell
         else:
             senescence = None
             self.stage += 1 
-        return(senescence)
+        return senescence
         
-        
-    #When a QC can proliferate  -> Endothelial Cell
-    """
-    Difficult, needs to work off neighbours, however thats awkwardly stuck
-    in another class
-    """
-    def endothelial(self, env): 
-        from proliferative_cells import pc
-        print(self.ID, " is endothelial")
-        self.kill_cell(env)
-        endothelialpos = [self.pos[0], self.pos[1]]
-        endothelialcell = pc(ID=pc.num_pc, stage=1, pos=endothelialpos, direc=random.random() * 2 * math.pi, turnover=self.turnover, radius=self.radius, area=self.area)
-        print(self.ID, ' has fewer than 5 neighbours -> Endothelial ', endothelialcell.ID)
-        endothelial=endothelialcell
-        return(endothelial)
-    
-    def growth(self,env):
-        self.area = self.area * (1.5)
-        self.radius = math.sqrt(self.area/math.pi)
-        self.stage += 1
-        
-#    def quiescence(self,env):
-#        return
-        
-        
+    def proliferating(self):
+        """
+        Differentiate current (quiescent) cell back to proliferating cell.
+
+        :return: A new proliferating cell in the same position
+        """
+        from proliferating_cells import pc
+        self.kill_cell()
+        proliferating_pos = [self.pos[0], self.pos[1]]
+        proliferating_cell = pc(ID=pc.num_pc, stage=1, pos=proliferating_pos, direc=random.random() * 2 * math.pi,
+                                turnover=self.turnover, radius=self.radius, area=self.area)
+        proliferating = proliferating_cell
+        return proliferating
