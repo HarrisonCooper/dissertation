@@ -41,9 +41,10 @@ def update_messages(env):
 
 def agent_solve(env):
     """
+    Goes through each agent applying their rules each iteration.
 
-    :param env:
-    :return:
+    :param env: Contains the current agents on the simulation
+    :return: The updated states for each agent
     """
     new_senescent_cells = []  # List of new senescent cells created for this iteration
     new_proliferating_cells = []  # List of new proliferating cells created for this iteration

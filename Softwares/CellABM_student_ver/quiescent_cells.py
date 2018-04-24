@@ -27,7 +27,7 @@ class qc(general_cell):
     :max_stage: How many iterations until the cell differentiates to senescent
     :num_qc: The total number of quiescent cells
     """
-    min_radius = 1
+    min_radius = 4.9
     max_speed = 0  # Quiescent cells cannot move
     max_direc = round((2.0/3)*math.pi, 3)
     max_stage = 240  # each level = 6hrs of real time

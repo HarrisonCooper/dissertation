@@ -27,7 +27,7 @@ class sc(general_cell):
     :max_stage: How many iterations the cell can last for
     :num_sc: The total number of senescent cells
     """
-    min_radius = 1
+    min_radius = 5
     max_speed = 0  # Senescent cells don't move
     max_direc = round((2.0/3)*math.pi, 3)
     max_stage = 4380  # represents 3 years
