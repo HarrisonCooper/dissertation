@@ -93,6 +93,10 @@ class environment:
         for n in range(len(self.senescent_cells)):
             if x1 < self.senescent_cells[n].pos[0] < x2:
                 self.senescent_cells[n].kill_cell()
+
+        for n in range(len(self.senescent_cells)):
+            if self.senescent_cells[n].pos[0] > x1 and self.senescent_cells[n].pos[0] < x2:
+                self.senescent_cells[n].kill_cell()
                 
         for n in range(len(self.proliferating_cells)):
             if x1 < self.proliferating_cells[n].pos[0] < x2:
