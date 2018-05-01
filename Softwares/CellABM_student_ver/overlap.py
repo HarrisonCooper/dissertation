@@ -82,12 +82,12 @@ def check_overlap(env, cells, values, plot_values, OCM_it):
         
     if overlap_tally == 0 and OCM_it < 200:
         update_pos_ABM(env, values)    
-        display_plot_values(plot_values, OCM_it)
+        # display_plot_values(plot_values, OCM_it)
 
     if overlap_tally >= 0 and OCM_it == 200:
         update_pos_ABM(env, values)
         update_radii(env, cells, overlap)
-        display_plot_values(plot_values, OCM_it)
+        # display_plot_values(plot_values, OCM_it)
 
         
 def correct_overlap(env, cells, values, plot_values, OCM_it):
