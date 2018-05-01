@@ -60,10 +60,12 @@ def agent_solve(env):
         senescence = agent.senescence()
         if senescence is not None:
             new_senescent_cells.append(senescence)
+            continue
         if agent.iscluster is True:
             quiescence = agent.quiescence()
             if quiescence is not None:
                 new_quiescent_cells.append(quiescence)
+                continue
         agent.migrate(env)
         agent.apoptosis()
         if not agent.messages.dead:
@@ -75,6 +77,7 @@ def agent_solve(env):
         senescence = agent.senescence()
         if senescence is not None:
             new_senescent_cells.append(senescence)
+            continue
         if agent.iscluster is False:
             proliferating = agent.proliferating()
             if proliferating is not None:

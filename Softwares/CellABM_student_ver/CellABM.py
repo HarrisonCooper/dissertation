@@ -53,11 +53,18 @@ def CellABM(size, nsc, npc, steps, wsize, directory, freq=0, labels=False):
     plot_2d(env, directory, labels, n_it=0)  # Create initial graph of cell positions
 
     counter = 0  # Counter to check if monolayer has been wounded
+    count = []
     
     for n_it in range(1, steps+1):
         print("iteration %s" % (str(n_it)))
         agent_solve(env)
         initiate_OC(env)
+        
+        if counter == 1:
+            coun = num_cells_in_wound(env, wsize)
+            count.append(coun)
+            print(count)
+        
         """
         Logic for confluence.
 
@@ -105,3 +112,23 @@ def CellABM(size, nsc, npc, steps, wsize, directory, freq=0, labels=False):
     return env, num_cells
     
 #%%
+    
+def num_cells_in_wound(env, wsize):
+    num=0
+    xlength = wsize
+    x1 = (env.size/2) - (xlength/2)
+    x2 = (env.size/2) + (xlength/2)
+    
+    for n in range(len(env.senescent_cells)):
+        if x1 < env.senescent_cells[n].pos[0] < x2:
+            num+=1
+            
+    for n in range(len(env.proliferating_cells)):
+        if x1 < env.proliferating_cells[n].pos[0] < x2:
+            num+=1
+            
+    for n in range(len(env.quiescent_cells)):
+        if x1 < env.quiescent_cells[n].pos[0] < x2:
+            num+=1
+            
+    return num

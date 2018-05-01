@@ -14,6 +14,7 @@ import random
 
 from senescent_cells import sc
 from proliferating_cells import pc
+from quiescent_cells import qc
 from numpy.random import rand
 
 
@@ -56,17 +57,18 @@ class environment:
             radius = random.randint(10,50) 
             area = math.pi*(radius*radius)
             pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), radius+(round(rand(), 3))*(self.size-(2*radius))]
-            stage = np.ceil(rand()*4380)
+            stage = np.ceil(rand()*26280)  # 4380)
             direc = rand()*2*np.pi
             turnover = 1
             senescent_cells.append(sc(ID, stage, pos, direc, turnover, radius, area))
+
 
         for p in range(npc):
             ID = p
             radius = random.randint(5,10)
             area = math.pi*(radius*radius)
             pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), radius+(round(rand(), 3))*(self.size-(2*radius))]
-            stage = np.ceil(rand()*4)
+            stage = np.ceil(rand()*24)  # 4)
             direc = rand()*2*np.pi
             turnover = 1
             proliferating_cells.append(pc(ID, stage, pos, direc, turnover, radius, area))
@@ -94,10 +96,6 @@ class environment:
             if x1 < self.senescent_cells[n].pos[0] < x2:
                 self.senescent_cells[n].kill_cell()
 
-        for n in range(len(self.senescent_cells)):
-            if self.senescent_cells[n].pos[0] > x1 and self.senescent_cells[n].pos[0] < x2:
-                self.senescent_cells[n].kill_cell()
-                
         for n in range(len(self.proliferating_cells)):
             if x1 < self.proliferating_cells[n].pos[0] < x2:
                 self.proliferating_cells[n].kill_cell()
@@ -110,3 +108,9 @@ class environment:
         self.proliferating_cells = ([a for a in self.proliferating_cells if not a.dead])
         self.senescent_cells = ([a for a in self.senescent_cells if not a.dead])
         self.quiescent_cells = ([a for a in self.quiescent_cells if not a.dead])
+        print("Confluence Sheet: SC = %s, PC = %s, QC = %s." % (sc.num_sc, pc.num_pc, qc.num_qc))
+        percentage = (sc.num_sc/pc.num_pc)*100
+        print("Percentage senescence at confluence = %s" % (percentage))
+        qc.num_qc = sum([isinstance(agent, qc) for agent in self.quiescent_cells])
+        sc.num_sc = sum([isinstance(agent, sc) for agent in self.senescent_cells])
+        pc.num_pc = sum([isinstance(agent, pc) for agent in self.proliferating_cells])
