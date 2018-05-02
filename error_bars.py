@@ -4,6 +4,7 @@ iteration = [1,2,3,4,5,6,7,8,9]
 iteration1 = [1,2,3,4,5,6,7,8]
 iteration2 = [1,2,3,4,5,6,7]
 iteration3 = [1,2,3,4,5,6]
+iteration4 = [1,2,3,4,5]
 
 num2025 = [
 58.6,
@@ -103,12 +104,27 @@ error0005 = [
 7.946823265,
 11.40350823
 ]
+num0000 = [
+204.4,
+272.8,
+338,
+356.4,
+399
+]
+error0000 = [
+7.319016327,
+9.925321153,
+9.363759929,
+9.841138146,
+11.35605565
+]
 plt.suptitle('Cells In Wound With Time')
 plt.errorbar(iteration, num2025, yerr=error2025, ecolor="black", fmt='bx--', capsize=5, label="20-25%")
 plt.errorbar(iteration, num1520, yerr=error1520, ecolor="black", fmt='gx--', capsize=5, label="15-20%")
 plt.errorbar(iteration1, num1015, yerr=error1015, ecolor="black", fmt='rx--', capsize=5, label="10-15%")
 plt.errorbar(iteration2, num0510, yerr=error0510, ecolor="black", fmt='cx--', capsize=5, label="5-10%")
 plt.errorbar(iteration3, num0005, yerr=error0005, ecolor="black", fmt='mx--', capsize=5, label="0-5%")
+plt.errorbar(iteration4, num0000, yerr=error0000, ecolor="black", fmt='x--', capsize=5, label="0%")
 
 plt.xlabel('Iteration after wound')
 plt.ylabel('Num cells in wound')
