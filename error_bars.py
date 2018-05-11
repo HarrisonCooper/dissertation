@@ -119,14 +119,18 @@ error0000 = [
 11.35605565
 ]
 plt.suptitle('Cells In Wound With Time')
-plt.errorbar(iteration, num2025, yerr=error2025, ecolor="black", fmt='bx--', capsize=5, label="20-25%")
-plt.errorbar(iteration, num1520, yerr=error1520, ecolor="black", fmt='gx--', capsize=5, label="15-20%")
-plt.errorbar(iteration1, num1015, yerr=error1015, ecolor="black", fmt='rx--', capsize=5, label="10-15%")
-plt.errorbar(iteration2, num0510, yerr=error0510, ecolor="black", fmt='cx--', capsize=5, label="5-10%")
-plt.errorbar(iteration3, num0005, yerr=error0005, ecolor="black", fmt='mx--', capsize=5, label="0-5%")
-plt.errorbar(iteration4, num0000, yerr=error0000, ecolor="black", fmt='x--', capsize=5, label="0%")
+plt.errorbar(iteration, num2025, yerr=error2025, ecolor="black", fmt='bx--', capsize=5, label="23.5%")
+plt.errorbar(iteration, num1520, yerr=error1520, ecolor="black", fmt='gx--', capsize=5, label="17.3%")
+plt.errorbar(iteration1, num1015, yerr=error1015, ecolor="black", fmt='rx--', capsize=5, label="12.9%")
+plt.errorbar(iteration2, num0510, yerr=error0510, ecolor="black", fmt='cx--', capsize=5, label="7.0%")
+plt.errorbar(iteration3, num0005, yerr=error0005, ecolor="black", fmt='mx--', capsize=5, label="2.7%")
+plt.errorbar(iteration4, num0000, yerr=error0000, ecolor="black", fmt='x--', capsize=5, label="0.0%")
 
 plt.xlabel('Iteration after wound')
 plt.ylabel('Num cells in wound')
-plt.legend(title="Confluence Senescence")
+plt.legend(title="Confluence Senescence", loc="upper center", ncol=3)
+
+plt.ylim(50,550)
+# plt.xlim(1,15)
+
 plt.show()

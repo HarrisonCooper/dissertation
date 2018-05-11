@@ -18,7 +18,7 @@ class TestQuiescentCells(unittest.TestCase):
     def setUp(self):
         self.qc1 = qc(ID=1, stage=1, pos=[0, 0], direc=random.random() * 2 * math.pi,
                       turnover=1, radius=5, area=25 * math.pi)
-        self.qc2 = qc(ID=1, stage=240, pos=[0, 0], direc=random.random() * 2 * math.pi,
+        self.qc2 = qc(ID=1, stage=14600, pos=[0, 0], direc=random.random() * 2 * math.pi,
                       turnover=1, radius=5, area=25 * math.pi)
 
     def tearDown(self):

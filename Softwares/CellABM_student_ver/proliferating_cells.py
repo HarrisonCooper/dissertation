@@ -38,7 +38,7 @@ class pc(general_cell):
     min_radius = 4.9
     max_speed = 360  # move at 1micrometer a min
     max_direc = round((2.0/3)*math.pi, 3)
-    max_stage = 2  # 4 
+    max_stage = 4 
     max_turnover = 50  # Hayflick limit of 50
     num_pc = 0
 
@@ -113,28 +113,6 @@ class pc(general_cell):
             new = None
         return new
         
-#    def growth(self):
-#        """
-#        At each stage of the cell cycle, the cell grows.
-#
-#        Once a cell has been through each of the four stages, it will have
-#        doubled in size.
-#        :return: The grown cell
-#        """
-#        if self.stage == 1:                 # Increase original size by 1/4
-#            self.area *= 1.25
-#        elif self.stage == 2:               # Decrease by 1/4 to achieve original, then increase by 2/4
-#            sa = self.area / 1.25
-#            self.area = sa * 1.5
-#        elif self.stage == 3:               # Decrease by 2/4 to achieve original, the increase by 3/4
-#            sa = self.area / 1.5
-#            self.area = sa * 1.75
-#        elif self.stage == 4:                               # Decrease by 3/4 to achieve original, then double
-#            sa = self.area / 1.75
-#            self.area = sa * 2
-#        self.radius = math.sqrt(self.area/math.pi)
-#        return self.mitosis()
-        
     def growth(self):
         """
         At each stage of the cell cycle, the cell grows.
@@ -144,12 +122,60 @@ class pc(general_cell):
         :return: The grown cell
         """
         if self.stage == 1:                 # Increase original size by 1/4
-            self.area *= 1.5
+            self.area *= 1.25
         elif self.stage == 2:               # Decrease by 1/4 to achieve original, then increase by 2/4
+            sa = self.area / 1.25
+            self.area = sa * 1.5
+        elif self.stage == 3:               # Decrease by 2/4 to achieve original, the increase by 3/4
             sa = self.area / 1.5
+            self.area = sa * 1.75
+        elif self.stage == 4:               # Decrease by 3/4 to achieve original, then double
+            sa = self.area / 1.75
             self.area = sa * 2
         self.radius = math.sqrt(self.area/math.pi)
         return self.mitosis()
+        
+#    def growth(self):
+#        """
+#        Sensitivity analysis - doubling mitosis rate
+#        """
+#        if self.stage == 1:                 # Increase original size by 1/4
+#            self.area *= 1.125
+#        elif self.stage == 2:               # Decrease by 1/4 to achieve original, then increase by 2/4
+#            sa = self.area / 1.125
+#            self.area = sa * 1.25
+#        elif self.stage == 3:               # Decrease by 2/4 to achieve original, the increase by 3/4
+#            sa = self.area / 1.25
+#            self.area = sa * 1.375
+#        elif self.stage == 4:               # Decrease by 3/4 to achieve original, then double
+#            sa = self.area / 1.375
+#            self.area = sa * 1.5
+#        elif self.stage == 5:
+#            sa = self.area / 1.5
+#            self.area = sa * 1.625
+#        elif self.stage == 6:
+#            sa = self.area / 1.625
+#            self.area = sa * 1.75
+#        elif self.stage == 7:
+#            sa = self.area / 1.75
+#            self.area = sa * 1.875
+#        elif self.stage == 8:
+#            sa = self.area / 1.875
+#            self.area = sa * 2
+#        self.radius = math.sqrt(self.area/math.pi)
+#        return self.mitosis()
+    
+#    def growth(self):
+#        """
+#        Sensitivity analysis - halving mitosis rate
+#        """
+#        if self.stage == 1:                 # Increase original size by 1/4
+#            self.area *= 1.5
+#        elif self.stage == 2:               # Decrease by 1/4 to achieve original, then increase by 2/4
+#            sa = self.area / 1.5
+#            self.area = sa * 2
+#        self.radius = math.sqrt(self.area/math.pi)
+#        return self.mitosis()
 
     def quiescence(self):
         """

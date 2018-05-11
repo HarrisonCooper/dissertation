@@ -14,14 +14,14 @@ from quiescent_cells import qc
 
 def update_messages(env):
     """
-
+    Will remove dead agents from respective lists
 
     General procedure:
         Update messages for each agent
         Create new list containing only living agents
         Update agent counter
-    :param env:
-    :return:
+    :param env: Contains the current agents on the simulation
+    :return: Updated counts of each type of agent
     """
     for agent in env.quiescent_cells:
         agent.process_messages()

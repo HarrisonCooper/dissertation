@@ -56,7 +56,8 @@ class environment:
             ID = s
             radius = random.randint(10,50) 
             area = math.pi*(radius*radius)
-            pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), radius+(round(rand(), 3))*(self.size-(2*radius))]
+            pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), 
+                   radius+(round(rand(), 3))*(self.size-(2*radius))]
             stage = np.ceil(rand()*4380)
             direc = rand()*2*np.pi
             turnover = 1
@@ -67,8 +68,9 @@ class environment:
             ID = p
             radius = random.randint(5,10)
             area = math.pi*(radius*radius)
-            pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), radius+(round(rand(), 3))*(self.size-(2*radius))]
-            stage = np.ceil(rand()*2)  # 4)
+            pos = [radius+(round(rand(), 3))*(self.size-(2*radius)), 
+                   radius+(round(rand(), 3))*(self.size-(2*radius))]
+            stage = np.ceil(rand()*4)
             direc = rand()*2*np.pi
             turnover = 1
             proliferating_cells.append(pc(ID, stage, pos, direc, turnover, radius, area))

@@ -64,7 +64,5 @@ class sc(general_cell):
         if self.radius < 50:
             self.radius += 0.8
             self.area = math.pi*(self.radius*self.radius)
-            # self.area = self.area * (1.25)
-            # self.radius = math.sqrt(self.area/math.pi)
         self.stage += 1
         return self
